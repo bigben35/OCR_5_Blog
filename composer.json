@@ -1,0 +1,18 @@
+{
+    "name": "josse/projet-5_blog",
+    "autoload": {
+        "psr-4": {
+            "Josse\\Projet5Blog\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Josselin Crenn",
+            "email": "josselincrenn@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.4",
+        "filp/whoops": "^2.14"
+    }
+}
