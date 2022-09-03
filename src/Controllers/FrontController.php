@@ -6,6 +6,6 @@ class FrontController
 {
     function home()
     {
-        require "src/Models/Manager.php";
+        require "src/Views/Front/home.php";
     }
 }

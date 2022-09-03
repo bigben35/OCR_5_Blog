@@ -1,8 +1,8 @@
 {
-    "name": "josse/projet-5_blog",
+    "name": "josse/ocr_5_blog",
     "autoload": {
         "psr-4": {
-            "Blog\\": "./src/"
+            "Blog\\": "src/"
         }
     },
     "authors": [
@@ -12,7 +12,7 @@
         }
     ],
     "require": {
-        "vlucas/phpdotenv": "^5.4",
-        "filp/whoops": "^2.14"
+        "filp/whoops": "^2.14",
+        "vlucas/phpdotenv": "^5.4"
     }
 }
