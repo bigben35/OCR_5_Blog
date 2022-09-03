@@ -2,7 +2,7 @@
     "name": "josse/projet-5_blog",
     "autoload": {
         "psr-4": {
-            "Josse\\Projet5Blog\\": "src/"
+            "Blog\\": "./src/"
         }
     },
     "authors": [
