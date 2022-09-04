@@ -13,7 +13,22 @@ try{
 
     if(isset($_GET['action']) && !empty($_GET['action'])) {
         if ($_GET['action'] == 'home') {
+           
             $frontController->home();
+        }
+
+        // envois mail dans la bdd 
+        elseif ($_GET['action'] == 'contactPost') {
+            $nom = htmlspecialchars($_POST['nom']);
+            $prenom = htmlspecialchars($_POST['prenom']);
+            $email = htmlspecialchars($_POST['email']);
+            $objet = htmlspecialchars($_POST['objet']);
+            $message = htmlspecialchars($_POST['message']);
+            if (!empty($nom) && (!empty($prenom) && (!empty($email) && (!empty($objet) && (!empty($message)))))) {
+                $frontController->contactPost($nom, $prenom, $email, $objet, $message);
+            } else {
+                throw new Exception('Tous les champs ne sont pas remplis, A vous de jouer !!');
+            }
         }
     } else {
         $frontController->home();

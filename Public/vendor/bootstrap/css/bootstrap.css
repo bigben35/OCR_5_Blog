@@ -6755,3 +6755,21 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+/* mes ajouts perso  */
+.msg-error {
+  background-color: #e01a1a;
+  color: white;
+  border-radius: 5px;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+.msg-success {
+  background-color: #11AD4C;
+  color: white;
+  border-radius: 5px;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
