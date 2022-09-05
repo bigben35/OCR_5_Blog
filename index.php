@@ -30,6 +30,22 @@ try{
                 throw new Exception('Tous les champs ne sont pas remplis, A vous de jouer !!');
             }
         }
+
+        // display page createUser 
+        elseif ($_GET['action'] == 'createUser'){
+            $frontController->pageCreateUser();
+        }
+
+        // create an user 
+        elseif ($_GET['action'] == 'storeUser'){
+            $pseudo = htmlspecialchars($_POST['pseudo']);
+            $email = htmlspecialchars($_POST['email']);
+            $pass = htmlspecialchars($_POST['password']);
+            $password = password_hash($pass, PASSWORD_DEFAULT); //crée une clé de hachage pour un password
+
+            $frontController->createUser($pseudo, $email, $password);
+            // var_dump($password);die;
+        }
     } else {
         $frontController->home();
     }

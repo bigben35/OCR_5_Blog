@@ -8,10 +8,10 @@ body {
   overflow-x: hidden;
 }
 p {
-  font-size: 20px;
+  font-size: 14px;
 }
 p.small {
-  font-size: 16px;
+  font-size: 12px;
 }
 a,
 a:hover,

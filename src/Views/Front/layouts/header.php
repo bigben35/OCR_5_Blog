@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Blog professionnel">
+    <meta name="description" content="<?= $description ?>">
     
 
-    <title>Blog-Projet5</title>
+    <title><?= $title ?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="Public/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -51,13 +51,16 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#about">A propos</a>
+                        <a href="index.php?action=home#about">A propos</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#blog">Blog</a>
+                        <a href="index.php?action=home#blog">Blog</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact">Contact</a>
+                        <a href="index.php?action=home#contact">Contact</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="index.php?action=createUser">Créer compte</a>
                     </li>
                 </ul>
             </div>
@@ -66,18 +69,4 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img class="img-responsive" src="img/profile.png" alt="">
-                    <div class="intro-text">
-                        <span class="name">Josselin Crenn</span>
-                        <hr class="star-light">
-                        <span class="skills">Développeur Web - PHP/Symfony</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+ 
