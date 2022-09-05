@@ -48,4 +48,52 @@ class FrontController
             return $erreur;
         }
     }
+
+
+    // display page creer un compte 
+    function pageCreateUser()
+    {
+        require 'src/Views/Front/createUserPage.php';
+    }
+
+    // create an user 
+    function createUser($pseudo, $email, $password)
+    {
+        extract($_POST);
+        $userManager = new \Blog\Models\UserManager();
+        $validation = true;
+        $erreur = [];
+
+        if (empty($pseudo) || empty($email) || empty($emailconf) || empty($password) || empty($passwordconf)) {
+            $validation = false;
+            $erreur[] = "Tous les champs sont requis !";
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $validation = false;
+            $erreur[] = "L'adresse email n'est pas valide !";
+         }
+
+        if($emailconf != $email){
+            $validation = false;
+            $erreur[] = "L'email de confirmation n'est pas correcte !";
+        }
+    
+        if($passwordconf != $password){
+            $validation = false;
+            $erreur[] = "Le mot de passe de confirmation n'est pas correcte !";
+        }
+
+         
+        if ($validation && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $createUser = $userManager->createUser($pseudo, $email, $password);
+
+        require 'src/Views/Front/connectPage.php';
+        }
+        else{
+           require 'src/Views/Front/createUserPage.php';
+           return $erreur;
+        }
+    }
 }
+

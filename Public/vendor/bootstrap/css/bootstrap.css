@@ -1264,15 +1264,15 @@ h6 .small,
 }
 h1,
 .h1 {
-  font-size: 36px;
+  font-size: 30px;
 }
 h2,
 .h2 {
-  font-size: 30px;
+  font-size: 24px;
 }
 h3,
 .h3 {
-  font-size: 24px;
+  font-size: 20px;
 }
 h4,
 .h4 {
@@ -2506,10 +2506,11 @@ legend {
   border-bottom: 1px solid #e5e5e5;
 }
 label {
-  display: inline-block;
+  display: block;
   max-width: 100%;
   margin-bottom: 5px;
   font-weight: bold;
+  text-align: start;
 }
 input[type="search"] {
   -webkit-box-sizing: border-box;
@@ -6772,4 +6773,13 @@ button.close {
   margin: 1rem 0;
   padding: 0.5rem 1rem;
   text-align: center;
+}
+
+.container-form{
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.form-check{
+  text-align: left;
 }

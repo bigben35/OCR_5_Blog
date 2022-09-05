@@ -1,4 +1,25 @@
-<?php require_once "layouts/header.php"; ?>
+
+<?php
+$title = "Page d'Accueil";
+$description = "Bienvenue sur le blog Web Code! C'est un blog consacré au développement web, particulièrement à PHP et a son framework Symfony !";
+ob_start();
+?>
+
+   <!-- Header -->
+   <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/profile.png" alt="">
+                    <div class="intro-text">
+                        <span class="name">Josselin Crenn</span>
+                        <hr class="star-light">
+                        <span class="skills">Développeur Web - PHP/Symfony</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
 <!-- About Section -->
 <section id="about">
@@ -101,5 +122,6 @@
 
 <?php include_once "contact.php"; ?>
    
+<?php $content = ob_get_clean(); ?>
+<?php require 'layouts/template.php';
 
-<?php require_once "layouts/footer.php";
