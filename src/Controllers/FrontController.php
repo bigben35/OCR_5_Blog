@@ -50,7 +50,7 @@ class FrontController
     }
 
 
-    // display page creer un compte 
+    // display page create an account 
     function pageCreateUser()
     {
         require 'src/Views/Front/createUserPage.php';
@@ -94,6 +94,55 @@ class FrontController
            require 'src/Views/Front/createUserPage.php';
            return $erreur;
         }
+    }
+
+
+    // display page connectUser
+    function pageConnectUser()
+    {
+        require 'src/Views/Front/connectPage.php';
+    }
+
+
+    // login to dashboard after password comparison 
+    function connectUser($email, $password)
+    // retrieve password 
+    {
+        $userManager = new \Blog\Models\UserManager();
+        $connectUser = $userManager->retrievePassword($email);
+        $result = $connectUser->fetch();
+        $erreur = "Les identifiants sont erronés !";
+
+        // Les sessions permettent de conserver des variables sur toutes les pages de votre site même lorsque la page PHP a fini d'être générée.  
+        if(!empty($result)) {   
+            $isPasswordOk = password_verify($password, $result['password']);
+            if($isPasswordOk){
+                $_SESSION['email'] = $result['email']; // transformation des variables recupérées en session
+                $_SESSION['password'] = $result['password'];
+                $_SESSION['id'] = $result['id'];
+                $_SESSION['pseudo'] = $result['pseudo'];
+                $_SESSION['role'] = $result['role'];
+                if($result['role'] == 0){
+                header("Location: index.php?action=dashboardUser");
+                }
+                else{
+                    header('Location: dashboard');
+            }
+        } else {
+            $erreur;
+            require "src/Views/Front/connectPage.php";
+        }
+        
+    }else {
+        $erreur = "L' email est inconnu";
+        require "src/Views/Front/connectPage.php";
+    }
+    }
+
+    // display dashboard user page 
+    function dashboardUser()
+    {
+        require 'src/Views/Front/dashboardUser.php';
     }
 }
 
