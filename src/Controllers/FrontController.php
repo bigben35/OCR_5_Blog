@@ -144,5 +144,14 @@ class FrontController
     {
         require 'src/Views/Front/dashboardUser.php';
     }
+
+    // log out user 
+    function disconnectUser()
+    {
+        unset($_SESSION['id']); //détruit la session
+        session_destroy();
+        header('Location: index.php?action=connexion');
+
+    }
 }
 
