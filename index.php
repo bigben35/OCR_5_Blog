@@ -46,6 +46,36 @@ try{
             $frontController->createUser($pseudo, $email, $password);
             // var_dump($password);die;
         }
+
+        // display page connectUser 
+        elseif ($_GET['action'] == 'connexion'){
+            $frontController->pageConnectUser();
+        }
+
+        // log in user 
+        elseif ($_GET['action'] == 'connectUser'){
+
+            $email = htmlspecialchars($_POST['email']);
+            $password = $_POST['password'];
+            if (!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($password)){
+                $frontController->connectUser($email, $password);
+            } else {
+                throw new Exception("Veuillez renseigner vos identifiants pour vous connecter à votre session");
+            }
+        }
+
+        // display page dashboard user 
+        elseif ($_GET['action'] == 'dashboardUser'){
+            if(isset($_SESSION['id']) && (isset($_SESSION['role']) && ($_SESSION['role'] == "0"))){
+                
+                $frontController->dashboardUser();
+            }
+            else {
+                throw new Exception("Veuillez renseigner vos identifiants pour vous connecter à votre session");
+            }
+        }
+
+
     } else {
         $frontController->home();
     }

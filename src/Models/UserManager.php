@@ -17,4 +17,14 @@ class UserManager extends Manager{
         ]);
         return $req;
     }
+
+    // function to retrieve password in database 
+    public function retrievePassword($email)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare('SELECT * FROM utilisateur WHERE email = :email');
+        $req->execute(array(':email' => $email));
+
+        return $req;
+    }
 }

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="<?= $description ?>">
-    
+
 
     <title><?= $title ?></title>
 
@@ -20,7 +20,8 @@
     <!-- Custom Fonts -->
     <link href="Public/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,7 +39,8 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="index.php?action=home">Web Code</a>
@@ -59,14 +61,31 @@
                     <li class="page-scroll">
                         <a href="index.php?action=home#contact">Contact</a>
                     </li>
+                    <?php
+                    if (isset($_SESSION['role']) && ($_SESSION['role'] == "0")) :
+                        ?>
+                    <li class="page-scroll">
+                        <a href="index.php?action=dashboardUser">Mon compte</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#">Déconnexion</a>
+                    </li>
+                    <?php
+                        else :
+                            ?>
+                    <li class="page-scroll">
+                        <a href="index.php?action=connexion">Connexion</a>
+                    </li>
                     <li class="page-scroll">
                         <a href="index.php?action=createUser">Créer compte</a>
                     </li>
+
+                    <?php
+                    endif;
+                    ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
-
- 
