@@ -68,7 +68,7 @@
                         <a href="index.php?action=dashboardUser">Mon compte</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#">Déconnexion</a>
+                        <a href="index.php?action=deconnexion">Déconnexion</a>
                     </li>
                     <?php
                         else :

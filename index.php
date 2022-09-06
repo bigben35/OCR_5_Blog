@@ -76,6 +76,11 @@ try{
         }
 
 
+        // log out user 
+        elseif ($_GET['action'] == 'deconnexion'){
+            $frontController->disconnectUser();
+        }
+
     } else {
         $frontController->home();
     }
