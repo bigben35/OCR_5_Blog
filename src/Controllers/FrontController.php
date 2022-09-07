@@ -140,9 +140,50 @@ class FrontController
     }
 
     // display dashboard user page 
-    function dashboardUser()
+    function dashboardUser($id)
     {
         require 'src/Views/Front/dashboardUser.php';
+    }
+
+    // display page update pseudo user 
+    function pageUpdatePseudo($id)
+    {
+        require 'src/Views/Front/pageUpdatePseudo.php';
+    }
+
+    // update for new pseudo 
+    function createNewPseudo($newPseudo, $id)
+    {
+        extract($_POST); //permet d'utiliser variables déclarées ailleurs
+        $validation = true;
+        $erreur = []; "Tous les champs sont requis !";
+        $validation = "Votre pseudo a bien été modifié !";
+        // $oldPseudo = $_SESSION['pseudo'];
+
+        if( empty($newPseudo) || empty($pseudoConfirm)){
+            $validation = false;
+            $erreur = "Tous les champs sont requis !";
+        }
+
+        if ($newPseudo != $pseudoConfirm){
+            $validation = false;
+            $erreur[] = 'Les pseudos ne sont pas identiques';
+        }
+
+        if($newPseudo && $newPseudo === $pseudoConfirm){
+            $userManager = new \Blog\Models\UserManager();
+            $getNewPseudo = $userManager->newPseudoUser($newPseudo, $id);
+            // var_dump($getNewPseudo);die;
+            // true/false dans$getNewPseudo
+            //refaire un if/else pour que l'user sache si ça s'est bien passé ou pas 
+            $_SESSION['pseudo'] = $newPseudo;
+            require 'src/Views/Front/dashboardUser.php';
+            return $validation;
+            // si faux affiche une exception ca ne s'est pas bien passé
+        } else{
+            require 'src/Views/Front/pageUpdatePseudo.php';
+            return $erreur;
+        }
     }
 
     // log out user 

@@ -27,4 +27,16 @@ class UserManager extends Manager{
 
         return $req;
     }
+
+    // function update pseudo user 
+    public function newPseudoUser($newPseudo, $id)
+    {
+        // var_dump('coucou');die;
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("UPDATE utilisateur SET pseudo = ? WHERE id = ?");
+        $req->execute(array($newPseudo, $id));
+
+        return $req;
+        
+    }
 }

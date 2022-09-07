@@ -6783,3 +6783,18 @@ button.close {
 .form-check{
   text-align: left;
 }
+
+.container.text-center h1{
+  margin-bottom: 2em;
+}
+
+/* MEDIA QUERRIES  */
+/* @media screen and (min-width:768px) {
+  label{
+    margin-left: 70px;
+  }
+  .form-control{
+    width: 80%;
+    margin: 0 auto;
+  }
+} */
