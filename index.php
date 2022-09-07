@@ -68,13 +68,31 @@ try{
         elseif ($_GET['action'] == 'dashboardUser'){
             if(isset($_SESSION['id']) && (isset($_SESSION['role']) && ($_SESSION['role'] == "0"))){
                 
-                $frontController->dashboardUser();
+                $frontController->dashboardUser($_GET['id']);
             }
             else {
                 throw new Exception("Veuillez renseigner vos identifiants pour vous connecter à votre session");
             }
         }
 
+        
+        // display page update pseudo user 
+        elseif ($_GET['action'] == 'pageUpdatePseudo'){
+            $frontController->pageUpdatePseudo($_GET['id']);
+        }
+        
+        // get new pseudo 
+        elseif ($_GET['action'] == 'updatePseudo'){
+            if(isset($_SESSION['id']) && isset($_POST['newPseudo']) && isset($_POST['pseudoConfirm'])){
+                $id = $_GET['id'];
+                
+                $newPseudo = htmlspecialchars($_POST['newPseudo']);
+                $pseudoConfirm = htmlspecialchars($_POST['pseudoConfirm']);
+
+                $frontController->createNewPseudo($newPseudo, $id);
+                // var_dump($frontController);die;
+            }
+        }
 
         // log out user 
         elseif ($_GET['action'] == 'deconnexion'){
