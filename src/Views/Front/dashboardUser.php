@@ -23,7 +23,7 @@ ob_start();
         </div>
         <div>
         <h2>Votre Email : <?= $_SESSION['email'] ?></h2>
-        <button>Modifier votre email</button>
+        <a href="index.php?action=pageUpdateEmail&id=<?= $_SESSION['id'] ?>" class="btn btn-success btn-lg">Modifier votre email</a>
         </div>
         <h2>Vos commentaires :</h2>
     </div>

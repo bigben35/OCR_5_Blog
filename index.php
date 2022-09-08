@@ -94,6 +94,24 @@ try{
             }
         }
 
+        // display page update email user 
+        elseif ($_GET['action'] == 'pageUpdateEmail'){
+            $frontController->pageUpdateEmail($_GET['id']);
+        }
+        
+        // get new pseudo 
+        elseif ($_GET['action'] == 'updateEmail'){
+            if(isset($_SESSION['id']) && isset($_POST['newEmail']) && isset($_POST['emailConfirm'])){
+                $id = $_GET['id'];
+                
+                $newEmail = htmlspecialchars($_POST['newEmail']);
+                $emailConfirm = htmlspecialchars($_POST['emailConfirm']);
+
+                $frontController->createNewEmail($newEmail, $id);
+                // var_dump($frontController);die;
+            }
+        }
+
         // log out user 
         elseif ($_GET['action'] == 'deconnexion'){
             $frontController->disconnectUser();

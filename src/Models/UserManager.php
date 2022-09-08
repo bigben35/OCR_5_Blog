@@ -19,7 +19,7 @@ class UserManager extends Manager{
     }
 
     // function to retrieve password in database 
-    public function retrievePassword($email)
+    public function retrievePassword($email) 
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare('SELECT * FROM utilisateur WHERE email = :email');
@@ -35,6 +35,19 @@ class UserManager extends Manager{
         $bdd = $this->dbConnect();
         $req = $bdd->prepare("UPDATE utilisateur SET pseudo = ? WHERE id = ?");
         $req->execute(array($newPseudo, $id));
+
+        return $req;
+        
+    }
+
+
+    // function update email user 
+    public function newEmailUser($newEmail, $id)
+    {
+        // var_dump('coucou');die;
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("UPDATE utilisateur SET email = ? WHERE id = ?");
+        $req->execute(array($newEmail, $id));
 
         return $req;
         

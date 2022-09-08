@@ -186,6 +186,49 @@ class FrontController
         }
     }
 
+
+    // display page update pseudo user 
+    function pageUpdateEmail($id)
+    {
+        require 'src/Views/Front/pageUpdateEmail.php';
+    }
+
+
+    // update for new email 
+    function createNewEmail($newEmail, $id)
+    {
+        extract($_POST); //permet d'utiliser variables déclarées ailleurs
+        $validation = true;
+        $erreur = []; "Tous les champs sont requis !";
+        $validation = "Votre email a bien été modifié !";
+        // $oldPseudo = $_SESSION['pseudo'];
+
+        if( empty($newEmail) || empty($emailConfirm)){
+            $validation = false;
+            $erreur = "Tous les champs sont requis !";
+        }
+
+        if ($newEmail != $emailConfirm){
+            $validation = false;
+            $erreur[] = 'Les emails ne sont pas identiques';
+        }
+
+        if($newEmail && $newEmail === $emailConfirm){
+            $userManager = new \Blog\Models\UserManager();
+            $getNewEmail = $userManager->newEmailUser($newEmail, $id);
+            // var_dump($getNewEmail);die;
+            // true/false dans$getNewEmail
+            //refaire un if/else pour que l'user sache si ça s'est bien passé ou pas 
+            $_SESSION['email'] = $newEmail;
+            require 'src/Views/Front/dashboardUser.php';
+            return $validation;
+            // si faux affiche une exception ca ne s'est pas bien passé
+        } else{
+            require 'src/Views/Front/pageUpdateEmail.php';
+            return $erreur;
+        }
+    }
+
     // log out user 
     function disconnectUser()
     {
