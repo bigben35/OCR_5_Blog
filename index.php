@@ -19,11 +19,11 @@ try{
 
         // envois mail dans la bdd 
         elseif (filter_input(INPUT_GET, 'action') == 'contactPost') {
-            $nom = htmlspecialchars($_POST['nom']);
-            $prenom = htmlspecialchars($_POST['prenom']);
-            $email = htmlspecialchars($_POST['email']);
-            $objet = htmlspecialchars($_POST['objet']);
-            $message = htmlspecialchars($_POST['message']);
+            $nom = htmlspecialchars(filter_input(INPUT_POST, 'nom'));
+            $prenom = htmlspecialchars(filter_input(INPUT_POST, 'prenom'));
+            $email = htmlspecialchars(filter_input(INPUT_POST, 'email'));
+            $objet = htmlspecialchars(filter_input(INPUT_POST, 'objet'));
+            $message = htmlspecialchars(filter_input(INPUT_POST, 'message'));
             if (!empty($nom) && (!empty($prenom) && (!empty($email) && (!empty($objet) && (!empty($message)))))) {
                 $frontController->contactPost($nom, $prenom, $email, $objet, $message);
             } else {
@@ -32,15 +32,15 @@ try{
         }
 
         // display page createUser 
-        elseif ($_GET['action'] == 'createUser'){
+        elseif (filter_input(INPUT_GET, 'action') == 'createUser'){
             $frontController->pageCreateUser();
         }
 
         // create an user 
-        elseif ($_GET['action'] == 'storeUser'){
-            $pseudo = htmlspecialchars($_POST['pseudo']);
-            $email = htmlspecialchars($_POST['email']);
-            $pass = htmlspecialchars($_POST['password']);
+        elseif (filter_input(INPUT_GET, 'action') == 'storeUser'){
+            $pseudo = htmlspecialchars(filter_input(INPUT_POST, 'nom'));
+            $email = htmlspecialchars(filter_input(INPUT_POST, 'nom'));
+            $pass = htmlspecialchars(filter_input(INPUT_POST, 'password'));
             $password = password_hash($pass, PASSWORD_DEFAULT); //crée une clé de hachage pour un password
 
             $frontController->createUser($pseudo, $email, $password);
@@ -48,15 +48,15 @@ try{
         }
 
         // display page connectUser 
-        elseif ($_GET['action'] == 'connexion'){
+        elseif (filter_input(INPUT_GET, 'action') == 'connexion'){
             $frontController->pageConnectUser();
         }
 
         // log in user 
-        elseif ($_GET['action'] == 'connectUser'){
+        elseif (filter_input(INPUT_GET, 'action') == 'connectUser'){
 
-            $email = htmlspecialchars($_POST['email']);
-            $password = $_POST['password'];
+            $email = htmlspecialchars(filter_input(INPUT_POST, 'email'));
+            $password = filter_input(INPUT_POST, 'password');
             if (!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($password)){
                 $frontController->connectUser($email, $password);
             } else {
@@ -65,7 +65,7 @@ try{
         }
 
         // display page dashboard user 
-        elseif ($_GET['action'] == 'dashboardUser'){
+        elseif (filter_input(INPUT_GET, 'action') == 'dashboardUser'){
             if(isset($_SESSION['id']) && (isset($_SESSION['role']) && ($_SESSION['role'] == "0"))){
                 
                 $frontController->dashboardUser($_GET['id']);
@@ -77,17 +77,17 @@ try{
 
         
         // display page update pseudo user 
-        elseif ($_GET['action'] == 'pageUpdatePseudo'){
+        elseif (filter_input(INPUT_GET, 'action') == 'pageUpdatePseudo'){
             $frontController->pageUpdatePseudo($_GET['id']);
         }
         
         // get new pseudo 
-        elseif ($_GET['action'] == 'updatePseudo'){
+        elseif (filter_input(INPUT_GET, 'action') == 'updatePseudo'){
             if(isset($_SESSION['id']) && isset($_POST['newPseudo']) && isset($_POST['pseudoConfirm'])){
-                $id = $_GET['id'];
+                $id = filter_id('id');
                 
-                $newPseudo = htmlspecialchars($_POST['newPseudo']);
-                $pseudoConfirm = htmlspecialchars($_POST['pseudoConfirm']);
+                $newPseudo = htmlspecialchars(filter_input(INPUT_POST, 'newPseudo'));
+                $pseudoConfirm = htmlspecialchars(filter_input(INPUT_POST, 'pseudoConfirm'));
 
                 $frontController->createNewPseudo($newPseudo, $id);
                 // var_dump($frontController);die;
@@ -95,17 +95,17 @@ try{
         }
 
         // display page update email user 
-        elseif ($_GET['action'] == 'pageUpdateEmail'){
+        elseif (filter_input(INPUT_GET, 'action') == 'pageUpdateEmail'){
             $frontController->pageUpdateEmail($_GET['id']);
         }
         
         // get new pseudo 
-        elseif ($_GET['action'] == 'updateEmail'){
+        elseif (filter_input(INPUT_GET, 'action') == 'updateEmail'){
             if(isset($_SESSION['id']) && isset($_POST['newEmail']) && isset($_POST['emailConfirm'])){
-                $id = $_GET['id'];
+                $id = filter_id('id');
                 
-                $newEmail = htmlspecialchars($_POST['newEmail']);
-                $emailConfirm = htmlspecialchars($_POST['emailConfirm']);
+                $newEmail = htmlspecialchars(filter_input(INPUT_POST, 'newEmail'));
+                $emailConfirm = htmlspecialchars(filter_input(INPUT_POST, 'emailConfirm'));
 
                 $frontController->createNewEmail($newEmail, $id);
                 // var_dump($frontController);die;
@@ -113,7 +113,7 @@ try{
         }
 
         // log out user 
-        elseif ($_GET['action'] == 'deconnexion'){
+        elseif (filter_input(INPUT_GET, 'action') == 'deconnexion'){
             $frontController->disconnectUser();
         }
 
