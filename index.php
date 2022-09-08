@@ -11,14 +11,14 @@ $dotenv->load();
 try{
     $frontController = new \Blog\Controllers\FrontController();
 
-    if(isset($_GET['action']) && !empty($_GET['action'])) {
-        if ($_GET['action'] == 'home') {
+    if(filter_input(INPUT_GET, 'action') && !empty(filter_input(INPUT_GET, 'action'))) {
+        if (filter_input(INPUT_GET, 'action') == 'home') {
            
             $frontController->home();
         }
 
         // envois mail dans la bdd 
-        elseif ($_GET['action'] == 'contactPost') {
+        elseif (filter_input(INPUT_GET, 'action') == 'contactPost') {
             $nom = htmlspecialchars($_POST['nom']);
             $prenom = htmlspecialchars($_POST['prenom']);
             $email = htmlspecialchars($_POST['email']);
