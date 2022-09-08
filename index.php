@@ -101,7 +101,7 @@ try{
         
         // get new pseudo 
         elseif (filter_input(INPUT_GET, 'action') == 'updateEmail'){
-            if(isset($_SESSION['id']) && isset($_POST['newEmail']) && isset($_POST['emailConfirm'])){
+            if(isset($_SESSION['id']) && filter_input(INPUT_POST, 'newEmail') && isset($_POST['emailConfirm'])){
                 $id = filter_id('id');
                 
                 $newEmail = htmlspecialchars(filter_input(INPUT_POST, 'newEmail'));
