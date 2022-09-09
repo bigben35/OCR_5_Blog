@@ -6788,6 +6788,11 @@ button.close {
   margin-bottom: 2em;
 }
 
+form{
+  max-width: 750px;
+    margin: 0 auto;
+}
+
 /* MEDIA QUERRIES  */
 /* @media screen and (min-width:768px) {
   label{

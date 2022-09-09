@@ -52,4 +52,27 @@ class UserManager extends Manager{
         return $req;
         
     }
+
+       
+       // retrieve password 
+    public function updatePasswordUser($id)
+    {
+        $bdd =  $this->dbConnect();
+        $req = $bdd->prepare("SELECT id, password FROM utilisateur WHERE id =?");
+        $req->execute(array($id));
+
+        return $req;
+    }
+
+     // function update password user 
+     public function newPasswordUser($updateNewPassword, $id)
+     {
+         // var_dump('coucou');die;
+         $bdd = $this->dbConnect();
+         $req = $bdd->prepare("UPDATE utilisateur SET password = ? WHERE id = ?");
+         $req->execute(array($updateNewPassword, $id));
+ 
+         return $req;
+         
+     }
 }

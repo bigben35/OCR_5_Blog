@@ -112,6 +112,26 @@ try{
             }
         }
 
+
+        // get new password
+        elseif(filter_input(INPUT_GET, 'action') == 'pageUpdatePassword'){
+            $frontController->pageUpdatePassword(filter_id('id'));
+        }
+
+        // get new password 
+        elseif (filter_input(INPUT_GET, 'action') == 'updatePassword'){
+            if(isset($_SESSION['id']) && isset($_POST['oldPassword']) && isset($_POST['newPassword']) && isset($_POST['passwordConfirm'])){
+                $id = $_GET['id'];
+                
+                $oldPassword = htmlspecialchars(filter_input(INPUT_POST, 'oldPassword'));
+                $newPassword = htmlspecialchars(filter_input(INPUT_POST, 'newPassword'));
+                $passwordConfirm = htmlspecialchars(filter_input(INPUT_POST, 'passwordConfirm'));
+
+                $frontController->createNewPassword($oldPassword, $newPassword, $id);
+                // var_dump($frontController);die;
+            }
+        }
+
         // log out user 
         elseif ($_GET['action'] == 'deconnexion'){
             $frontController->disconnectUser();
