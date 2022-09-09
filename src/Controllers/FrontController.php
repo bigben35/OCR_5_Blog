@@ -229,6 +229,58 @@ class FrontController
         }
     }
 
+    // go to page update password 
+    function pageUpdatePassword($id)
+    {
+        require 'src/Views/Front/pageUpdatePassword.php';
+    }
+
+    // update for new paswword 
+    function createNewPassword($oldPassword, $newPassword, $id)
+    {
+        extract($_POST); //permet d'utiliser variables déclarées ailleurs
+        $validation = true;
+        $erreur = []; "Tous les champs sont requis !";
+        $validation = "Votre Mot de passe a bien été modifié !";
+        // $oldPseudo = $_SESSION['pseudo'];
+
+        if(empty($oldPassword) || empty($newPassword) || empty($passwordConfirm)){
+            $validation = false;
+            $erreur = "Tous les champs sont requis !";
+        }
+
+        if($newPassword){
+            $userManager = new \Blog\Models\UserManager();
+            $getPassword = $userManager->updatePasswordUser($id);
+
+            $verifPassword = $getPassword->fetch();
+            $isPasswordOk = password_verify($oldPassword, $verifPassword['password']);
+
+            if(!$isPasswordOk){
+                $validation = false;
+                $erreur[] = "le mot de passe actuel est erroné";
+            }
+
+            if ($newPassword != $passwordConfirm){
+                $validation = false;
+                $erreur[] = 'Les mots de passe ne sont pas identiques';
+            }
+            
+            if($isPasswordOk && $newPassword === $passwordConfirm){
+                $updateNewPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+                $getNewPassword = $userManager->newPasswordUser($updateNewPassword, $id);
+                // var_dump($getNewPassword);die;
+                $_SESSION['password'] = $updateNewPassword;
+                require 'src/Views/Front/dashboardUser.php';
+                return $validation;
+                
+            } else{
+                require 'src/Views/Front/pageUpdatePassword.php';
+                return $erreur;
+            }
+        }
+    }
+
     // log out user 
     function disconnectUser()
     {
