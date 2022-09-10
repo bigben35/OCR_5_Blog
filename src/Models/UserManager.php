@@ -4,7 +4,19 @@ namespace Blog\Models;
 
 
 class UserManager extends Manager{
-    
+
+    // ===================PAGE HOME =========================
+    // last posts (3) 
+    public function getLastPosts()
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("SELECT id, titre, chapo, DATE_FORMAT(dateModif, '%d-%m-%Y %H:%i:%s') as dateModif FROM article ORDER BY id DESC LIMIT 3");
+        $req->execute();
+        return $req->fetchAll();
+    }
+
+
+    //====================PAGE CREER COMPTE ====================
     public function createUser($pseudo, $email, $password)
     {
         $bdd = $this->dbConnect();
@@ -17,6 +29,10 @@ class UserManager extends Manager{
         ]);
         return $req;
     }
+
+
+
+    // ===============PAGE DASHBOARD USER ===================
 
     // function to retrieve password in database 
     public function retrievePassword($email) 

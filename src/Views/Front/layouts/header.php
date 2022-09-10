@@ -43,7 +43,7 @@
                     data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.php?action=home">Web Code</a>
+                <a class="navbar-brand" href="home">Web Code</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -53,31 +53,31 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="index.php?action=home#about">A propos</a>
+                        <a href="home#about">A propos</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="index.php?action=home#blog">Blog</a>
+                        <a href="blog">Blog</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="index.php?action=home#contact">Contact</a>
+                        <a href="home#contact">Contact</a>
                     </li>
                     <?php
                     if (isset($_SESSION['role']) && ($_SESSION['role'] == "0")) :
                         ?>
                     <li class="page-scroll">
-                        <a href="index.php?action=dashboardUser">Mon compte</a>
+                        <a href="dashboardUser">Mon compte</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="index.php?action=deconnexion">Déconnexion</a>
+                        <a href="deconnexion">Déconnexion</a>
                     </li>
                     <?php
                         else :
                             ?>
                     <li class="page-scroll">
-                        <a href="index.php?action=connexion">Connexion</a>
+                        <a href="connexion">Connexion</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="index.php?action=createUser">Créer compte</a>
+                        <a href="createUser">Créer compte</a>
                     </li>
 
                     <?php
