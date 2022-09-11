@@ -2,6 +2,14 @@
 
 namespace Blog\Controllers;
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require 'vendor/phpmailer/phpmailer/src/Exception.php';
+require 'vendor/phpmailer/phpmailer/src/SMTP.php';
+
 class FrontController 
 {
     // display page home 
@@ -36,18 +44,77 @@ class FrontController
             $validation;
             $sendMessage = $contactManager->requestWithContactForm($nom, $prenom, $email, $objet, $message);
             
-            $valide = "Votre message a bien été envoyé !";
-            unset($_POST['nom']);
-            unset($_POST['prenom']);
-            unset($_POST['email']);                 // vide/détruit ce qui est en mémoire
-            require 'src/Views/Front/home.php';
-            return $valide;
+            
+            // send email to mailbox 
+           //Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
+
+try{
+
+    //Server settings
+    // $mail->SMTPDebug = 2;//SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = $_ENV['MAIL_USERNAME']; 
+    $mail->Password   = $_ENV['MAIL_PASSWORD'];                               //SMTP password
+    // var_dump($mail->Username);die;                    //SMTP username
+    $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
+    $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+    //Recipients
+    $mail->From = $_POST['email'];
+    $mail->FromName = filter_input(INPUT_POST, 'nom');     //Add a recipient
+    $mail->smtpConnect(
+        array(
+            "ssl" => array(
+                "verify_peer" => false,
+                "verify_peer_name" => false,
+                "allow_self_signed" => true
+            )
+        )
+    );
+    $mail->addAddress = $_POST['email'];               //Name is optional
+    $mail->addReplyTo('josselincrenn@gmail.com', 'jojo');
+    // $mail->addCC('cc@example.com');
+    // $mail->addBCC('bcc@example.com');
+
+
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = "le sujet";
+    $mail->Body    = "le message";
+    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+   
+    $mail->send();
+    // var_dump($mail);die;
+    
         
-        } else{
-            require 'src/Views/Front/home.php';
-            return $erreur;
-        }
+        echo 'Message has been sent';
+    
+    }catch(Exception){
+        
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
+        
+    
+    
+    
+    
+    $valide = "Votre message a bien été envoyé !";
+    
+    unset($_POST['nom']);
+    unset($_POST['prenom']);
+    unset($_POST['email']);                 // vide/détruit ce qui est en mémoire
+    require 'src/Views/Front/home.php';
+    return $valide;
+    
+} else{
+    require 'src/Views/Front/home.php';
+    return $erreur;
+}
+
+}
 
 
     // display page create an account 
