@@ -157,6 +157,11 @@ try{
             $backController->displayListUser();
         }
 
+        // list email 
+        elseif(filter_input(INPUT_GET, 'action') == 'listEmail'){
+            $backController->displayListEmail();
+        }
+
     } else {
         $frontController->home();
     }
