@@ -1,0 +1,173 @@
+/* **********************PARTIE ADMIN**********************  */
+/* Variables  */
+:root{
+    --mainColor: #18BC9C;
+    --mainLightColor: #62cfb9;
+    --bodyColor: #f4f7f7;
+}
+
+/* ----------------TEMPLATE-----------------  */
+
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100%;
+    position: relative;
+    background-color: var(--bodyColor);
+}
+
+h1{
+    font-size: 1.5rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+li{
+    list-style: none;
+}
+
+/* -------------------PAGE DASHBOARD ADMIN--------------------------  */
+.side-nav {
+    position: fixed;
+    height: 75vh;
+    left: 0;
+    top: 0;
+  }
+  
+.wrapper {
+    background-color: var(--mainColor);
+    height: 100vh;
+    width: 60px;
+}
+.nav-bloc-black{
+    background-color: #222;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    border-bottom: 1px solid #f2f2f21e;
+}
+.nav-bloc-black a{
+    
+    color: white;
+}
+.nav-bloc {
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    border-bottom: 1px solid #f2f2f21e;
+}
+.nav-bloc:hover {
+    background-color: var(--mainLightColor);
+}
+.nav-bloc:hover .sub-nav {
+    transform: translateX(60px);
+}
+.nav-bloc i {
+    font-size: 1.5rem;
+    color: rgb(240, 240, 240);
+    transition:  0.5s ease-in-out ;
+}
+.nav-bloc:hover i {
+    fill: #50bddf;
+}
+.sub-nav {
+    padding: 0px;
+    width: 200px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--mainColor);
+    z-index: -1;
+    color: white;
+    /* cacher a gauche */
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in-out;
+    border-right: 2px solid #222;
+    border-left: 2px solid #222;
+}
+.sub-nav h3 {
+    height: 63px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+}
+.sub-nav li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #f2f2f21e;
+}
+.sub-nav li:hover {
+    background-color: var(--mainLightColor);
+}
+.sub-nav li a {
+    color: white;
+    text-decoration: none;
+}
+#main-dashboard-admin{
+    padding-left: 60px;
+}
+#main-dashboard-admin h1{
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 5px;
+    font-style: italic;
+    color: black;
+}
+.container-admin{
+    max-width: 600px;
+    margin: 2rem auto;
+}
+.bloc-section-admin{
+    height: 85px;
+    
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 1px solid #f2f2f21e;
+    margin: 1rem;
+    border-radius: 10px;
+}
+.bloc-section-admin:hover{
+    transition: all 0.5s ease-in-out;
+    transform: scale(1.03);
+    filter: brightness(1.1);
+    
+}
+.bloc-section-admin h2{
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+.bloc-section-admin i{
+    font-size: 1.5rem;
+    color: rgb(240, 240, 240);
+    padding: 5px 20px;
+}
+.bloc-section-admin a{
+    display: contents;
+}
+.bloc-section-admin:nth-child(1){
+    background-color: rgb(58, 226, 25);
+}
+.bloc-section-admin:nth-child(2){
+    background-color: burlywood;
+}
+.bloc-section-admin:nth-child(3){
+    background-color: coral;
+}
+.bloc-section-admin:nth-child(4){
+    background-color: dodgerblue;
+}
+.bloc-section-admin:nth-child(5){
+    background-color: rgb(187 123 201);
+}
