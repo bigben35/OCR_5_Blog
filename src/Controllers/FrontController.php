@@ -136,7 +136,7 @@ class FrontController
                 header("Location: index.php?action=dashboardUser");
                 }
                 else{
-                    header('Location: dashboard');
+                    header('Location: index.php?action=dashboard');
             }
         } else {
             $erreur;
