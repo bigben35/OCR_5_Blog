@@ -34,10 +34,10 @@ ob_start();
                         <p class="max-content"><?= htmlspecialchars($comment['commentaire']) ?></p>
                     </td>
 
-                    <td><a title="montrer commentaire" href="montrerComment&id=<?= $comment['id'] ?>"
+                    <td><a href="montrerComment&id=<?= $comment['id'] ?>"
                             class="btn-action-admin">Voir</a></td>
                     <td>
-                        <a title="supprimer commentaire" href="supprimerComment&id=<?= $comment['id'] ?>"
+                        <a href="supprimerComment&id=<?= $comment['id'] ?>"
                             class="btn-action-admin-red">Supprimer</a>
                     </td>
                 </tr>

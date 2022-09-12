@@ -19,7 +19,7 @@ ob_start();
         <i class="fa-solid fa-file"></i>
         <div class="bloc-info-admin">
             <h2>Articles</h2>
-            
+            <p class="count"><?php $user = $countPost->fetch() ?><?= $user[0] ?></p>
         </div>
     </a>
     <a href="index.php?action=listComment" class="bloc-section-admin">
