@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 <div class="nav-bloc n-5">
-                    <a href="#"><i
+                    <a href="index.php?action=deconnexion"><i
                             class="fa-solid fa-arrow-right-from-bracket"></i></a>
                 </div>
             </div>

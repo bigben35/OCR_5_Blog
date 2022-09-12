@@ -30,6 +30,8 @@ ob_start();
             </div>
             <button type="submit" class="btn btn-primary">Connexion</button>
         </form>
+        <p>Vous n'avez pas de compte ?</p>
+        <div><a href="index.php?action=createUser" class="createUser">Ici pour en créer un</a></div>
         <a href="index.php?action=home" class="retourAccueil">Retour à l'accueil</a>
     </div>
 </section>
