@@ -84,6 +84,16 @@ class FrontController
             $erreur[] = "Le mot de passe de confirmation n'est pas correcte !";
         }
 
+        if($userManager->existPseudo($pseudo)){
+            $validation = false;
+            $erreur[] = "Ce pseudo est déjà utilisé !";
+        }
+
+        if($userManager->existEmail($email)){
+            $validation = false;
+            $erreur[] = "Cet Email est déjà utilisé !";
+        }
+
          
         if ($validation && filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $createUser = $userManager->createUser($pseudo, $email, $password);
