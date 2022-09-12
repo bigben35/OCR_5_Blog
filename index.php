@@ -152,6 +152,11 @@ try{
             }
         }
 
+        // list users 
+        elseif(filter_input(INPUT_GET, 'action') == 'listUsers'){
+            $backController->displayListUser();
+        }
+
     } else {
         $frontController->home();
     }

@@ -8,14 +8,14 @@ ob_start();
 <h1>Bonjour <?= $_SESSION['pseudo'] ?>!</h1>
 
 <section class="section-dashboard-admin container-admin">
-    <a href="index.php?action=listUser" class="bloc-section-admin">
+    <a href="index.php?action=listUsers" class="bloc-section-admin">
         <i class="fa-solid fa-users"></i>
         <div class="bloc-info-admin">
             <h2>Utilisateurs</h2>
-            
+            <p class="count"><?php $user = $countUser->fetch() ?><?= $user[0] ?></p>
         </div>
     </a>
-    <a href="index.php?action=listPost" class="bloc-section-admin">
+    <a href="index.php?action=listPosts" class="bloc-section-admin">
         <i class="fa-solid fa-file"></i>
         <div class="bloc-info-admin">
             <h2>Articles</h2>
