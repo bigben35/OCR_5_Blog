@@ -3,6 +3,7 @@
 :root{
     --mainColor: #18BC9C;
     --mainLightColor: #62cfb9;
+    --mainSuperLightColor: #ace3d8;
     --bodyColor: #f4f7f7;
 }
 
@@ -170,4 +171,35 @@ li{
 }
 .bloc-section-admin:nth-child(5){
     background-color: rgb(187 123 201);
+}
+
+/* PAGE LISTE UTILISATEURS */
+.centrer-tableau{
+    margin-bottom: 1rem;
+}
+.page-list-admin{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+.page-list-admin thead{
+    background-color: var(--mainLightColor);
+    font-size: 1.3rem;
+}
+.page-list-admin td{
+    padding: 1rem 0.5rem;
+}
+.page-list-admin tr:nth-child(even){
+    background-color: var(--mainSuperLightColor);
+}
+.page-list-admin a i{
+    font-size: 1.2rem;
+    padding: 10px;
+}
+.display-creation{
+    display: none;
+}
+.action-membre a{
+    padding: 10px;
+    font-size: 1rem;
 }

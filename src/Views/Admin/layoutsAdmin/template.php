@@ -28,7 +28,7 @@
                     <div class="sub-nav">
                         <h3>Membres</h3>
                         <ul>
-                            <li><a href="index.php?action=listeMembre">Membres inscrits</a></li>
+                            <li><a href="index.php?action=listUsers">Utilisateurs inscrits</a></li>
                         </ul>
                     </div>
                 </div>
@@ -37,8 +37,8 @@
                     <div class="sub-nav">
                         <h3>Articles</h3>
                         <ul>
-                            <li><a href="index.php?action=ajouterArticle">Créer un article</a></li>
-                            <li><a href="index.php?action=listeArticle">Liste des articles</a></li>
+                            <li><a href="#">Créer un article</a></li>
+                            <li><a href="#">Liste des articles</a></li>
 
                         </ul>
                     </div>
@@ -48,8 +48,8 @@
                     <div class="sub-nav">
                         <h3>Commentaire</h3>
                         <ul>
-                            <li><a href="index.php?action=listeCommentaire">Commentaire reçu</a></li>
-                            <li><a href="index.php?action=commentaireValide">Commentaire à "valider</a></li>
+                            <li><a href="#">Commentaire reçu</a></li>
+                            <li><a href="#">Commentaire à "valider</a></li>
 
                         </ul>
                     </div>
@@ -59,14 +59,14 @@
                     <div class="sub-nav">
                         <h3>E-mail</h3>
                         <ul>
-                            <li><a href="index.php?action=listeMail">E-mail reçu</a></li>
-                            <li><a href="index.php?action=emailLire">E-mail à lire</a></li>
+                            <li><a href="#">E-mail reçu</a></li>
+                            <li><a href="#">E-mail à lire</a></li>
 
                         </ul>
                     </div>
                 </div>
                 <div class="nav-bloc n-5">
-                    <a href="index.php?action=deconnexion"><i
+                    <a href="#"><i
                             class="fa-solid fa-arrow-right-from-bracket"></i></a>
                 </div>
             </div>
