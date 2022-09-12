@@ -37,10 +37,10 @@ ob_start();
         </div>
     </a>
 
-    <a href="index.php?action=deconnexion" class="bloc-section-admin"><i
-            class="fa-solid fa-arrow-right-from-bracket"></i>
+    <a href="index.php?action=deconnexion" class="bloc-section-admin"><i class="fa-solid fa-lock"></i>
         <h2>Se déconnecter</h2>
     </a>
+
 
 </section>
 

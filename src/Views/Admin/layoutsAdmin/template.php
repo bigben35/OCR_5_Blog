@@ -65,10 +65,14 @@
                         </ul>
                     </div>
                 </div>
-                <div class="nav-bloc n-5">
-                    <a href="index.php?action=deconnexion"><i
+                <div class="nav-bloc">
+                    <a href="index.php"><i
                             class="fa-solid fa-arrow-right-from-bracket"></i></a>
                 </div>
+                <div class="nav-bloc n-5">
+                    <a href="index.php?action=deconnexion"><i class="fa-solid fa-lock"></i></a>
+                </div>
+                
             </div>
         </nav>
 
