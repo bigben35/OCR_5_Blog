@@ -9,6 +9,7 @@ class AdminController
     {
         $adminManager = new \Blog\Models\AdminManager();
         $countUser = $adminManager->countUser();
+        $countEmail = $adminManager->countEmail();
 
         require 'src/Views/Admin/dashboardAdmin.php';
     }
@@ -23,5 +24,15 @@ class AdminController
 
             require 'src/Views/Admin/listUser.php';
         }
-    
+
+
+    // ==============EMAIL =================
+    public function displayListEmail()
+        {
+            $adminManager = new \Blog\Models\AdminManager();
+            $listEmail = $adminManager->listEmail();
+
+            require 'src/Views/Admin/listEmail.php';
+        }
+        
 }

@@ -59,7 +59,7 @@
                     <div class="sub-nav">
                         <h3>E-mail</h3>
                         <ul>
-                            <li><a href="#">E-mail reçu</a></li>
+                            <li><a href="index.php?action=listEmail">E-mail reçu</a></li>
                             <li><a href="#">E-mail à lire</a></li>
 
                         </ul>

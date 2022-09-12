@@ -33,7 +33,7 @@ ob_start();
         <i class="fa-solid fa-envelope"></i>
         <div class="bloc-info-admin">
             <h2>E-mail</h2>
-            
+            <p class="count"><?php $user = $countEmail->fetch() ?><?= $user[0] ?></p>
         </div>
     </a>
 
