@@ -48,7 +48,7 @@
                     <div class="sub-nav">
                         <h3>Commentaire</h3>
                         <ul>
-                            <li><a href="#">Commentaire reçu</a></li>
+                            <li><a href="index.php?action=listComment">Commentaire reçu</a></li>
                             <li><a href="#">Commentaire à "valider</a></li>
 
                         </ul>

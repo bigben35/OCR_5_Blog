@@ -10,6 +10,7 @@ class AdminController
         $adminManager = new \Blog\Models\AdminManager();
         $countUser = $adminManager->countUser();
         $countEmail = $adminManager->countEmail();
+        $countComment = $adminManager->countComment();
 
         require 'src/Views/Admin/dashboardAdmin.php';
     }
@@ -34,5 +35,15 @@ class AdminController
 
             require 'src/Views/Admin/listEmail.php';
         }
+
+    
+     // ==============COMMENT =================
+     public function displayListComment()
+     {
+         $adminManager = new \Blog\Models\AdminManager();
+         $listComment = $adminManager->listComment();
+
+         require 'src/Views/Admin/listComment.php';
+     }
         
 }
