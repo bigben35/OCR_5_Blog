@@ -162,6 +162,11 @@ try{
             $backController->displayListEmail();
         }
 
+        // list comment 
+        elseif(filter_input(INPUT_GET, 'action') == 'listComment'){
+            $backController->displayListComment();
+        }
+
     } else {
         $frontController->home();
     }

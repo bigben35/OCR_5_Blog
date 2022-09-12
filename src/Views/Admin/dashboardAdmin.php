@@ -26,7 +26,7 @@ ob_start();
         <i class="fa-solid fa-comment"></i>
         <div class="bloc-info-admin">
             <h2>Commentaires</h2>
-            
+            <p class="count"><?php $user = $countComment->fetch() ?><?= $user[0] ?></p>
         </div>
     </a>
     <a href="index.php?action=listEmail" class="bloc-section-admin">
