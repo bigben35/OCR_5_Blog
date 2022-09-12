@@ -167,6 +167,11 @@ try{
             $backController->displayListComment();
         }
 
+        // list posts 
+        elseif(filter_input(INPUT_GET, 'action') == 'listPosts'){
+            $backController->displayListPost();
+        }
+
     } else {
         $frontController->home();
     }

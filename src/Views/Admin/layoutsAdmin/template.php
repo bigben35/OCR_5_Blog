@@ -38,7 +38,7 @@
                         <h3>Articles</h3>
                         <ul>
                             <li><a href="#">Créer un article</a></li>
-                            <li><a href="#">Liste des articles</a></li>
+                            <li><a href="index.php?action=listPosts">Liste des articles</a></li>
 
                         </ul>
                     </div>
