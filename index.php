@@ -31,6 +31,11 @@ try{
             }
         }
 
+        // display page sentMail 
+        elseif(filter_input(INPUT_GET, 'action') == 'sentMail'){
+            $frontController->sentMail();
+        }
+
         // display page createUser 
         elseif ($_GET['action'] == 'createUser'){
             $frontController->pageCreateUser();
