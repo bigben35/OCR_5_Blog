@@ -3,6 +3,14 @@
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
+ /* Variables  */
+:root{
+  --mainColor: #18BC9C;
+  --mainLightColor: #62cfb9;
+  --mainSuperLightColor: #ace3d8;
+  --bodyColor: #f4f7f7;
+}
+
 body {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   overflow-x: hidden;
@@ -503,4 +511,24 @@ fieldset[disabled] .btn-success.active {
 .portfolio-modal .modal-backdrop {
   opacity: 0;
   display: none;
+}
+
+
+/* --------PAGE CONFIRM  SENT MAIL-------  */
+#section-confirm-mail{
+  height: 60vh;
+  margin: 10px;
+}
+#section-confirm-mail h1{
+  font-size: 3rem;
+}
+#section-confirm-mail a{
+  color: var(--mainColor);
+  padding: 5px;
+  font-size: 1.5rem;
+}
+#section-confirm-mail a:hover{
+  background-color: var(--mainColor);
+  color: white;
+  transition: 0.3s;
 }
