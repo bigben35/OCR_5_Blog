@@ -4,11 +4,11 @@ namespace Blog\Controllers;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-use PHPMailer\PHPMailer\SMTP;
+// use PHPMailer\PHPMailer\SMTP;
 
 require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require 'vendor/phpmailer/phpmailer/src/Exception.php';
-require 'vendor/phpmailer/phpmailer/src/SMTP.php';
+// require 'vendor/phpmailer/phpmailer/src/SMTP.php';
 
 class FrontController 
 {
@@ -47,55 +47,86 @@ class FrontController
             
             // send email to mailbox 
            //Create an instance; passing `true` enables exceptions
+// $mail = new PHPMailer(true);
+
+// try{
+
+//     //Server settings
+//     $mail->SMTPDebug = 2;//SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+//     $mail->isSMTP();                                            //Send using SMTP
+//     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+//     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+//     $mail->Username   = $_ENV['MAIL_USERNAME']; 
+//     $mail->Password   = '';//$_ENV['MAIL_PASSWORD'];                               //SMTP password
+//     // var_dump($mail->Username);die;                    //SMTP username
+//     $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
+//     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+//     //Recipients
+//     $mail->isHTML(true);                                  //Set email format to HTML
+//     $mail->setFrom($_POST['email'], $_POST['nom']);
+//     $mail->addAddress("josselincrenn@gmail.com");               //Name is optional
+//     // $mail->FromName = filter_input(INPUT_POST, 'nom');     //Add a recipient
+//     // $mail->smtpConnect(
+//     //     array(
+//     //         "ssl" => array(
+//     //             "verify_peer" => false,
+//     //             "verify_peer_name" => false,
+//     //             "allow_self_signed" => true
+//     //         )
+//     //     )
+//     // );
+//     // $mail->addReplyTo('josselincrenn@gmail.com', 'jojo');
+//     // $mail->addCC('cc@example.com');
+//     // $mail->addBCC('bcc@example.com');
+
+
+//     //Content
+//     $mail->Subject = "le sujet";
+//     $mail->Body    = "le message";
+//     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+   
+//     $mail->send();
+//     // var_dump($mail);die;
+    
+        
+//         echo 'Message has been sent';
+    
+//     } catch (Exception){
+        
+//         echo "Message pas pu être envoyé. Mailer Error: {$mail->ErrorInfo}";
+//     }
+
+    
+
+
 $mail = new PHPMailer(true);
 
-try{
+try {
+	$mail->SMTPDebug = 2;									
+	$mail->isSMTP();											
+	$mail->Host	 = 'smtp.gmail.com';					
+	$mail->SMTPAuth = true;							
+	$mail->Username = 'josselincrenn@gmail.com';				
+	$mail->Password = 'Bigben::35600';						
+	$mail->SMTPSecure = 'tls';							
+	$mail->Port	 = 587;
 
-    //Server settings
-    $mail->SMTPDebug = 2;//SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-    $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = $_ENV['MAIL_USERNAME']; 
-    $mail->Password   = '';//$_ENV['MAIL_PASSWORD'];                               //SMTP password
-    // var_dump($mail->Username);die;                    //SMTP username
-    $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
-    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+	$mail->setFrom('josselincrenn@gmail.com', 'josselin');		
+	$mail->addAddress('josselincrenn@gmail.com');
+	// $mail->addAddress('recipient2@example.com', 'Name');
+	
+	$mail->isHTML(true);								
+	$mail->Subject = 'Test Email';
+	$mail->Body = 'HTML message body in <b>bold</b> ';
+	$mail->AltBody = 'Body in plain text for non-HTML mail clients';
+	$mail->send();
+	echo "Mail has been sent successfully!";
+} catch (Exception $e) {
+	echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
 
-    //Recipients
-    $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->setFrom($_POST['email'], $_POST['nom']);
-    $mail->addAddress("josselincrenn@gmail.com");               //Name is optional
-    // $mail->FromName = filter_input(INPUT_POST, 'nom');     //Add a recipient
-    // $mail->smtpConnect(
-    //     array(
-    //         "ssl" => array(
-    //             "verify_peer" => false,
-    //             "verify_peer_name" => false,
-    //             "allow_self_signed" => true
-    //         )
-    //     )
-    // );
-    // $mail->addReplyTo('josselincrenn@gmail.com', 'jojo');
-    // $mail->addCC('cc@example.com');
-    // $mail->addBCC('bcc@example.com');
-
-
-    //Content
-    $mail->Subject = "le sujet";
-    $mail->Body    = "le message";
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-   
-    $mail->send();
-    // var_dump($mail);die;
-    
         
-        echo 'Message has been sent';
-    
-    } catch (Exception){
-        
-        echo "Message pas pu être envoyé. Mailer Error: {$mail->ErrorInfo}";
-    }
         
 // $dest = "josselincrenn@gmail.com";
 // $sujet = "Email de test";
