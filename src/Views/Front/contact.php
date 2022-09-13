@@ -30,6 +30,7 @@
                 endif;
             endif;
             ?>
+            
                 <div class="col-lg-8 col-lg-offset-2">
                     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                     <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
@@ -76,6 +77,7 @@
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
+                        <input type="hidden" name="csrf" value="<?= $token; ?>"> 
                         <br>
                         <div id="success"></div>
                         <div class="row">

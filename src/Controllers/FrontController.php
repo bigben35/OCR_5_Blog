@@ -8,6 +8,8 @@ class FrontController
     // display page home 
     function home()
     {
+        $token = md5(uniqid(rand(), true));
+        $_SESSION['csrf'] = $token;
         require "src/Views/Front/home.php";
     }
 
@@ -19,7 +21,8 @@ class FrontController
         extract($_POST); //vérifie chaque clé afin de contrôler si elle a un nom de variable valide. Elle vérifie également les collisions avec des variables existantes dans la table des symboles. Utile pour $email et $confirmEmail.
         $validation = true;
         $erreur = [];
-        
+        $token = md5(uniqid(rand(), true));
+        $_SESSION['csrf'] = $token;
 
         if(empty($nom) || empty($prenom) || empty($email) || empty($confirmEmail) || empty($objet) || empty($message)){
             $validation = false;
@@ -53,7 +56,6 @@ class FrontController
     
     $sendMessage = $contactManager->requestWithContactForm($nom, $prenom, $email, $objet, $message);
     
-    $valide = "Votre message a bien été envoyé !";
     
     // $nom = filter_input(INPUT_POST, 'nom');
     // $prenom = filter_input(INPUT_POST, 'nom');
