@@ -2,6 +2,7 @@
 
 namespace Blog\Controllers;
 
+
 class FrontController 
 {
     // display page home 
@@ -34,21 +35,48 @@ class FrontController
         }
         if (filter_var($email, FILTER_VALIDATE_EMAIL) && $email === $confirmEmail) {
             $validation;
-            $sendMessage = $contactManager->requestWithContactForm($nom, $prenom, $email, $objet, $message);
             
-            $valide = "Votre message a bien été envoyé !";
-            unset($_POST['nom']);
-            unset($_POST['prenom']);
-            unset($_POST['email']);                 // vide/détruit ce qui est en mémoire
-            require 'src/Views/Front/home.php';
-            return $valide;
-        
-        } else{
-            require 'src/Views/Front/home.php';
-            return $erreur;
-        }
+            
+            
+            // send email to mailbox 
+                $dest = "josselincrenn@gmail.com";
+                $sujet = filter_input(INPUT_POST, 'objet');
+                $message = filter_input(INPUT_POST, 'message');
+                $message = wordwrap($message, 70, "\r\n");
+                $headers = [
+                    "From" => filter_input(INPUT_POST, 'email'),
+                    "Reply-To" => filter_input(INPUT_POST, 'email'),
+                    "Content-Type" => "text/html; charset=utf-8"
+                ];
+                mail($dest, $sujet, $message, $headers);
+
+    
+    $sendMessage = $contactManager->requestWithContactForm($nom, $prenom, $email, $objet, $message);
+    
+    $valide = "Votre message a bien été envoyé !";
+    
+    // $nom = filter_input(INPUT_POST, 'nom');
+    // $prenom = filter_input(INPUT_POST, 'nom');
+    // $email = filter_input(INPUT_POST, 'email');
+    // unset($nom);
+    // unset($prenom);
+    // unset($email);                 // vide/détruit ce qui est en mémoire
+    // require 'src/Views/Front/home.php';
+    // return $valide;
+    header("Location: index.php?action=sentMail");
+    
+    } else{
+        require 'src/Views/Front/home.php';
+        return $erreur;
     }
 
+    }
+
+    // display sentMail page 
+    function sentMail()
+    {
+        require 'src/Views/Front/sentMail.php';
+    }
 
     // display page create an account 
     function pageCreateUser()
