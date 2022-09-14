@@ -8,9 +8,35 @@ class FrontController
     // display page home 
     function home()
     {
+
+        // last posts 
+        $homeManager = new \Blog\Models\PostManager();
+        $lastPosts = $homeManager->getLastPosts();
+
         $token = md5(uniqid(rand(), true));
         $_SESSION['csrf'] = $token;
+
         require "src/Views/Front/home.php";
+    }
+
+    // display page blog 
+    function blog($currentPage)
+    {
+        // count number post 
+        $postManager = new \Blog\Models\PostManager();
+        $nbposts =$postManager->countPosts();
+
+        // nb posts per page 
+        $perPage = 6;
+
+        // calcul nb pages 
+        $pages = ceil($nbposts / $perPage);
+
+        $firstPost = ($currentPage * $perPage) - $perPage;
+        $posts = $postManager->postsPerPage($firstPost, $perPage);
+
+
+        require 'src/Views/Front/blog.php';
     }
 
 

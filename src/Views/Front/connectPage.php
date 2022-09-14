@@ -9,7 +9,7 @@ ob_start();
         <h1>Se Connecter</h1>
         <img src="Public/img/iconLogin.webp" alt="icône utilisateur">
 
-        <form action="index.php?action=connectUser" method="POST" class="container-form">
+        <form action="connectUser" method="POST" class="container-form">
 
       <!-- bloc confirmation || erreur  -->
       <?php if (isset($erreur)): 
@@ -30,9 +30,13 @@ ob_start();
             </div>
             <button type="submit" class="btn btn-primary">Connexion</button>
         </form>
+
+        <a href="home" class="retourAccueil">Retour à l'accueil</a>
+
         <p>Vous n'avez pas de compte ?</p>
         <div><a href="index.php?action=createUser" class="createUser">Ici pour en créer un</a></div>
         <a href="index.php?action=home" class="retourAccueil">Retour à l'accueil</a>
+
     </div>
 </section>
 

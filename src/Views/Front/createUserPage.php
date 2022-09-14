@@ -9,7 +9,7 @@ ob_start();
         <h1>Créer votre compte</h1>
         <img src="Public/img/iconLogin.webp" alt="image login">
 
-        <form action="index.php?action=storeUser" method="POST" class="container-form">
+        <form action="storeUser" method="POST" class="container-form">
 
         <!-- bloc confirmation || erreur  -->
         <?php if (isset($erreur)): 

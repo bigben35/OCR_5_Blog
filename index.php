@@ -32,9 +32,25 @@ try{
             }
         }
 
+
+
+        // display page blog 
+        elseif (filter_input(INPUT_GET, 'action') == 'blog'){
+
+            if (isset($_GET['page']) && !empty($_GET['page'])) {
+
+                $currentPage = (int) strip_tags(filter_input(INPUT_GET, 'page'));
+
+            } else {
+                $currentPage = 1;
+            }
+
+            $frontController->blog($currentPage);
+
         // display page sentMail 
         elseif(filter_input(INPUT_GET, 'action') == 'sentMail'){
             $frontController->sentMail();
+
         }
 
         // display page createUser 

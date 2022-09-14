@@ -8,7 +8,7 @@ ob_start();
 <div class="container text-center">
 <h1>Nouvel Email</h1>
 
-    <form action="index.php?action=updateEmail&id=<?= $_SESSION['id'] ?>" method="POST">
+    <form action="updateEmail&id=<?= $_SESSION['id'] ?>" method="POST">
         <?php if (isset($erreur)):
                 if($erreur): 
                     foreach($erreur as $e):
@@ -34,7 +34,7 @@ ob_start();
         </div>
 
         <button class="btn btn-success btn-lg" type="submit">Modifier</button>
-       <div><a href="index.php?action=dashboardUser&id=<?= $_SESSION['id'] ?>">Retour</a></div>
+       <div><a href="dashboardUser&id=<?= $_SESSION['id'] ?>">Retour</a></div>
     </form>
 </div>
 </section>
