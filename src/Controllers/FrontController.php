@@ -13,7 +13,7 @@ class FrontController
         $homeManager = new \Blog\Models\PostManager();
         $lastPosts = $homeManager->getLastPosts();
 
-        $token = md5(uniqid(rand(), true));
+        $token = uniqid(rand(), true);
         $_SESSION['csrf'] = $token;
 
         require "src/Views/Front/home.php";
@@ -47,7 +47,7 @@ class FrontController
         extract($_POST); //vérifie chaque clé afin de contrôler si elle a un nom de variable valide. Elle vérifie également les collisions avec des variables existantes dans la table des symboles. Utile pour $email et $confirmEmail.
         $validation = true;
         $erreur = [];
-        $token = md5(uniqid(rand(), true));
+        $token = uniqid(rand(), true);
         $_SESSION['csrf'] = $token;
 
         if(empty($nom) || empty($prenom) || empty($email) || empty($confirmEmail) || empty($objet) || empty($message)){

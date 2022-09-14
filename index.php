@@ -92,8 +92,8 @@ try{
         // display page dashboard user 
         elseif ($getAction == 'dashboardUser'){
             if(isset($_SESSION['id']) && (isset($_SESSION['role']) && ($_SESSION['role'] == "0"))){
-                
-                $frontController->dashboardUser($_GET['id']);
+                $id = filter_input(INPUT_GET, 'id');
+                $frontController->dashboardUser($id);
             }
             else {
                 throw new Exception("Veuillez renseigner vos identifiants pour vous connecter à votre session");
