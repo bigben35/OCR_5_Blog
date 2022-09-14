@@ -10,6 +10,7 @@ $dotenv->load();
 
 try{
     $frontController = new \Blog\Controllers\FrontController();
+    $backController = new \Blog\Controllers\AdminController();//objet controller, on instancie la class adminController (copie de la class adminController)
 
     if(isset($_GET['action']) && !empty($_GET['action'])) {
         if ($_GET['action'] == 'home') {
@@ -32,6 +33,7 @@ try{
         }
 
 
+
         // display page blog 
         elseif (filter_input(INPUT_GET, 'action') == 'blog'){
 
@@ -44,6 +46,11 @@ try{
             }
 
             $frontController->blog($currentPage);
+
+        // display page sentMail 
+        elseif(filter_input(INPUT_GET, 'action') == 'sentMail'){
+            $frontController->sentMail();
+
         }
 
         // display page createUser 
@@ -150,6 +157,40 @@ try{
         // log out user 
         elseif ($_GET['action'] == 'deconnexion'){
             $frontController->disconnectUser();
+        }
+
+
+        // ==================PARTIE ADMIN============================== 
+
+        // dashboard admin 
+        elseif(filter_input(INPUT_GET, 'action') == 'dashboard'){
+            if(isset($_SESSION['id']) && (isset($_SESSION['role']) && ($_SESSION['role'] == "1"))){
+
+                $backController->dashboard();
+            }
+            else {
+                throw new Exception("Veuillez renseigner vos identifiants pour vous connecter à votre session");
+            }
+        }
+
+        // list users 
+        elseif(filter_input(INPUT_GET, 'action') == 'listUsers'){
+            $backController->displayListUser();
+        }
+
+        // list email 
+        elseif(filter_input(INPUT_GET, 'action') == 'listEmail'){
+            $backController->displayListEmail();
+        }
+
+        // list comment 
+        elseif(filter_input(INPUT_GET, 'action') == 'listComment'){
+            $backController->displayListComment();
+        }
+
+        // list posts 
+        elseif(filter_input(INPUT_GET, 'action') == 'listPosts'){
+            $backController->displayListPost();
         }
 
     } else {

@@ -32,7 +32,31 @@ class UserManager extends Manager{
 
 
 
+
     // ===============PAGE DASHBOARD USER ===================
+
+    // function to know if pseudo is already use 
+    public function existPseudo($pseudo)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("SELECT COUNT(id) FROM utilisateur WHERE pseudo=? ");
+
+        $req->execute([$pseudo]);
+        $result = $req->fetch()[0];
+        return $result;
+    }
+
+     // function to know if email is already use 
+     public function existEmail($email)
+     {
+         $bdd = $this->dbConnect();
+         $req = $bdd->prepare("SELECT COUNT(id) FROM utilisateur WHERE email=? ");
+ 
+         $req->execute([$email]);
+         $result = $req->fetch()[0];
+         return $result;
+     }
+
 
     // function to retrieve password in database 
     public function retrievePassword($email) 

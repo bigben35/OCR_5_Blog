@@ -2,14 +2,20 @@
 
 namespace Blog\Controllers;
 
+
 class FrontController 
 {
     // display page home 
     function home()
     {
+
         // last posts 
         $homeManager = new \Blog\Models\PostManager();
         $lastPosts = $homeManager->getLastPosts();
+
+        $token = md5(uniqid(rand(), true));
+        $_SESSION['csrf'] = $token;
+
         require "src/Views/Front/home.php";
     }
 
@@ -41,7 +47,8 @@ class FrontController
         extract($_POST); //vérifie chaque clé afin de contrôler si elle a un nom de variable valide. Elle vérifie également les collisions avec des variables existantes dans la table des symboles. Utile pour $email et $confirmEmail.
         $validation = true;
         $erreur = [];
-        
+        $token = md5(uniqid(rand(), true));
+        $_SESSION['csrf'] = $token;
 
         if(empty($nom) || empty($prenom) || empty($email) || empty($confirmEmail) || empty($objet) || empty($message)){
             $validation = false;
@@ -57,21 +64,47 @@ class FrontController
         }
         if (filter_var($email, FILTER_VALIDATE_EMAIL) && $email === $confirmEmail) {
             $validation;
-            $sendMessage = $contactManager->requestWithContactForm($nom, $prenom, $email, $objet, $message);
             
-            $valide = "Votre message a bien été envoyé !";
-            unset($_POST['nom']);
-            unset($_POST['prenom']);
-            unset($_POST['email']);                 // vide/détruit ce qui est en mémoire
-            require 'src/Views/Front/home.php';
-            return $valide;
-        
-        } else{
-            require 'src/Views/Front/home.php';
-            return $erreur;
-        }
+            
+            
+            // send email to mailbox 
+                $dest = "josselincrenn@gmail.com";
+                $sujet = filter_input(INPUT_POST, 'objet');
+                $message = filter_input(INPUT_POST, 'message');
+                $message = wordwrap($message, 70, "\r\n");
+                $headers = [
+                    "From" => filter_input(INPUT_POST, 'email'),
+                    "Reply-To" => filter_input(INPUT_POST, 'email'),
+                    "Content-Type" => "text/html; charset=utf-8"
+                ];
+                mail($dest, $sujet, $message, $headers);
+
+    
+    $sendMessage = $contactManager->requestWithContactForm($nom, $prenom, $email, $objet, $message);
+    
+    
+    // $nom = filter_input(INPUT_POST, 'nom');
+    // $prenom = filter_input(INPUT_POST, 'nom');
+    // $email = filter_input(INPUT_POST, 'email');
+    // unset($nom);
+    // unset($prenom);
+    // unset($email);                 // vide/détruit ce qui est en mémoire
+    // require 'src/Views/Front/home.php';
+    // return $valide;
+    header("Location: index.php?action=sentMail");
+    
+    } else{
+        require 'src/Views/Front/home.php';
+        return $erreur;
     }
 
+    }
+
+    // display sentMail page 
+    function sentMail()
+    {
+        require 'src/Views/Front/sentMail.php';
+    }
 
     // display page create an account 
     function pageCreateUser()
@@ -105,6 +138,16 @@ class FrontController
         if($passwordconf != $password){
             $validation = false;
             $erreur[] = "Le mot de passe de confirmation n'est pas correcte !";
+        }
+
+        if($userManager->existPseudo($pseudo)){
+            $validation = false;
+            $erreur[] = "Ce pseudo est déjà utilisé !";
+        }
+
+        if($userManager->existEmail($email)){
+            $validation = false;
+            $erreur[] = "Cet Email est déjà utilisé !";
         }
 
          
@@ -149,7 +192,7 @@ class FrontController
                 header("Location: index.php?action=dashboardUser");
                 }
                 else{
-                    header('Location: dashboard');
+                    header('Location: index.php?action=dashboard');
             }
         } else {
             $erreur;

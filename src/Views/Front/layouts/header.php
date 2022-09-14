@@ -71,6 +71,12 @@
                         <a href="deconnexion">Déconnexion</a>
                     </li>
                     <?php
+
+                    elseif (isset($_SESSION['role']) && ($_SESSION['role'] == "1")) :
+                        ?>
+                    <li><a href="index.php?action=dashboard">Mon Compte A</a></li>
+                    <li><a href="index.php?action=deconnexion">Déconnexion</a></li>
+                    <?php
                         else :
                             ?>
                     <li class="page-scroll">
