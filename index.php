@@ -46,6 +46,7 @@ try{
             }
 
             $frontController->blog($currentPage);
+        }
 
         // display page sentMail 
         elseif(filter_input(INPUT_GET, 'action') == 'sentMail'){
