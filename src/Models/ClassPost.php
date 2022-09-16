@@ -24,24 +24,73 @@ class Post extends Manager
         $this->dateModif = $dateModif;
     }
 
-    public function getId(){return $this->id;}
-    public function setId($id){$this->id = $id;}
+    public function getId()
+    {
+        return $this->id;
+    }
 
-    public function getTitre(){return $this->titre;}
-    public function setTitre($titre){$this->titre = $titre;}
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
-    public function getChapo(){return $this->chapo;}
-    public function setChapo($chapo){$this->chapo = $chapo;}
+    public function getTitre()
+    {
+        return $this->titre;
+    }
 
-    public function getContenu(){return $this->contenu;}
-    public function setContenu($contenu){$this->contenu = $contenu;}
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+    }
 
-    public function getAuteur(){return $this->auteur;}
-    public function setAuteur($auteur){$this->auteur = $auteur;}
+    public function getChapo()
+    {
+        return $this->chapo;
+    
+    }
+    public function setChapo($chapo)
+    {
+        $this->chapo = $chapo;
+    }
 
-    public function getDateCreation(){return $this->dateCreation;}
-    public function setDateCreation($dateCreation){$this->dateCreation = $dateCreation;}
+    public function getContenu()
+    {
+        return $this->contenu;
+    }
 
-    public function getDateModif(){return $this->dateModif;}
-    public function setDateModif($dateModif){$this->dateModif = $dateModif;}
+    public function setContenu($contenu)
+    {
+        $this->contenu = $contenu;
+    }
+
+    public function getAuteur()
+    {
+        return $this->auteur;
+    }
+
+    public function setAuteur($auteur)
+    {
+        $this->auteur = $auteur;
+    }
+
+    public function getDateCreation()
+    {
+        return $this->dateCreation;
+    }
+
+    public function setDateCreation($dateCreation)
+    {
+        $this->dateCreation = $dateCreation;
+    }
+
+    public function getDateModif()
+    {
+        return $this->dateModif;
+    }
+
+    public function setDateModif($dateModif)
+    {
+        $this->dateModif = $dateModif;
+    }
 }

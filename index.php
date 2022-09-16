@@ -37,7 +37,7 @@ try{
 
 
         // display page blog 
-        elseif (filter_input(INPUT_GET, 'action') == 'blog'){
+        elseif ($getAction == 'blog'){
             $getPage = filter_input(INPUT_GET, 'page');
             if (isset($getPage) && !empty($getPage)) {
 
@@ -50,8 +50,25 @@ try{
             $frontController->blog($currentPage);
         }
 
+
+        // display page post 
+        elseif($getAction == 'post'){
+            $id = filter_input(INPUT_GET, 'id');
+            if(!$id){
+                header("Location: blog");
+            }
+            else{
+                $frontController->displayPost($id);
+            }
+        }
+
+        elseif($getAction == 'post&id='){
+            $frontController->displayPost($id);
+        }
+
+
         // display page sentMail 
-        elseif(filter_input(INPUT_GET, 'action') == 'sentMail'){
+        elseif($getAction == 'sentMail'){
             $frontController->sentMail();
 
         }
@@ -145,12 +162,12 @@ try{
 
 
         // get new password
-        elseif(filter_input(INPUT_GET, 'action') == 'pageUpdatePassword'){
+        elseif($getAction == 'pageUpdatePassword'){
             $frontController->pageUpdatePassword(filter_id('id'));
         }
 
         // get new password 
-        elseif (filter_input(INPUT_GET, 'action') == 'updatePassword'){
+        elseif ($getAction == 'updatePassword'){
             $postOldPassword = filter_input(INPUT_POST, 'oldPassword');
             $postNewPassword = filter_input(INPUT_POST, 'newPassword');
             $postPasswordConfirm = filter_input(INPUT_POST, 'passwordConfirm');
@@ -175,7 +192,7 @@ try{
         // ==================PARTIE ADMIN============================== 
 
         // dashboard admin 
-        elseif(filter_input(INPUT_GET, 'action') == 'dashboard'){
+        elseif($getAction == 'dashboard'){
             if(isset($_SESSION['id']) && (isset($_SESSION['role']) && ($_SESSION['role'] == "1"))){
 
                 $backController->dashboard();
@@ -186,22 +203,22 @@ try{
         }
 
         // list users 
-        elseif(filter_input(INPUT_GET, 'action') == 'listUsers'){
+        elseif($getAction == 'listUsers'){
             $backController->displayListUser();
         }
 
         // list email 
-        elseif(filter_input(INPUT_GET, 'action') == 'listEmail'){
+        elseif($getAction == 'listEmail'){
             $backController->displayListEmail();
         }
 
         // list comment 
-        elseif(filter_input(INPUT_GET, 'action') == 'listComment'){
+        elseif($getAction == 'listComment'){
             $backController->displayListComment();
         }
 
         // list posts 
-        elseif(filter_input(INPUT_GET, 'action') == 'listPosts'){
+        elseif($getAction == 'listPosts'){
             $backController->displayListPost();
         }
 

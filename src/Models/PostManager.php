@@ -31,7 +31,7 @@ class PostManager extends Manager
 
 
 
-    //  PAGE BLOG 
+    //  =================PAGE BLOG =================
     //  count number posts
     public function countPosts()
     {
@@ -57,5 +57,17 @@ class PostManager extends Manager
         $posts = $req->fetchAll(\PDO::FETCH_ASSOC);
 
         return $posts;
+    }
+
+
+    // =================PAGE POST ===========================
+    // display one post with id 
+    public function displayPost($id)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateModif, '%d-%m-%Y %H:%i:%s') as dateModif FROM article WHERE id =?");
+        $req->execute([$id]);
+
+        return $req->fetch();
     }
 }

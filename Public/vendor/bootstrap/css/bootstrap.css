@@ -1264,19 +1264,19 @@ h6 .small,
 }
 h1,
 .h1 {
-  font-size: 30px;
+  font-size: 2.3rem;
 }
 h2,
 .h2 {
-  font-size: 24px;
+  font-size: 2rem;
 }
 h3,
 .h3 {
-  font-size: 20px;
+  font-size: 1.8rem;
 }
 h4,
 .h4 {
-  font-size: 18px;
+  font-size: 1.7rem;
 }
 h5,
 .h5 {
@@ -1804,6 +1804,7 @@ pre code {
   }
   .col-sm-4 {
     width: 33.33333333%;
+    height: 250px;
   }
   .col-sm-3 {
     width: 25%;
