@@ -40,6 +40,15 @@ class FrontController
     }
 
 
+    // display page post 
+    function displayPost($id)
+    {
+        $postManager = new \Blog\Models\PostManager();
+        $post = $postManager->displayPost($id);
+
+        require 'src/Views/Front/post.php';
+    }
+
     // contact form 
     function contactPost($nom, $prenom, $email, $objet, $message)
     {
