@@ -8,6 +8,19 @@ require_once __DIR__ . '/vendor/autoload.php';
 $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
+// GESTION DES ERREURS
+function eCatcher($e) {
+    if($_ENV["APP_ENV"] == "development") {
+        $whoops = new \Whoops\Run;
+        $whoops->allowQuit(false);
+        $whoops->writeToOutput(false);
+        $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+        $html = $whoops->handleException($e);
+        require "src/Views/Front/errorCatch.php";
+     var_dump($e);die;   //a commenter en production
+    }
+  }
+
 try{
     $frontController = new \Blog\Controllers\FrontController();
     $backController = new \Blog\Controllers\AdminController();//objet controller, on instancie la class adminController (copie de la class adminController)
@@ -58,12 +71,15 @@ try{
                 header("Location: blog");
             }
             else{
-                $frontController->displayPost($id);
+                
+                $frontController->post($id);
             }
         }
 
         elseif($getAction == 'post&id='){
-            $frontController->displayPost($id);
+            $id = filter_input(INPUT_GET, 'id');
+            $frontController->post($id);
+            
         }
 
 
@@ -228,5 +244,6 @@ try{
 
 
 } catch (Exception $e) {
+    eCatcher($e);
     echo 'Erreur : '.$e->getMessage();
 }

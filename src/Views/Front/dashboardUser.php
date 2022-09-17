@@ -32,6 +32,15 @@ ob_start();
             >Modifier votre mot de passe</a>
 
         <h2>Vos commentaires :</h2>
+        <div>
+        <?php  foreach($comment as $c): ?>
+        <div>
+            <p class="date-com">Posté par <?= $_SESSION['pseudo'] ?> le <time
+                    datetime="<?=$c['dateCreation'] ?>"><?= $c['dateCreation']; ?></time> :</p>
+            <p class="comment-user"><?= $c['commentaire'] ?></p>
+        </div>
+        <?php endforeach; ?>
+    </div>
     </div>
 </section>
 
