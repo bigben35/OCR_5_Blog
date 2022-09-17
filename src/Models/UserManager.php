@@ -16,6 +16,8 @@ class UserManager extends Manager{
     }
 
 
+
+
     //====================PAGE CREER COMPTE ====================
     public function createUser($pseudo, $email, $password)
     {

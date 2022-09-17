@@ -41,14 +41,26 @@ class FrontController
 
 
     // display page post 
-    function displayPost($id)
+    function post()
     {
+        // display post 
         $postManager = new \Blog\Models\PostManager();
-        $post = $postManager->displayPost($id);
+        $post = $postManager->displayPost();
+
+        // create a comment
+        $comments = $postManager->comment();
+
+        // display post comments 
+        $postComments = $postManager->getComment();
+
+        // number comment 
+        $numberComment = $postManager->countComment();
 
         require 'src/Views/Front/post.php';
     }
 
+     
+    
     // contact form 
     function contactPost($nom, $prenom, $email, $objet, $message)
     {
@@ -217,6 +229,9 @@ class FrontController
     // display dashboard user page 
     function dashboardUser($id)
     {
+        $postManager = new \Blog\Models\PostManager();
+        $comment = $postManager->commentUser();
+        
         require 'src/Views/Front/dashboardUser.php';
     }
 
