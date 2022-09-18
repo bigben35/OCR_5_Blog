@@ -35,7 +35,8 @@ ob_start();
         ?>
     </div>
     <?php
-        foreach($postComments as $postComment) : ?>
+        foreach($postComments as $postComment) : 
+            if($postComment['estValide'] == 1): ?>
     <div>
         <p><strong> Posté par <?= $postComment['pseudo'] ?> le <time
                     datetime="<? $postComment['dateCreation']; ?>"><?= $postComment['dateCreation']; ?></time> :</strong>
@@ -43,8 +44,9 @@ ob_start();
 
         <p class="p-comment"><?= rtrim($postComment['commentaire']) ?></p>
     </div>
-    <?php endforeach;
-
+    <?php
+endif;
+     endforeach;
 if(isset($_SESSION['id'])):
         
     ?>

@@ -205,7 +205,12 @@ try{
         }
 
 
+
+
+
         // ==================PARTIE ADMIN============================== 
+
+
 
         // dashboard admin 
         elseif($getAction == 'dashboard'){
@@ -233,9 +238,22 @@ try{
             $backController->displayListComment();
         }
 
+
+
+        // =======================POSTS =============================
         // list posts 
         elseif($getAction == 'listPosts'){
             $backController->displayListPost();
+        }
+
+        // display page createPost 
+        elseif($getAction == 'createPost'){
+            $backController->pageNewPost();
+        }
+
+        // create new post 
+        elseif($getAction == 'addPost'){
+            $backController->createPost();
         }
 
     } else {
