@@ -107,6 +107,7 @@ class PostManager extends Manager
         }
     }
 
+    // display comments by post 
     public function getComment()
     {
         $getId = filter_input(INPUT_GET, 'id');
@@ -125,12 +126,13 @@ class PostManager extends Manager
     }
 
 
+    // count number of comments 
     public function countComment()
     {
         $getId = filter_input(INPUT_GET, 'id');
         $id = filter_var($getId, FILTER_SANITIZE_NUMBER_INT);
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare("SELECT COUNT(*) FROM commentaire WHERE article_id = ?");
+        $req = $bdd->prepare("SELECT COUNT(*) FROM commentaire WHERE article_id = ? AND estValide = 1");
         $req->execute([$id]);
         $nbComment = $req->fetch()[0];
 
@@ -146,5 +148,38 @@ class PostManager extends Manager
 
         $commentUser = $req->fetchAll();
         return $commentUser;
+    }
+
+
+
+    // =====================ADMIN==============================================
+    public function createNewPost($titre, $chapo, $contenu, $auteur)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("INSERT INTO article(titre, chapo, contenu, auteur) VALUES(:titre, :chapo, :contenu, :auteur)");
+
+        $req->bindValue(":titre", $titre, \PDO::PARAM_STR);
+        $req->bindValue(":chapo", $chapo, \PDO::PARAM_STR);
+        $req->bindValue(":contenu", $contenu, \PDO::PARAM_STR);
+        $req->bindValue(":auteur", $auteur, \PDO::PARAM_STR);
+
+        $data = [
+            ":titre" => $titre,
+            ":chapo" => $chapo,
+            ":contenu" => $contenu,
+            ":auteur" => $auteur
+        ];
+        $req->execute($data);
+    }
+
+    // function to knom if title is already use 
+    public function existTitle($titre)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("SELECT COUNT(id) FROM article WHERE titre =?");
+
+        $req->execute([$titre]);
+        $result = $req->fetch()[0];
+        return $result;
     }
 }

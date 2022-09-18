@@ -50,6 +50,9 @@ class AdminController
 
      // ==============POSTS =================
 
+     private $postManager;
+
+    //  display list posts 
      public function displayListPost()
      {
          $adminManager = new \Blog\Models\AdminManager();
@@ -57,5 +60,40 @@ class AdminController
 
          require 'src/Views/Admin/listPost.php';
      }
+
+
+    //  display page createPost 
+    public function pageNewPost()
+    {
+        require 'src/Views/Admin/createPost.php';
+    }
+
+    //  create a new post 
+     public function createPost()
+     {
+        extract($_POST);
+        $postManager = new \Blog\Models\PostManager();
+        $validation = true;
+        $erreur = [];
+
+        if (empty($titre) || empty($chapo) || empty($contenu) || empty($auteur)) {
+            $validation = false;
+            $erreur[] = "Tous les champs sont requis !";
+        }
+        if($postManager->existTitle($titre)){
+            $validation = false;
+            $erreur[] = "Ce titre est déjà utilisé !";
+        }
+    
+        if($validation){
+            $createPost = $postManager->createNewPost($_POST['titre'], $_POST['chapo'], $_POST['contenu'], $_POST['auteur']);
+            require 'src/Views/Admin/listPost.php';
+        } else{
+            require 'src/Views/Admin/createPost.php';
+            return $erreur;
+        }
+
+     }
+
         
 }

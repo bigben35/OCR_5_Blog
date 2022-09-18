@@ -53,7 +53,7 @@ ob_start();
             <button type="submit" class="btn btn-primary">Créer un compte</button>
         </form>
         <p>Vous avez un compte ?</p>
-        <div><a href="index.php?action=connexion" class="createUser">Ici pour vpus connecter à votre compte</a></div>
+        <div><a href="index.php?action=connexion" class="createUser">Ici pour vous connecter à votre compte</a></div>
         <a href="index.php?action=home" class="retourAccueil">Retour à l'accueil</a>
     </div>
 </section>
