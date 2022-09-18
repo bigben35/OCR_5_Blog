@@ -50,13 +50,20 @@ class AdminController
 
      // ==============POSTS =================
 
-     private $postManager;
+     private $postManager; //accessible attribut de l'Objet
+
+     public function __construct(){
+        $this->postManager = new \Blog\Models\PostManager();
+        $this->postManager->loadingPosts();
+    }
 
     //  display list posts 
      public function displayListPost()
      {
-         $adminManager = new \Blog\Models\AdminManager();
-         $listPost = $adminManager->listPost();
+        $posts = $this->postManager->getPosts();
+
+        //  $adminManager = new \Blog\Models\AdminManager();
+        //  $listPost = $adminManager->listPost();
 
          require 'src/Views/Admin/listPost.php';
      }

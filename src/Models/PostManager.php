@@ -6,17 +6,7 @@ require_once 'src/Models/ClassPost.php';
 
 class PostManager extends Manager
 {
-    private $posts; //tableau d'articles
-
-    public function addPost($post)
-    {
-        $this->posts[] = $post;
-    }
-
-    public function getPosts()
-    {
-        return $this->posts;
-    }
+    
 
 
     // ==============PAGE HOME  =================
@@ -153,6 +143,36 @@ class PostManager extends Manager
 
 
     // =====================ADMIN==============================================
+
+    private $posts; //tableau d'articles
+
+    public function addPost($post)
+    {
+        $this->posts[] = $post;
+    }
+
+    public function getPosts()
+    {
+        return $this->posts;
+    }
+
+
+    // loading all posts 
+    public function loadingPosts()
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("SELECT * FROM article ORDER BY id DESC");
+        $req->execute();
+        $allPosts = $req->fetchAll(\PDO::FETCH_ASSOC);
+        $req->closeCursor();
+
+        foreach($allPosts as $post){
+            $newPost = new Post($post['id'], $post['titre'], $post['chapo'], $post['contenu'], $post['auteur'], $post['dateCreation'], $post['dateModif']);
+            $this->addPost($newPost);
+        }
+    }
+
+    // create a new post 
     public function createNewPost($titre, $chapo, $contenu, $auteur)
     {
         $bdd = $this->dbConnect();

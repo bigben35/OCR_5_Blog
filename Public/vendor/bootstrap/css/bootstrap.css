@@ -1582,8 +1582,8 @@ pre code {
   overflow-y: scroll;
 }
 .container {
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 10px;
+  padding-left: 10px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -2259,7 +2259,7 @@ caption {
   text-align: left;
 }
 th {
-  text-align: left;
+  text-align: center;
 }
 .table {
   width: 100%;
@@ -6794,6 +6794,32 @@ form{
   max-width: 750px;
     margin: 0 auto;
 }
+
+
+/* boutons des pages listes admin  */
+.btn-action-admin{
+  padding: 8px;
+  background-color: forestgreen;
+  color: white;
+  display: block;
+}
+.btn-action-admin:hover{
+  transition: all 0.1s ease;
+  filter: brightness(1.3);
+}
+.btn-action-admin-red{
+  padding: 8px;
+  background-color: firebrick;
+  color: white;
+  display: block;
+  margin-top: 1rem;
+}
+.btn-action-admin-red:hover{
+  transition: all 0.1s ease;
+  filter: brightness(1.3);
+}
+
+
 
 /* MEDIA QUERRIES  */
 /* @media screen and (min-width:768px) {
