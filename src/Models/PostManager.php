@@ -161,7 +161,7 @@ class PostManager extends Manager
     public function loadingPosts()
     {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare("SELECT * FROM article ORDER BY id DESC");
+        $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateCreation, '%d-%m-%Y') AS dateCreation FROM article ORDER BY id DESC");
         $req->execute();
         $allPosts = $req->fetchAll(\PDO::FETCH_ASSOC);
         $req->closeCursor();
@@ -170,6 +170,15 @@ class PostManager extends Manager
             $newPost = new Post($post['id'], $post['titre'], $post['chapo'], $post['contenu'], $post['auteur'], $post['dateCreation'], $post['dateModif']);
             $this->addPost($newPost);
         }
+    }
+
+    // display post by id 
+    public function getPostById($id)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateCreation, '%d-%m-%Y') AS dateCreation FROM article WHERE id=?");
+        $req->execute(array($id));
+        return $req->fetch();
     }
 
     // create a new post 

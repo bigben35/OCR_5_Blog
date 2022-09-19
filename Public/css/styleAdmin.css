@@ -34,6 +34,14 @@ a:hover{
     text-decoration: none;
     color: black;
 }
+a,
+a:hover,
+a:focus,
+a:active,
+a.active {
+  
+  outline: none;
+}
 li{
     list-style: none;
 }

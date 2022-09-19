@@ -7,7 +7,7 @@ ob_start(); ?>
 <section id="section-confirm-mail">
     <div class="container text-center">
         <h1>Votre Email a été envoyé avec succès ! 👏</h1>
-        <div><a href="index.php?action=home">Retourner à la page d'accueil</a></div>
+        <div><a href="home">Retourner à la page d'accueil</a></div>
     </div>
 </section>
 

@@ -19,7 +19,7 @@ ob_start();
             <?php for($i=0; $i < count($posts); $i++) :?>
                 <tr>
                 <td><a title="afficher l'article"
-                        href="#"><?= $posts[$i]->getTitre(); ?></a>
+                        href="onePost&id=<?= $posts[$i]->getId(); ?>"><?= $posts[$i]->getTitre(); ?></a>
                 </td>
                 <td class="display-creation"><?= $posts[$i]->getDateCreation(); ?></td>
                 <td class="action-list-admin"><a
