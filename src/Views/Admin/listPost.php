@@ -4,6 +4,7 @@ $title = "Page listant les articles du Blog";
 $description = "Page listant les articles du Blog";
 ob_start();
 ?>
+<script src="Public/js/confirm.js" defer></script>
 
 <section class="section-article-admin">
     <h1>Liste de mes articles :</h1>
@@ -25,8 +26,8 @@ ob_start();
                 <td class="action-list-admin"><a
                         href="#" class="btn-action-admin">Modifier</a>
 
-                    <a href="#"
-                        class="btn-action-admin-red">Supprimer</a>
+                    <a href="deletePost&id=<?= $posts[$i]->getId(); ?>"
+                        class="delete btn-action-admin-red">Supprimer</a>
                 </td>
             </tr>
             <?php endfor; ?>
@@ -35,5 +36,6 @@ ob_start();
     </div>
 </section>
 
+<script src="Public/js/confirm.js" defer></script>
 <?php $content = ob_get_clean(); ?>
 <?php require 'layoutsAdmin/template.php'; 

@@ -211,4 +211,19 @@ class PostManager extends Manager
         $result = $req->fetch()[0];
         return $result;
     }
+
+
+    // function to delete post 
+    public function deleteOnePost($id)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("DELETE FROM article WHERE id = ?");
+        $req->execute(array($id));
+
+        return $req;
+        if($req > 0){
+            $post = $this->getPostById($id);
+            unset($post);
+        }
+    }
 }

@@ -261,6 +261,12 @@ try{
             $backController->createPost();
         }
 
+        // delete post 
+        elseif($getAction == 'deletePost'){
+            $id = filter_input(INPUT_GET, 'id');
+            $backController->deletePost($id);
+        }
+
     } else {
         $frontController->home();
     }
