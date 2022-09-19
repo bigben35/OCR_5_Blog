@@ -246,6 +246,7 @@ try{
             $backController->displayListPost();
         }
 
+        // page one post 
         elseif($getAction == 'onePost'){
             $id = filter_input(INPUT_GET, 'id');
             $backController->displayPostById($id);
@@ -259,6 +260,17 @@ try{
         // create new post 
         elseif($getAction == 'addPost'){
             $backController->createPost();
+        }
+
+        // display page update post 
+        elseif($getAction == 'pageUpdatePost'){
+            $id = filter_input(INPUT_GET, 'id');
+            $backController->displayPageUpdatePost($id);
+        }
+
+          // update post 
+          elseif($getAction == 'updatePost'){
+            $backController->updatePost();
         }
 
     } else {

@@ -211,4 +211,29 @@ class PostManager extends Manager
         $result = $req->fetch()[0];
         return $result;
     }
+
+
+    // update a post 
+    public function updatePost($id, $titre, $chapo, $contenu)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("UPDATE article SET titre = :titre, chapo = :chapo, contenu = :contenu WHERE id = :id");
+
+        $req->bindValue(":titre", $titre, \PDO::PARAM_STR);
+        $req->bindValue(":chapo", $chapo, \PDO::PARAM_STR);
+        $req->bindValue(":contenu", $contenu, \PDO::PARAM_STR);
+        // $req->bindValue(":dateModif", time(), \PDO::PARAM_STR);
+
+        $data = [
+            ':titre' => $titre,
+            ':chapo' => $chapo,
+            ':contenu' => $contenu,
+            // ':dateModif' => time(),
+            ':id' => $id
+            // ':dateModif' => $dateModif
+        ];
+
+        $req->execute($data);
+        $req->closeCursor();
+    }
 }

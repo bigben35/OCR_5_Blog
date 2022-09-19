@@ -11,9 +11,9 @@ class Post extends Manager
     private string $contenu;
     private string $auteur;
     private string $dateCreation;
-    private string $dateModif;
+    private $dateModif;
 
-    public function __construct(int $id, string $titre, string $chapo, string $contenu, string $auteur, string $dateCreation, string $dateModif)
+    public function __construct(int $id, string $titre, string $chapo, string $contenu, string $auteur, string $dateCreation, $dateModif)
     {
         $this->id = $id;
         $this->titre = $titre;

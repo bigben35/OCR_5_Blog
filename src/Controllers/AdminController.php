@@ -111,5 +111,48 @@ class AdminController
 
      }
 
+
+    //  display page update post 
+    public function displayPageUpdatePost($id)
+    {
+        $updatePost = $this->postManager->getPostById($id);
+        $post = new \Blog\Models\Post($updatePost['id'], $updatePost['titre'], $updatePost['chapo'], $updatePost['contenu'], $updatePost['auteur'], $updatePost['dateCreation'], $updatePost['dateModif']);
+
+        require 'src/Views/Admin/updatePost.php';
+    }
+
+    // update post 
+    public function updatePost()
+    {
+        // extract($_POST);
+        $validation = true;
+        $erreur = [];
+        // $valide = [];
+        
+
+        if (empty($titre) || empty($chapo) || empty($contenu)) {
+            $validation = false;
+            $erreur[] = "Tous les champs sont requis !";
+        }
+        if($this->postManager->existTitle($_POST['titre'])){
+            $validation = false;
+            $erreur[] = "Ce titre est déjà utilisé !";
+        }
+    
+        if($validation){
+            $updatePost = $this->postManager->updatePost($_POST['id'], $_POST['titre'], $_POST['chapo'], $_POST['contenu']);
+            header("Location: listPosts");
+            
+        } else{
+            $id = filter_input(INPUT_POST, 'id');
+            
+            // $updatePost = $this->postManager->getPostById($id);
+            header("Location: updatePost&id=.$id");
+            return $erreur;
+            // echo "ne pas fonctionne !";
+        }
+       
+    }
+
         
 }
