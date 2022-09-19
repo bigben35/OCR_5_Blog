@@ -246,6 +246,11 @@ try{
             $backController->displayListPost();
         }
 
+        elseif($getAction == 'onePost'){
+            $id = filter_input(INPUT_GET, 'id');
+            $backController->displayPostById($id);
+        }
+
         // display page createPost 
         elseif($getAction == 'createPost'){
             $backController->pageNewPost();

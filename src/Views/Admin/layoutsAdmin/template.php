@@ -23,14 +23,14 @@
         <nav class="side-nav">
             <div class="wrapper">
                 <div class="nav-bloc-black">
-                    <a href="index.php?action=dashboard" class="title-admin"><?= $_SESSION['pseudo'] ?></a>
+                    <a href="dashboard" class="title-admin"><?= $_SESSION['pseudo'] ?></a>
                 </div>
                 <div class="nav-bloc n-1">
                     <i class="fa-solid fa-users"></i>
                     <div class="sub-nav">
                         <h3>Membres</h3>
                         <ul>
-                            <li><a href="index.php?action=listUsers">Utilisateurs inscrits</a></li>
+                            <li><a href="listUsers">Utilisateurs inscrits</a></li>
                         </ul>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                         <h3>Articles</h3>
                         <ul>
                             <li><a href="createPost">Créer un article</a></li>
-                            <li><a href="index.php?action=listPosts">Liste des articles</a></li>
+                            <li><a href="listPosts">Liste des articles</a></li>
 
                         </ul>
                     </div>
@@ -50,7 +50,7 @@
                     <div class="sub-nav">
                         <h3>Commentaire</h3>
                         <ul>
-                            <li><a href="index.php?action=listComment">Commentaire reçu</a></li>
+                            <li><a href="listComment">Commentaire reçu</a></li>
                             <li><a href="#">Commentaire à "valider</a></li>
 
                         </ul>
@@ -61,7 +61,7 @@
                     <div class="sub-nav">
                         <h3>E-mail</h3>
                         <ul>
-                            <li><a href="index.php?action=listEmail">E-mail reçu</a></li>
+                            <li><a href="listEmail">E-mail reçu</a></li>
                             <li><a href="#">E-mail à lire</a></li>
 
                         </ul>
@@ -72,7 +72,7 @@
                             class="fa-solid fa-arrow-right-from-bracket"></i></a>
                 </div>
                 <div class="nav-bloc n-5">
-                    <a href="index.php?action=deconnexion"><i class="fa-solid fa-lock"></i></a>
+                    <a href="deconnexion"><i class="fa-solid fa-lock"></i></a>
                 </div>
                 
             </div>

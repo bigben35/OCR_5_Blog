@@ -2260,6 +2260,7 @@ caption {
 }
 th {
   text-align: center;
+  font-size: 2rem;
 }
 .table {
   width: 100%;

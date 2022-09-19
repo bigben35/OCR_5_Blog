@@ -68,6 +68,15 @@ class AdminController
          require 'src/Views/Admin/listPost.php';
      }
 
+    
+    // display page post by id 
+    public function displayPostById($id)
+    {
+        $postId = $this->postManager->getPostById($id);
+        $post = new \Blog\Models\Post($postId['id'], $postId['titre'], $postId['chapo'], $postId['contenu'], $postId['auteur'], $postId['dateCreation'], $postId['dateModif']);
+
+        require 'src/Views/Admin/pageOnePost.php';
+    }
 
     //  display page createPost 
     public function pageNewPost()
