@@ -103,13 +103,23 @@ class AdminController
     
         if($validation){
             $createPost = $postManager->createNewPost($_POST['titre'], $_POST['chapo'], $_POST['contenu'], $_POST['auteur']);
-            require 'src/Views/Admin/listPost.php';
+            header("Location: listPosts");
         } else{
             require 'src/Views/Admin/createPost.php';
             return $erreur;
         }
 
      }
+
+
+    //  delete a post 
+    public function deletePost($id)
+    {
+        $deletePost = $this->postManager->getPostById($id);
+        $this->postManager->deleteOnePost($id);
+
+        header("Location: listPosts");
+    }
 
         
 }
