@@ -39,6 +39,7 @@ class AdminController
 
     
     // ==============COMMENT =================
+    // display list comment 
      public function displayListComment()
      {
          $adminManager = new \Blog\Models\AdminManager();
@@ -47,6 +48,8 @@ class AdminController
          require 'src/Views/Admin/listComment.php';
      }
 
+
+    //  display list comment waiting for validation 
      public function displayNoValidateComment()
      {
         $adminManager = new \Blog\Models\AdminManager();
@@ -55,6 +58,7 @@ class AdminController
         require 'src/Views/Admin/noValidateListComment.php';
      }
 
+    //  validate comment 
      public function validateComment($id, $isValide)
      {
         $comment = new \Blog\Models\AdminManager();
@@ -65,6 +69,14 @@ class AdminController
         require 'src/Views/Admin/noValidateListComment.php';
        
      }
+
+    //  delete comment 
+    public function deleteComment($id)
+    {
+        $comment = new \Blog\Models\AdminManager();
+        $deleteComment = $comment->deleteOneComment($id);
+        header("Location: noValidateComment");
+    }
 
 
      // ==============POSTS =================
