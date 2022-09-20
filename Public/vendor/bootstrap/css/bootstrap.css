@@ -6835,3 +6835,14 @@ form{
 .sub-nav h3{
   margin: 0;
 }
+
+textarea.comment{
+  width: 100%;
+  height: 150px;
+  margin: 0 auto;
+}
+.input-comment{
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+}

@@ -70,6 +70,17 @@ class AdminManager extends Manager{
          $req->execute(array($id));
      }
 
+    //  if id email exist 
+    public function exist_idEmail($id)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("SELECT COUNT(id) FROM contact WHERE id = ?");
+        $req->execute([$id]);
+
+        $result = $req->fetch()[0];
+        return $result;
+    }
+
     //  delete an email 
     public function deleteOneEmail($id)
     {

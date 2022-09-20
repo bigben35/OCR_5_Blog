@@ -2,6 +2,8 @@
 
 namespace Blog\Controllers;
 
+use Exception;
+
 class AdminController
 {
     // dashboard admin 
@@ -29,6 +31,7 @@ class AdminController
 
 
     // ==============EMAIL =================
+
     public function displayListEmail()
         {
             $adminManager = new \Blog\Models\AdminManager();
@@ -37,14 +40,20 @@ class AdminController
             require 'src/Views/Admin/listEmail.php';
         }
     
+        // show an email 
     public function showEmail($id, $isRead)
     {
         $email = new \Blog\Models\AdminManager();
-        if($isRead == 0){
-            $sawValidate = $email->sawEmail($id);
+        if($email->exist_idEmail($id)){
+
+            if($isRead == 0){
+                $sawValidate = $email->sawEmail($id);
+            }
+            $sawEmail = $email->showOneEmail($id);
+            require 'src/Views/Admin/showEmail.php';
+        }else{
+            throw new Exception("L'Email demandé n'existe pas !");
         }
-        $sawEmail = $email->showOneEmail($id);
-        require 'src/Views/Admin/showEmail.php';
     }
 
     // delete an email 

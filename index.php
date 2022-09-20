@@ -332,5 +332,8 @@ try{
         die('Erreur : ' . $e->getMessage());
       } else {
         require 'src/Views/Front/error/error404.php';
-      }
-}
+      }}
+// } catch(Error $e) {
+//     eCatcher($e);
+//     require 'src/Views/Front/error/oups.php';
+// }

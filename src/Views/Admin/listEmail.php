@@ -27,7 +27,7 @@ ob_start();
                     <li><?= $email["dateCreation"]?></li>
                     <li class="flex">
                         <span class="btn"><a
-                                href="showEmail&id=<?= $email['id']?>&estVu=<?=$email['estVu']?>"
+                                href="showEmail&id=<?= $email['id']?>"
                                 title="Voir"><i class="fa-solid fa-eye"></i></a></span>
                         <span class="btn"><a class="delete"
                                 href="deleteEmail&id=<?= $email['id'] ?>" title="Supprimer"
