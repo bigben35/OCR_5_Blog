@@ -80,7 +80,17 @@ class AdminManager extends Manager{
  
          return $req;
     }
+
+    // validate a comment 
+    public function validateOneComment($id)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("UPDATE commentaire SET `estValide` = 1 WHERE id = ?");
+
+        $req->execute(array($id));
+    }
  
+
      public function countComment()
      {
          $bdd = $this->dbConnect();

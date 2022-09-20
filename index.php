@@ -243,6 +243,13 @@ try{
             $backController->displayNoValidateComment();
         }
 
+        // to validate comment 
+        elseif($getAction == 'validateComment'){
+            $id = filter_input(INPUT_GET, 'id');
+            $isValide = filter_input(INPUT_GET, 'estValide');
+            $backController->validateComment($id, $isValide);
+        }
+
 
 
         // =======================POSTS =============================
