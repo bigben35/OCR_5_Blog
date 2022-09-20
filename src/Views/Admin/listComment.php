@@ -28,18 +28,17 @@ ob_start();
                         <p><?= htmlspecialchars($comment['dateCreation']) ?></p>
                     </td>
                     <td class="display-creation">
-                        <p><?= htmlspecialchars($comment['title']) ?></p>
+                        <p><?= htmlspecialchars($comment['titre']) ?></p>
                     </td>
                     <td>
                         <p class="max-content"><?= htmlspecialchars($comment['commentaire']) ?></p>
                     </td>
-
-                    <td><a href="montrerComment&id=<?= $comment['id'] ?>"
-                            class="btn-action-admin">Voir</a></td>
-                    <td>
-                        <a href="supprimerComment&id=<?= $comment['id'] ?>"
-                            class="btn-action-admin-red">Supprimer</a>
-                    </td>
+                    <div class="btn-comment">
+                        <td><a href="#" class="btn-action-admin">Voir</a></td>
+                        <td>
+                            <a href="#" class="btn-action-admin-red">Supprimer</a>
+                        </td>
+                    </div>
                 </tr>
                 <?php endforeach; ?>
             </tbody>

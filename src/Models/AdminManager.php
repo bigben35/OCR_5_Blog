@@ -54,12 +54,21 @@ class AdminManager extends Manager{
      public function listComment()
      {
          $bdd = $this->dbConnect();
-         $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateCreation, '%d/%m/%Y') AS dateCreation FROM commentaire ORDER BY id DESC");
+         $req = $bdd->prepare("SELECT commentaire.*, DATE_FORMAT(commentaire.dateCreation, '%d/%m/%Y') AS dateCreation, utilisateur.pseudo, article.titre FROM commentaire 
+         INNER JOIN utilisateur 
+         ON commentaire.utilisateur_id = utilisateur.id
+         INNER JOIN article
+         ON commentaire.article_id = article.id
+         ORDER BY id DESC");
          $req->execute();
  
          return $req;
      }
- 
+    //  ("SELECT commentaire.*, DATE_FORMAT(commentaire.dateCreation, '%d-%m-%Y %H:%i:%s') as dateCreation, utilisateur.pseudo 
+    //  FROM commentaire 
+    //  INNER JOIN utilisateur
+    //  ON commentaire.utilisateur_id = utilisateur.id 
+    //  AND commentaire.article_id = ?");
      // count number comment 
      public function countComment()
      {
