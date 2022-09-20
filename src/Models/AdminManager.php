@@ -31,7 +31,11 @@ class AdminManager extends Manager{
      public function listEmail()
      {
          $bdd = $this->dbConnect();
-         $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateCreation, '%d/%m/%Y') AS dateCreation FROM contact ORDER BY id DESC");
+         $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateCreation, '%d/%m/%Y') 
+         AS dateCreation 
+         FROM contact 
+         ORDER BY id 
+         DESC");
          $req->execute();
  
          return $req;
@@ -46,6 +50,34 @@ class AdminManager extends Manager{
  
          return $req;
      }
+
+    //  show an email 
+    public function showOneEmail($id)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateCreation, '%d/%m/%Y') 
+        AS dateCreation FROM contact WHERE id = ?");
+        $req->execute([$id]);
+        return $req->fetch();
+    }
+
+     // "isRead" an email 
+     public function sawEmail($id)
+     {
+         $bdd = $this->dbConnect();
+         $req = $bdd->prepare("UPDATE contact SET `estVu` = 1 WHERE id = ?");
+ 
+         $req->execute(array($id));
+     }
+
+    //  delete an email 
+    public function deleteOneEmail($id)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("DELETE FROM contact WHERE id = ?");
+        $req->execute([$id]);
+        
+    }
 
 
      // ==============ABOUT COMMENT==========================

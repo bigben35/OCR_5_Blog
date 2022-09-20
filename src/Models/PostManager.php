@@ -63,6 +63,16 @@ class PostManager extends Manager
         return $req->fetch();
     }
 
+    // exist id_Post 
+    public function exist_idPost($idPost)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("SELECT COUNT(id) FROM article WHERE id =?");
+        $req->execute([$idPost]);
+
+        $result = $req->fetch()[0];
+        return $result;
+    }
 
     
     // PAGE POST COMMENTS SECTION 

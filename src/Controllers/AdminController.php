@@ -36,6 +36,25 @@ class AdminController
 
             require 'src/Views/Admin/listEmail.php';
         }
+    
+    public function showEmail($id, $isRead)
+    {
+        $email = new \Blog\Models\AdminManager();
+        if($isRead == 0){
+            $sawValidate = $email->sawEmail($id);
+        }
+        $sawEmail = $email->showOneEmail($id);
+        require 'src/Views/Admin/showEmail.php';
+    }
+
+    // delete an email 
+    public function deleteEmail($id)
+    {
+        $email = new \Blog\Models\AdminManager();
+        $deleteEmail = $email->deleteOneEmail($id);
+
+        header("Location: listEmail");
+    }
 
     
     // ==============COMMENT =================
