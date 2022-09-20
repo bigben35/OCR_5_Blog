@@ -89,8 +89,17 @@ class AdminManager extends Manager{
 
         $req->execute(array($id));
     }
+
+    // delete a comment 
+    public function deleteOneComment($id)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("DELETE FROM commentaire WHERE id = ?");
+        $req->execute(array($id));
+    }
  
 
+    // count number of comment 
      public function countComment()
      {
          $bdd = $this->dbConnect();

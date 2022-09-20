@@ -250,6 +250,12 @@ try{
             $backController->validateComment($id, $isValide);
         }
 
+        // delete comment 
+        elseif($getAction == 'deleteComment'){
+            $id = filter_input(INPUT_GET, 'id');
+            $backController->deleteComment($id);
+        }
+
 
 
         // =======================POSTS =============================
