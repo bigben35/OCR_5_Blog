@@ -64,12 +64,23 @@ class AdminManager extends Manager{
  
          return $req;
      }
-    //  ("SELECT commentaire.*, DATE_FORMAT(commentaire.dateCreation, '%d-%m-%Y %H:%i:%s') as dateCreation, utilisateur.pseudo 
-    //  FROM commentaire 
-    //  INNER JOIN utilisateur
-    //  ON commentaire.utilisateur_id = utilisateur.id 
-    //  AND commentaire.article_id = ?");
-     // count number comment 
+
+    //  no Validate Comment list 
+    public function noValidateComment()
+    {
+        $bdd = $this->dbConnect();
+         $req = $bdd->prepare("SELECT commentaire.*, DATE_FORMAT(commentaire.dateCreation, '%d/%m/%Y') AS dateCreation, utilisateur.pseudo, article.titre FROM commentaire 
+         INNER JOIN utilisateur 
+         ON commentaire.utilisateur_id = utilisateur.id
+         INNER JOIN article
+         ON commentaire.article_id = article.id
+         WHERE commentaire.estValide = 0
+         ORDER BY id DESC");
+         $req->execute();
+ 
+         return $req;
+    }
+ 
      public function countComment()
      {
          $bdd = $this->dbConnect();

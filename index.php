@@ -238,6 +238,11 @@ try{
             $backController->displayListComment();
         }
 
+        // no validate comment 
+        elseif($getAction == 'noValidateComment'){
+            $backController->displayNoValidateComment();
+        }
+
 
 
         // =======================POSTS =============================

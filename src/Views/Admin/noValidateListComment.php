@@ -1,6 +1,6 @@
 <?php
 
-$title = "Page listant les commentaires du Blog";
+$title = "Page listant les commentaires non validés du Blog";
 $description = "Page listant les commentaires du Blog";
 ob_start();
 ?>
@@ -19,7 +19,7 @@ ob_start();
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($listComment as $comment) :?>
+                <?php foreach ($noValidateComment as $comment) :?>
                 <tr>
                     <td class="display-creation">
                         <p><?= htmlspecialchars($comment['pseudo']) ?></p>
@@ -34,7 +34,7 @@ ob_start();
                         <p class="max-content"><?= htmlspecialchars($comment['commentaire']) ?></p>
                     </td>
                     <div class="btn-comment">
-                        <td><a href="#" class="btn-action-admin">Voir</a></td>
+                        <td><a href="commentIsValide" class="btn-action-admin">Valider</a></td>
                         <td>
                             <a href="deleteComment" class="btn-action-admin-red">Supprimer</a>
                         </td>

@@ -53,7 +53,7 @@
                         <h3>Commentaire</h3>
                         <ul>
                             <li><a href="listComment">Commentaire reçu</a></li>
-                            <li><a href="#">Commentaire à "valider</a></li>
+                            <li><a href="noValidateComment">Commentaire à "valider"</a></li>
 
                         </ul>
                     </div>
