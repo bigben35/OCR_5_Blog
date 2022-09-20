@@ -205,7 +205,7 @@ class PostManager extends Manager
     public function existTitle($titre)
     {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare("SELECT COUNT(id) FROM article WHERE titre =?");
+        $req = $bdd->prepare("SELECT COUNT(id) FROM article WHERE titre = ?");
 
         $req->execute([$titre]);
         $result = $req->fetch()[0];

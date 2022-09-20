@@ -38,12 +38,12 @@ ob_start();
         </div>
         <div class="form-group">
             <label for="contenu">Contenu : </label>
-            <textarea name="contenu" id="contenu" cols="60" rows="10" value="<?= $post->getContenu(); ?>"></textarea>
+            <textarea name="contenu" id="contenu" cols="60" rows="10"><?= $post->getContenu(); ?></textarea>
         </div>
         
-        <input class="form-control" type="hidden" name="id" value="<?= $post->getId(); ?>">
+        <!-- <input class="form-control" type="hidden" name="id" value=""> -->
 
-        <button type="submit" class="btn-form">Valider</button>
+        <button class="valide" type="submit" class="btn-form">Valider</button>
     </form>
 </div>
 </section>

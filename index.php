@@ -270,7 +270,8 @@ try{
 
           // update post 
           elseif($getAction == 'updatePost'){
-            $backController->updatePost();
+            $titre = filter_input(INPUT_POST, 'titre');
+            $backController->updatePost($titre);
         }
 
     } else {
