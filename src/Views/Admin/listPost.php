@@ -4,7 +4,6 @@ $title = "Page listant les articles du Blog";
 $description = "Page listant les articles du Blog";
 ob_start();
 ?>
-<script src="Public/js/confirm.js" defer></script>
 
 <section class="section-article-admin">
     <h1>Liste de mes articles :</h1>

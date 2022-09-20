@@ -34,7 +34,7 @@ ob_start();
                         <p class="max-content"><?= htmlspecialchars($comment['commentaire']) ?></p>
                     </td>
                     <div class="btn-comment">
-                        <td><a href="commentIsValide" class="btn-action-admin">Valider</a></td>
+                        <td><a href="validateComment&id=<?= $comment['id']; ?>" class="validate btn-action-admin">Valider</a></td>
                         <td>
                             <a href="deleteComment" class="btn-action-admin-red">Supprimer</a>
                         </td>
@@ -45,5 +45,6 @@ ob_start();
         </table>
     </div>
 </section>
+<script src="Public/js/confirm.js" defer></script>
 <?php $content = ob_get_clean(); ?>
 <?php require 'layoutsAdmin/template.php'; 

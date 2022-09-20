@@ -55,6 +55,17 @@ class AdminController
         require 'src/Views/Admin/noValidateListComment.php';
      }
 
+     public function validateComment($id, $isValide)
+     {
+        $comment = new \Blog\Models\AdminManager();
+        if($isValide == 0){
+            $validateComment = $comment->validateOneComment($id);
+        }
+        $noValidateComment = $comment->noValidateComment();
+        require 'src/Views/Admin/noValidateListComment.php';
+       
+     }
+
 
      // ==============POSTS =================
 
