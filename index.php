@@ -4,20 +4,21 @@
 session_start();
 
 require_once __DIR__ . '/vendor/autoload.php';
+require_once 'src/Views/Admin/layoutsAdmin/secure.php';
 
 $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 // GESTION DES ERREURS
 function eCatcher($e) {
-    if($_ENV["APP_ENV"] == "development") {
+    if($_ENV["APP_ENV"] == "developmen") {
         $whoops = new \Whoops\Run;
         $whoops->allowQuit(false);
         $whoops->writeToOutput(false);
         $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
         $html = $whoops->handleException($e);
         require "src/Views/Front/errorCatch.php";
-     var_dump($e);die;   //a commenter en production
+    //  var_dump($e);die;   //a commenter en production
     }
   }
 
@@ -225,17 +226,61 @@ try{
 
         // list users 
         elseif($getAction == 'listUsers'){
+            isAdmin();
             $backController->displayListUser();
         }
 
+
+
+        // ===========================EMAIL ==========================
+
         // list email 
         elseif($getAction == 'listEmail'){
+            isAdmin();
             $backController->displayListEmail();
         }
 
+        // show one email 
+        elseif($getAction == 'showEmail'){
+            isAdmin();
+            $id = filter_input(INPUT_GET, 'id');
+            $isRead = filter_input(INPUT_GET, 'estVu');
+            $backController->showEmail($id, $isRead);
+        }
+
+        // delete email 
+        elseif($getAction == 'deleteEmail'){
+            isAdmin();
+            $id = filter_input(INPUT_GET, 'id');
+            $backController->deleteEmail($id);
+        }
+        // ===================COMMENT=============================
+
         // list comment 
         elseif($getAction == 'listComment'){
+            isAdmin();
             $backController->displayListComment();
+        }
+
+        // no validate comment 
+        elseif($getAction == 'noValidateComment'){
+            isAdmin();
+            $backController->displayNoValidateComment();
+        }
+
+        // to validate comment 
+        elseif($getAction == 'validateComment'){
+            isAdmin();
+            $id = filter_input(INPUT_GET, 'id');
+            $isValide = filter_input(INPUT_GET, 'estValide');
+            $backController->validateComment($id, $isValide);
+        }
+
+        // delete comment 
+        elseif($getAction == 'deleteComment'){
+            isAdmin();
+            $id = filter_input(INPUT_GET, 'id');
+            $backController->deleteComment($id);
         }
 
 
@@ -243,24 +288,29 @@ try{
         // =======================POSTS =============================
         // list posts 
         elseif($getAction == 'listPosts'){
+            isAdmin();
             $backController->displayListPost();
         }
 
         // page one post 
         elseif($getAction == 'onePost'){
+            isAdmin();
             $id = filter_input(INPUT_GET, 'id');
             $backController->displayPostById($id);
         }
 
         // display page createPost 
         elseif($getAction == 'createPost'){
+            isAdmin();
             $backController->pageNewPost();
         }
 
         // create new post 
         elseif($getAction == 'addPost'){
+            isAdmin();
             $backController->createPost();
         }
+
 
         // display page update post 
         elseif($getAction == 'pageUpdatePost'){
@@ -278,6 +328,18 @@ try{
             $backController->updatePost($id, $titre, $chapo, $contenu);
         }
 
+        // delete post 
+        elseif($getAction == 'deletePost'){
+            isAdmin();
+            $id = filter_input(INPUT_GET, 'id');
+            $backController->deletePost($id);
+        }
+        // page not exist 
+        else{
+            throw new Exception("Cette page n'existe pas !");
+          }
+
+
     } else {
         $frontController->home();
     }
@@ -285,5 +347,12 @@ try{
 
 } catch (Exception $e) {
     eCatcher($e);
-    echo 'Erreur : '.$e->getMessage();
-}
+    if ($e->getCode() === 404) {
+        die('Erreur : ' . $e->getMessage());
+      } else {
+        require 'src/Views/Front/error/error404.php';
+      }}
+// } catch(Error $e) {
+//     eCatcher($e);
+//     require 'src/Views/Front/error/oups.php';
+// }

@@ -2,6 +2,7 @@
 
 namespace Blog\Controllers;
 
+use Exception;
 
 class FrontController 
 {
@@ -41,10 +42,11 @@ class FrontController
 
 
     // display page post 
-    function post()
+    function post($idPost)
     {
         // display post 
         $postManager = new \Blog\Models\PostManager();
+        if($postManager->exist_idPost($idPost)){
         $post = $postManager->displayPost();
 
         // create a comment
@@ -57,6 +59,9 @@ class FrontController
         $numberComment = $postManager->countComment();
 
         require 'src/Views/Front/post.php';
+        }else{
+            throw new Exception("L'article demandé n'existe pas !");
+        }
     }
 
      
@@ -112,7 +117,7 @@ class FrontController
     // unset($email);                 // vide/détruit ce qui est en mémoire
     // require 'src/Views/Front/home.php';
     // return $valide;
-    header("Location: index.php?action=sentMail");
+    header("Location: sentMail");
     
     } else{
         require 'src/Views/Front/home.php';
@@ -210,10 +215,10 @@ class FrontController
                 $_SESSION['pseudo'] = $result['pseudo'];
                 $_SESSION['role'] = $result['role'];
                 if($result['role'] == 0){
-                header("Location: index.php?action=dashboardUser");
+                header("Location: dashboardUser");
                 }
                 else{
-                    header('Location: index.php?action=dashboard');
+                    header('Location: dashboard');
             }
         } else {
             $erreur;
@@ -376,7 +381,7 @@ class FrontController
     {
         unset($_SESSION['id']); //détruit la session
         session_destroy();
-        header('Location: index.php?action=connexion');
+        header('Location: connexion');
 
     }
 }

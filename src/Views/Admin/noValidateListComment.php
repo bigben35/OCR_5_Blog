@@ -1,6 +1,6 @@
 <?php
 
-$title = "Page listant les commentaires du Blog";
+$title = "Page listant les commentaires non validés du Blog";
 $description = "Page listant les commentaires du Blog";
 ob_start();
 ?>
@@ -19,7 +19,7 @@ ob_start();
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($listComment as $comment) :?>
+                <?php foreach ($noValidateComment as $comment) :?>
                 <tr>
                     <td class="display-creation">
                         <p><?= htmlspecialchars($comment['pseudo']) ?></p>
@@ -34,9 +34,9 @@ ob_start();
                         <p class="max-content"><?= htmlspecialchars($comment['commentaire']) ?></p>
                     </td>
                     <div class="btn-comment">
-                        <td><a href="#" class="btn-action-admin">Voir</a></td>
+                        <td><a href="validateComment&id=<?= $comment['id']; ?>" class="validate btn-action-admin">Valider</a></td>
                         <td>
-                            <a href="deleteComment" class="btn-action-admin-red">Supprimer</a>
+                            <a href="deleteComment&id=<?= $comment['id']; ?>" class="delete btn-action-admin-red">Supprimer</a>
                         </td>
                     </div>
                 </tr>
@@ -45,5 +45,6 @@ ob_start();
         </table>
     </div>
 </section>
+<script src="Public/js/confirm.js" defer></script>
 <?php $content = ob_get_clean(); ?>
 <?php require 'layoutsAdmin/template.php'; 

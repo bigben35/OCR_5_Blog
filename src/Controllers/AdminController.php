@@ -2,6 +2,8 @@
 
 namespace Blog\Controllers;
 
+use Exception;
+
 class AdminController
 {
     // dashboard admin 
@@ -29,6 +31,7 @@ class AdminController
 
 
     // ==============EMAIL =================
+
     public function displayListEmail()
         {
             $adminManager = new \Blog\Models\AdminManager();
@@ -36,9 +39,35 @@ class AdminController
 
             require 'src/Views/Admin/listEmail.php';
         }
+    
+        // show an email 
+    public function showEmail($id, $isRead)
+    {
+        $email = new \Blog\Models\AdminManager();
+        if($email->exist_idEmail($id)){
+
+            if($isRead == 0){
+                $sawValidate = $email->sawEmail($id);
+            }
+            $sawEmail = $email->showOneEmail($id);
+            require 'src/Views/Admin/showEmail.php';
+        }else{
+            throw new Exception("L'Email demandé n'existe pas !");
+        }
+    }
+
+    // delete an email 
+    public function deleteEmail($id)
+    {
+        $email = new \Blog\Models\AdminManager();
+        $deleteEmail = $email->deleteOneEmail($id);
+
+        header("Location: listEmail");
+    }
 
     
     // ==============COMMENT =================
+    // display list comment 
      public function displayListComment()
      {
          $adminManager = new \Blog\Models\AdminManager();
@@ -46,6 +75,36 @@ class AdminController
 
          require 'src/Views/Admin/listComment.php';
      }
+
+
+    //  display list comment waiting for validation 
+     public function displayNoValidateComment()
+     {
+        $adminManager = new \Blog\Models\AdminManager();
+        $noValidateComment = $adminManager->noValidateComment();
+
+        require 'src/Views/Admin/noValidateListComment.php';
+     }
+
+    //  validate comment 
+     public function validateComment($id, $isValide)
+     {
+        $comment = new \Blog\Models\AdminManager();
+        if($isValide == 0){
+            $validateComment = $comment->validateOneComment($id);
+        }
+        $noValidateComment = $comment->noValidateComment();
+        require 'src/Views/Admin/noValidateListComment.php';
+       
+     }
+
+    //  delete comment 
+    public function deleteComment($id)
+    {
+        $comment = new \Blog\Models\AdminManager();
+        $deleteComment = $comment->deleteOneComment($id);
+        header("Location: noValidateComment");
+    }
 
 
      // ==============POSTS =================
@@ -112,6 +171,7 @@ class AdminController
      }
 
 
+
     //  display page update post 
     public function displayPageUpdatePost($id)
     {
@@ -154,6 +214,15 @@ class AdminController
             // echo "ne pas fonctionne !";
         }
        
+
+    //  delete a post 
+    public function deletePost($id)
+    {
+        $deletePost = $this->postManager->getPostById($id);
+        $this->postManager->deleteOnePost($id);
+
+        header("Location: listPosts");
+
     }
 
         

@@ -34,8 +34,8 @@ ob_start();
         <a href="home" class="retourAccueil">Retour à l'accueil</a>
 
         <p>Vous n'avez pas de compte ?</p>
-        <div><a href="index.php?action=createUser" class="createUser">Ici pour en créer un</a></div>
-        <a href="index.php?action=home" class="retourAccueil">Retour à l'accueil</a>
+        <div><a href="createUser" class="createUser">Ici pour en créer un</a></div>
+        <a href="home" class="retourAccueil">Retour à l'accueil</a>
 
     </div>
 </section>

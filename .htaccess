@@ -4,3 +4,18 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^(.*)$ index.php?action=$1
+
+
+# Protections diverses (XSS, clickjacking et MIME-Type sniffing)
+<IfModule mod_headers.c>
+Header set X-XSS-Protection "1; mode=block"
+Header always append X-Frame-Options SAMEORIGIN
+Header set X-Content-Type-Options: "nosniff”
+</IfModule>
+
+#Protection contre les injections de fichiers
+RewriteCond %{REQUEST_METHOD} GET
+RewriteCond %{QUERYSTRING} [a-zA-Z0-9]=http:// [OR]
+RewriteCond %{QUERYSTRING} [a-zA-Z0-9]=(..//?)+ [OR]
+RewriteCond %{QUERYSTRING} [a-zA-Z0-9]=/([a-z0-9_.]//?)+ [NC]
+RewriteRule .* - [F]

@@ -18,6 +18,9 @@ body {
 p {
   font-size: 16px;
 }
+.p-comment{
+  margin-bottom: 40px;
+}
 p.small {
   font-size: 12px;
 }
@@ -189,6 +192,10 @@ header .intro-text .skills {
 }
 section {
   padding: 100px 0;
+}
+
+#section-comment{
+  padding-top: 0;
 }
 section h2 {
   /* margin: 0; */

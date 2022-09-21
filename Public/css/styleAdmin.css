@@ -205,8 +205,8 @@ li{
     background-color: var(--mainSuperLightColor);
 }
 .page-list-admin a i{
-    font-size: 1.2rem;
-    padding: 10px;
+    font-size: 1.5rem;
+    padding: 13px;
 }
 .display-creation{
     display: none;
@@ -217,11 +217,72 @@ li{
 }
 
 
+/* PAGE LIST COMMENT  */
+.btn-comment{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 
 
+/* PAGE LIST EMAIL  */
+/* Table */
+
+.table {
+    display: grid;
+    grid-template-columns: 1.5fr 2.5fr 1fr;
+  }
+
+  .table-title {
+    font-size: 16px;
+    margin: 10px auto;
+  }
+  
+  .table-results {
+    grid-column: 1/-1;
+  }
+  
+  .table-item {
+    display: grid;
+    grid-template-columns: 1.5fr 2.5fr 1fr;
+    align-items: center;
+  }
+  
+  .gras {
+    font-weight: 800;
+  }
+  
+  .lu {
+    font-weight: 400;
+  }
+  
+  .table-results li{
+    text-align: center;
+  }
+
+  .btn i{
+    font-size: 2rem;
+  }
+
+  /* SHOW EMAIL  */
+  #read-email {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    padding: 15px 10px;
+    background: var(--bg-primary);
+    padding: 20px;
+  }
+  #read-email .username {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+  }
+  #read-email li:nth-child(3) {
+    margin-top: 10px;
+  }
 
 
-
+  
 /* MEDIA QUERIES  */
 @media screen and (min-width: 768px){
     .section-dashboard-admin{
@@ -239,6 +300,15 @@ li{
       .display-creation{
         display: block;
     }
+
+    /* PAGE LIST EMAIL  */
+    .table-item {
+        grid-template-columns: 1fr 2fr 1fr 1fr;
+    }
+    .table {
+        grid-template-columns: 1fr 2fr 1fr 1fr;
+    }
+
 }
 
 @media screen and (min-width: 1024px){

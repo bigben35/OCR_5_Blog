@@ -8,44 +8,36 @@ ob_start();
 <section class="section-article-admin">
     <h1>liste Email:</h1>
     <div class="centrer-tableau">
-        <table class="page-list-admin">
-            <thead>
-                <tr>
-                    <th class="display-creation">Date envoi</th>
-                    <th class="display-creation">Nom</th>
-                    <th class="display-creation">Prénom</th>
-                    <th>E-mail</th>
-                    <th colspan="2">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($listEmail as $email) :?>
-                <tr>
-                    <td class="display-creation">
-                        <p><?= htmlspecialchars($email['dateCreation']) ?></p>
-                    </td>
-                    <td class="display-creation">
-                        <p><?= htmlspecialchars($email['nom']) ?></p>
-                    </td>
-                    <td class="display-creation">
-                        <p><?= htmlspecialchars($email['prenom']) ?></p>
-                    </td>
-                    <td>
-                        <p><?= htmlspecialchars($email['email']) ?></p>
-                    </td>
-        
-                    <span class="display-action">
-                        <td><a href="montrerMail&id=<?= $email['id'] ?>"><i
-                                    class="fa-solid fa-eye"></i></a>
-                            <a href="supprimerMail&id=<?= $email['id'] ?>"><i
-                                    class="fa-solid fa-trash-can"></i></a>
-
-                        </td>
-                    </span>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+    <div class="table">
+        <h3 class="table-title">Prénom et Nom</h3>
+        <h3 class="table-title display-creation">Contenu de l'email</h3>
+        <h3 class="table-title">Publié le</h3>
+        <h3 class="table-title">Action</h3>
+    </div>
+    <div class="bg">
+        <?php foreach ($listEmail as $email) : ?>
+        <div class="table-results">
+            <?php if($email['estVu'] == 0 ):?>
+            <ul class="table-item gras">
+                <?php else: ?>
+                <ul class="table-item lu">
+                    <?php endif; ?>
+                    <li><?= $email["prenom"] . " " . $email["nom"] ?></li>
+                    <li class="display-creation"><?= substr($email["message"], 0, 80) . "..."; ?></li>
+                    <li><?= $email["dateCreation"]?></li>
+                    <li class="flex">
+                        <span class="btn"><a
+                                href="showEmail&id=<?= $email['id']?>"
+                                title="Voir"><i class="fa-solid fa-eye"></i></a></span>
+                        <span class="btn"><a class="delete"
+                                href="deleteEmail&id=<?= $email['id'] ?>" title="Supprimer"
+                                ><i class="fa-solid fa-trash-can"></i></a></span>
+                    </li>
+                </ul>
+        </div>
+        <?php endforeach; ?>
+    </div>
+       
     </div>
 </section>
 <?php $content = ob_get_clean(); ?>

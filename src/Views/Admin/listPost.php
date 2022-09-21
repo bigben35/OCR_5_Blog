@@ -25,8 +25,8 @@ ob_start();
                 <td class="action-list-admin"><a
                         href="pageUpdatePost&id=<?= $posts[$i]->getId(); ?>" class="btn-action-admin">Modifier</a>
 
-                    <a href="#"
-                        class="btn-action-admin-red">Supprimer</a>
+                    <a href="deletePost&id=<?= $posts[$i]->getId(); ?>"
+                        class="delete btn-action-admin-red">Supprimer</a>
                 </td>
             </tr>
             <?php endfor; ?>
@@ -35,5 +35,6 @@ ob_start();
     </div>
 </section>
 
+<script src="Public/js/confirm.js" defer></script>
 <?php $content = ob_get_clean(); ?>
 <?php require 'layoutsAdmin/template.php'; 
