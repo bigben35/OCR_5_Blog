@@ -271,7 +271,11 @@ try{
           // update post 
           elseif($getAction == 'updatePost'){
             $titre = filter_input(INPUT_POST, 'titre');
-            $backController->updatePost($titre);
+            $chapo = filter_input(INPUT_POST, 'chapo');
+            $contenu = filter_input(INPUT_POST, 'contenu');
+            $id = filter_input(INPUT_GET, 'id');
+            // var_dump($titre, $chapo, $contenu, $id);die;
+            $backController->updatePost($id, $titre, $chapo, $contenu);
         }
 
     } else {

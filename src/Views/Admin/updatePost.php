@@ -7,16 +7,18 @@ ob_start();
 <div class="container text-center">
     <h1>Modifier un Article :</h1>
     <form method="POST" action="updatePost&id=<?= $post->getId(); ?>">
-    <?php if (isset($erreur)):
-                if($erreur): 
-                    foreach($erreur as $e):
+    <?php if (isset($_SESSION['errors'])):
+                if($_SESSION['errors']): 
+                    foreach($_SESSION['errors'] as $e):
                     ?>
         <p class="msg-error"><?= $e ?></p>
         <?php
                 endforeach;
                 endif;
             endif;
+            unset($_SESSION['errors']);
             ?>
+
  <?php if (isset($valide)):
                 if($valide): 
                     

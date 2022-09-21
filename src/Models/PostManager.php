@@ -222,13 +222,14 @@ class PostManager extends Manager
         $req->bindValue(":titre", $titre, \PDO::PARAM_STR);
         $req->bindValue(":chapo", $chapo, \PDO::PARAM_STR);
         $req->bindValue(":contenu", $contenu, \PDO::PARAM_STR);
-        // $req->bindValue(":dateModif", time(), \PDO::PARAM_STR);
+        // $req->bindValue(":dateModif", new \Datetime());
+        $req->bindValue(":id", $id, \PDO::PARAM_INT);
 
         $data = [
             ':titre' => $titre,
             ':chapo' => $chapo,
             ':contenu' => $contenu,
-            // ':dateModif' => time(),
+            // ':dateModif' => new \Datetime(),
             ':id' => $id
             // ':dateModif' => $dateModif
         ];

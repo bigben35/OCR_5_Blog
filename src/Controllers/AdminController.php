@@ -122,39 +122,39 @@ class AdminController
     }
 
     // update post 
-    public function updatePost($titre)
+    public function updatePost($id, $titre, $chapo, $contenu)
     {
         // extract($_POST);
         $validation = true;
-        $erreur = [];
+        $_SESSION['errors'] = [];
         // $valide = [];
         
-
+        // var_dump($validation, $titre, $chapo, $contenu);
         if(empty($titre) || empty($chapo) || empty($contenu)) {
             $validation = false;
-            $erreur[] = "Tous les champs sont requis !";
+            $_SESSION['errors'][] = "Tous les champs sont requis !";
         }
+        // var_dump($validation);die;
         if($this->postManager->existTitle($titre)){
             $validation = false;
-            $erreur[] = "Ce titre est déjà utilisé !";
+            $_SESSION['errors'][] = "Ce titre est déjà utilisé !";
         }
     
-        var_dump($validation);die;
         if($validation){
-            // $updatePost = $this->postManager->updatePost($_POST['id'], $_POST['titre'], $_POST['chapo'], $_POST['contenu']);
-            // header("Location: listPosts");
+            $updatePost = $this->postManager->updatePost($id, $titre, $chapo, $contenu);
+            header("Location: listPosts");
             echo "fonctionne!";
             
-        // } else{
-        //     // $id = filter_input(INPUT_GET, 'id');
+        } else{
+            $id = filter_input(INPUT_GET, 'id');
             
-        //     // // $updatePost = $this->postManager->getPostById($id);
-        //     // header("location:".  $_SERVER['HTTP_REFERER']);
-        //     // return $erreur;
-        //     echo "ne pas fonctionne !";
-        // }
+            // $updatePost = $this->postManager->getPostById($id);
+            header("location:".  $_SERVER['HTTP_REFERER']);
+           
+            // echo "ne pas fonctionne !";
+        }
        
     }
 
         
-    }}
+    }
