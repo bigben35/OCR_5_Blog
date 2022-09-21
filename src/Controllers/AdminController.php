@@ -171,6 +171,50 @@ class AdminController
      }
 
 
+
+    //  display page update post 
+    public function displayPageUpdatePost($id)
+    {
+        $updatePost = $this->postManager->getPostById($id);
+        $post = new \Blog\Models\Post($updatePost['id'], $updatePost['titre'], $updatePost['chapo'], $updatePost['contenu'], $updatePost['auteur'], $updatePost['dateCreation'], $updatePost['dateModif']);
+
+        require 'src/Views/Admin/updatePost.php';
+    }
+
+    // update post 
+    public function updatePost($id, $titre, $chapo, $contenu)
+    {
+        // extract($_POST);
+        $validation = true;
+        $_SESSION['errors'] = [];
+        // $valide = [];
+        
+        // var_dump($validation, $titre, $chapo, $contenu);
+        if(empty($titre) || empty($chapo) || empty($contenu)) {
+            $validation = false;
+            $_SESSION['errors'][] = "Tous les champs sont requis !";
+        }
+        // var_dump($validation);die;
+        if($this->postManager->existTitle($titre)){
+            $validation = false;
+            $_SESSION['errors'][] = "Ce titre est déjà utilisé !";
+        }
+    
+        if($validation){
+            $updatePost = $this->postManager->updatePost($id, $titre, $chapo, $contenu);
+            header("Location: listPosts");
+            echo "fonctionne!";
+            
+        } else{
+            $id = filter_input(INPUT_GET, 'id');
+            
+            // $updatePost = $this->postManager->getPostById($id);
+            header("location:".  $_SERVER['HTTP_REFERER']);
+           
+            // echo "ne pas fonctionne !";
+        }
+       
+
     //  delete a post 
     public function deletePost($id)
     {
@@ -178,7 +222,8 @@ class AdminController
         $this->postManager->deleteOnePost($id);
 
         header("Location: listPosts");
+
     }
 
         
-}
+    }

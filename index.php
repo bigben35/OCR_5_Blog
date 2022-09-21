@@ -292,6 +292,7 @@ try{
             $backController->displayListPost();
         }
 
+        // page one post 
         elseif($getAction == 'onePost'){
             isAdmin();
             $id = filter_input(INPUT_GET, 'id');
@@ -310,6 +311,23 @@ try{
             $backController->createPost();
         }
 
+
+        // display page update post 
+        elseif($getAction == 'pageUpdatePost'){
+            $id = filter_input(INPUT_GET, 'id');
+            $backController->displayPageUpdatePost($id);
+        }
+
+          // update post 
+          elseif($getAction == 'updatePost'){
+            $titre = filter_input(INPUT_POST, 'titre');
+            $chapo = filter_input(INPUT_POST, 'chapo');
+            $contenu = filter_input(INPUT_POST, 'contenu');
+            $id = filter_input(INPUT_GET, 'id');
+            // var_dump($titre, $chapo, $contenu, $id);die;
+            $backController->updatePost($id, $titre, $chapo, $contenu);
+        }
+
         // delete post 
         elseif($getAction == 'deletePost'){
             isAdmin();
@@ -320,6 +338,7 @@ try{
         else{
             throw new Exception("Cette page n'existe pas !");
           }
+
 
     } else {
         $frontController->home();

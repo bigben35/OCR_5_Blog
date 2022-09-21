@@ -23,7 +23,7 @@ ob_start();
                 </td>
                 <td class="display-creation"><?= $posts[$i]->getDateCreation(); ?></td>
                 <td class="action-list-admin"><a
-                        href="#" class="btn-action-admin">Modifier</a>
+                        href="pageUpdatePost&id=<?= $posts[$i]->getId(); ?>" class="btn-action-admin">Modifier</a>
 
                     <a href="deletePost&id=<?= $posts[$i]->getId(); ?>"
                         class="delete btn-action-admin-red">Supprimer</a>

@@ -215,13 +215,38 @@ class PostManager extends Manager
     public function existTitle($titre)
     {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare("SELECT COUNT(id) FROM article WHERE titre =?");
+        $req = $bdd->prepare("SELECT COUNT(id) FROM article WHERE titre = ?");
 
         $req->execute([$titre]);
         $result = $req->fetch()[0];
         return $result;
     }
 
+
+
+    // update a post 
+    public function updatePost($id, $titre, $chapo, $contenu)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare("UPDATE article SET titre = :titre, chapo = :chapo, contenu = :contenu WHERE id = :id");
+
+        $req->bindValue(":titre", $titre, \PDO::PARAM_STR);
+        $req->bindValue(":chapo", $chapo, \PDO::PARAM_STR);
+        $req->bindValue(":contenu", $contenu, \PDO::PARAM_STR);
+        // $req->bindValue(":dateModif", new \Datetime());
+        $req->bindValue(":id", $id, \PDO::PARAM_INT);
+
+        $data = [
+            ':titre' => $titre,
+            ':chapo' => $chapo,
+            ':contenu' => $contenu,
+            // ':dateModif' => new \Datetime(),
+            ':id' => $id
+            // ':dateModif' => $dateModif
+        ];
+
+        $req->execute($data);
+        $req->closeCursor();
 
     // function to delete post 
     public function deleteOnePost($id)
@@ -235,5 +260,6 @@ class PostManager extends Manager
             $post = $this->getPostById($id);
             unset($post);
         }
+
     }
 }
