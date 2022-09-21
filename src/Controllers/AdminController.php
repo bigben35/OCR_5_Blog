@@ -214,7 +214,8 @@ class AdminController
             // echo "ne pas fonctionne !";
         }
        
-
+    }
+    
     //  delete a post 
     public function deletePost($id)
     {
