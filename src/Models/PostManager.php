@@ -247,6 +247,7 @@ class PostManager extends Manager
 
         $req->execute($data);
         $req->closeCursor();
+    }
 
     // function to delete post 
     public function deleteOnePost($id)
