@@ -39,7 +39,7 @@ ob_start();
             if($postComment['estValide'] == 1): ?>
         <div>
             <p><strong> Posté par <?= $postComment['pseudo'] ?> le <time
-                        datetime="<? $postComment['dateCreation']; ?>"><?= $postComment['dateCreation']; ?></time>
+                        datetime="<?= $postComment['dateCreation']; ?>"><?= $postComment['dateCreation']; ?></time>
                     :</strong>
             </p>
 
