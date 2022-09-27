@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/60ce6db195f24e1c86d601befca671ed)](https://app.codacy.com/gh/bigben35/OCR_5_Blog?utm_source=github.com&utm_medium=referral&utm_content=bigben35/OCR_5_Blog&utm_campaign=Badge_Grade_Settings)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d489ad4a581449b3a25d2b15d52fa721)](https://www.codacy.com/gh/bigben35/OCR_5_Blog/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bigben35/OCR_5_Blog&amp;utm_campaign=Badge_Grade)
 
 # OCR_5_Blog
