@@ -56,16 +56,16 @@ ob_start();
                 <hr class="star-primary">
             </div>
         </div>
-        <div class="row">
+        <div class="post-container">
             <?php foreach ($lastPosts as $lastPost){
                     ?>
 
 
-            <article class="col-sm-4 portfolio-item">
+            <article class="post-card">
                 <div class="content-post">
                     <p class="date-post"> Posté le <time><?= $lastPost['dateModif']; ?></time></p>
-                    <h3><?= $lastPost['titre']; ?></h3>
-                    <p><?= $lastPost['chapo']; ?></p>
+                    <h3 class="title-post"><?= $lastPost['titre']; ?></h3>
+                    <p class="chapo"><?= $lastPost['chapo']; ?></p>
                 </div>
 
                 <a href="post&id=<?= $lastPost['id']; ?>" class="btn btn-success btn-lg">Voir

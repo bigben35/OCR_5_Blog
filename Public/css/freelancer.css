@@ -569,6 +569,39 @@ fieldset[disabled] .btn-success.active {
 }
 
 
+/* PAGE HOME POSTS  */
+.post-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 20px 0 50px;
+}
+.post-card{
+  background-color: white;
+  border-radius: 20px;
+  transition: 0.5s;
+  color: var(--mainColor);
+}
+.post-card:hover{
+  box-shadow: 0 4px 20px 0 rgba(34, 68, 123, 0.2);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.content-post{
+  padding: 2rem;
+}
+.title-post{
+  margin: 1rem 0;
+  color: var(--mainColor);
+  font-size: 1.7rem;
+}
+.chapo{
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  margin: 0;
+}
+
 
 
 /* -------------- PAGE 404 --------------  */
@@ -645,4 +678,14 @@ a{
   color: var(--mainColor);
   background-color: var(--bg-primary);
   border: 3px solid var(--mainColor);
+}
+
+
+
+/* MEDIA QUERIES  */
+@media screen and (max-width: 992px){
+  /* PAGE HOME POST  */
+  .post-container {
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  }
 }

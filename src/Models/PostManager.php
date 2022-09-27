@@ -41,7 +41,7 @@ class PostManager extends Manager
     public function postsPerPage($firstPost, $perPage)
     {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateModif, '%d-%m-%Y %H:%i:%s') as dateModif FROM article
+        $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateModif, '%d-%m-%Y') as dateModif FROM article
         ORDER BY dateModif
         DESC LIMIT :firstPost, :perPage");
         $req->bindValue(':firstPost', $firstPost, \PDO::PARAM_INT);
@@ -60,7 +60,7 @@ class PostManager extends Manager
         $getId = filter_input(INPUT_GET, 'id');
         $id = filter_var($getId, FILTER_SANITIZE_NUMBER_INT);
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateModif, '%d-%m-%Y %H:%i:%s') as dateModif FROM article WHERE id =?");
+        $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateModif, '%d-%m-%Y') as dateModif FROM article WHERE id =?");
         $req->execute([$id]);
 
         return $req->fetch();
@@ -102,7 +102,7 @@ class PostManager extends Manager
 
                 $req->execute();
 
-                $valide = "Votre commentaire a bien été envoyé !";
+                // $valide = "Votre commentaire a bien été envoyé !";
                 header("Location: sentComment");
                 
                 
@@ -178,7 +178,7 @@ class PostManager extends Manager
     public function loadingPosts()
     {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateCreation, '%d-%m-%Y') AS dateCreation FROM article ORDER BY id DESC");
+        $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateModif, '%d-%m-%Y') AS dateModif FROM article ORDER BY dateModif DESC");
         $req->execute();
         $allPosts = $req->fetchAll(\PDO::FETCH_ASSOC);
         $req->closeCursor();
@@ -193,7 +193,7 @@ class PostManager extends Manager
     public function getPostById($id)
     {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateCreation, '%d-%m-%Y') AS dateCreation FROM article WHERE id=?");
+        $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateModif, '%d-%m-%Y') AS dateModif FROM article WHERE id=?");
         $req->execute(array($id));
         return $req->fetch();
     }
@@ -238,19 +238,19 @@ class PostManager extends Manager
         $date = new DateTime();
         $dateModif = $date->format('d/m/Y');
         // var_dump($date);die;
-        $req = $bdd->prepare("UPDATE article SET titre = :titre, chapo = :chapo, contenu = :contenu, :dateModif = dateModif WHERE id = :id");
+        $req = $bdd->prepare("UPDATE article SET titre = :titre, chapo = :chapo, contenu = :contenu, dateModif = NOW() WHERE id = :id");
 
         $req->bindValue(":titre", $titre, \PDO::PARAM_STR);
         $req->bindValue(":chapo", $chapo, \PDO::PARAM_STR);
         $req->bindValue(":contenu", $contenu, \PDO::PARAM_STR);
-        $req->bindValue(":dateModif", $dateModif, \PDO::PARAM_STR);
+        // $req->bindValue(":dateModif", $dateModif, \PDO::PARAM_STR);
         $req->bindValue(":id", $id, \PDO::PARAM_INT);
 
         $data = [
             ':titre' => $titre,
             ':chapo' => $chapo,
             ':contenu' => $contenu,
-            ':dateModif' => $dateModif,
+            // ':dateModif' => $dateModif,
             // ':dateModif' => $dateModif,
             ':id' => $id
         ];

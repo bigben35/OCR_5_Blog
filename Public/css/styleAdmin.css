@@ -285,11 +285,14 @@ li{
   /* PAGE POST BY ID  */
   .section-article-admin{
     text-align: center;
+    margin: 1rem;
   }
   .section-article-admin p{
     font-weight: 700;
   }
-
+  .title-page-one-post{
+    font-size: 2rem;
+  }
 
   
 /* MEDIA QUERIES  */

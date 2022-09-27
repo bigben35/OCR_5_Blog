@@ -13,16 +13,16 @@ ob_start();
                 <hr class="star-primary">
             </div>
         </div>
-        <div class="row article-container">
+        <div class="post-container">
             <?php foreach ($posts as $post){
                     ?>
 
 
-            <article class="col-sm-4 portfolio-item">
+            <article class="post-card">
                 <div class="content-post">
                     <p class="date-post"> Posté le <time><?= $post['dateModif']; ?></time></p>
-                    <h3><?= $post['titre']; ?></h3>
-                    <p><?= $post['chapo']; ?></p>
+                    <h3 class="title-post"><?= $post['titre']; ?></h3>
+                    <p class="chapo"><?= $post['chapo']; ?></p>
                 </div>
 
                 <a href="post&id=<?= $post['id']; ?>" class="btn btn-success btn-lg">Voir

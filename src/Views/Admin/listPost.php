@@ -12,7 +12,7 @@ ob_start();
             <thead>
                 <tr>
                     <th>Titre</th>
-                    <th class="display-creation">Date de création</th>
+                    <th class="display-creation">Date de Modification</th>
                     <th colspan="2">Actions</th>
                 </tr>
             </thead>
@@ -21,7 +21,7 @@ ob_start();
                 <td><a title="afficher l'article"
                         href="onePost&id=<?= $posts[$i]->getId(); ?>"><?= $posts[$i]->getTitre(); ?></a>
                 </td>
-                <td class="display-creation"><?= $posts[$i]->getDateCreation(); ?></td>
+                <td class="display-creation"><?= $posts[$i]->getDateModif(); ?></td>
                 <td class="action-list-admin"><a
                         href="pageUpdatePost&id=<?= $posts[$i]->getId(); ?>" class="btn-action-admin">Modifier</a>
 
