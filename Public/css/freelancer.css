@@ -9,6 +9,16 @@
   --mainLightColor: #62cfb9;
   --mainSuperLightColor: #ace3d8;
   --bodyColor: #f4f7f7;
+  --bg-primary: #e5e5e5;
+  --text-secondary: #fff;
+  
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
 }
 
 body {
@@ -348,6 +358,7 @@ footer .footer-below {
   background-color: #2C3E50;
   border-color: #2C3E50;
   font-weight: 700;
+  margin-bottom: 20px;
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -390,6 +401,7 @@ fieldset[disabled] .btn-primary.active {
   background-color: #18BC9C;
   border-color: #18BC9C;
   font-weight: 700;
+  margin-bottom: 20px;
 }
 .btn-success:hover,
 .btn-success:focus,
@@ -521,21 +533,116 @@ fieldset[disabled] .btn-success.active {
 }
 
 
-/* --------PAGE CONFIRM  SENT MAIL-------  */
-#section-confirm-mail{
+/* --------PAGE CONFIRM  SENT MAIL & SENT COMMENT -------  */
+#section-confirm-msg{
   height: 60vh;
   margin: 10px;
 }
-#section-confirm-mail h1{
+#section-confirm-msg h1{
   font-size: 3rem;
 }
-#section-confirm-mail a{
+#section-confirm-msg p{
+  font-size: 20px;
+}
+#section-confirm-msg a{
   color: var(--mainColor);
   padding: 5px;
   font-size: 1.5rem;
 }
-#section-confirm-mail a:hover{
+#section-confirm-msg a:hover{
   background-color: var(--mainColor);
   color: white;
   transition: 0.3s;
+}
+
+
+/* PAGE CONNEXION  */
+.lien-connexion{
+  margin-bottom: 10px;
+}
+
+/* PAGE COMPTE USER   */
+.date-com{
+  margin-bottom: 5px;
+  font-weight: 700;
+
+}
+
+
+
+
+/* -------------- PAGE 404 --------------  */
+
+#page-404 {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background: url("../img/bg-404page.jpg") no-repeat center;
+}
+
+#page-404 h1 {
+    width: 100%;
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.txt-error {
+  width: 90%;
+  margin: 0 auto;
+  padding: 25px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid var(--mainColor);
+  border-radius: 10px;
+  background-color: #1a1a1ab0;
+}
+
+.txt-error h1 {
+  width: 100%;
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin: 0 auto 30px;
+  color: var(--text-secondary);
+}
+
+.txt-error p,
+.txt-error a {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.txt-error p {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.txt-error p:last-of-type {
+  margin-bottom: 25px;
+}
+
+a{
+  text-decoration: none;
+}
+
+.txt-error a {
+  width: 45%;
+  padding: 15px;
+  margin: 20px auto 5px;
+  border: 3px solid var(--text-secondary);
+  border-radius: 5px;
+  text-align: center;
+}
+
+.txt-error a:hover {
+  color: var(--mainColor);
+  background-color: var(--bg-primary);
+  border: 3px solid var(--mainColor);
 }

@@ -53,8 +53,8 @@ ob_start();
             <button type="submit" class="btn btn-primary">Créer un compte</button>
         </form>
         <p>Vous avez un compte ?</p>
-        <div><a href="connexion" class="createUser">Ici pour vous connecter à votre compte</a></div>
-        <a href="home" class="retourAccueil">Retour à l'accueil</a>
+        <div class="lien-connexion"><a href="connexion" class="createUser">Ici pour vous connecter à votre compte</a></div>
+        <div class="lien-connexion"><a href="home" class="retourAccueil">Retour à l'accueil</a></div>
     </div>
 </section>
 

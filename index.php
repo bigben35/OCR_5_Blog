@@ -68,6 +68,7 @@ try{
         // display page post 
         elseif($getAction == 'post'){
             $id = filter_input(INPUT_GET, 'id');
+            // $commentaire = htmlspecialchars(filter_input(INPUT_POST, 'commentaire'));
             if(!$id){
                 header("Location: blog");
             }
@@ -79,6 +80,8 @@ try{
 
         elseif($getAction == 'post&id='){
             $id = filter_input(INPUT_GET, 'id');
+            // $commentaire = htmlspecialchars(filter_input(INPUT_POST, 'commentaire'));
+
             $frontController->post($id);
             
         }
@@ -87,6 +90,12 @@ try{
         // display page sentMail 
         elseif($getAction == 'sentMail'){
             $frontController->sentMail();
+
+        }
+
+         // display page sentComment 
+         elseif($getAction == 'sentComment'){
+            $frontController->sentComment();
 
         }
 
@@ -296,7 +305,8 @@ try{
         elseif($getAction == 'onePost'){
             isAdmin();
             $id = filter_input(INPUT_GET, 'id');
-            $backController->displayPostById($id);
+            $idPost = filter_input(INPUT_GET, 'id');
+            $backController->displayPostById($id, $idPost);
         }
 
         // display page createPost 
@@ -315,7 +325,8 @@ try{
         // display page update post 
         elseif($getAction == 'pageUpdatePost'){
             $id = filter_input(INPUT_GET, 'id');
-            $backController->displayPageUpdatePost($id);
+            $idPost = filter_input(INPUT_GET, 'id');
+            $backController->displayPageUpdatePost($id, $idPost);
         }
 
           // update post 
@@ -351,8 +362,5 @@ try{
         die('Erreur : ' . $e->getMessage());
       } else {
         require 'src/Views/Front/error/error404.php';
-      }}
-// } catch(Error $e) {
-//     eCatcher($e);
-//     require 'src/Views/Front/error/oups.php';
-// }
+      }
+} 

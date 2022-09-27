@@ -31,11 +31,10 @@ ob_start();
             <button type="submit" class="btn btn-primary">Connexion</button>
         </form>
 
-        <a href="home" class="retourAccueil">Retour à l'accueil</a>
 
         <p>Vous n'avez pas de compte ?</p>
-        <div><a href="createUser" class="createUser">Ici pour en créer un</a></div>
-        <a href="home" class="retourAccueil">Retour à l'accueil</a>
+        <div class="lien-connexion"><a href="createUser" class="createUser">Ici pour en créer un</a></div>
+        <div class="lien-connexion"><a href="home" class="retourAccueil">Retour à l'accueil</a></div>
 
     </div>
 </section>

@@ -26,11 +26,11 @@ ob_start();
         </div>
         <div class="form-group">
             <label for="chapo">Chapô:</label>
-            <input type="text" class="form-control" name="chapo" id="chapo" required />
+            <textarea class="form-control" name="chapo" id="chapo" cols="30" rows="10" required></textarea>
         </div>
         <div class="form-group">
             <label for="contenu">Contenu:</label>
-            <input type="text" class="form-control" name="contenu" id="contenu" required />
+            <textarea class="form-control" name="contenu" id="contenu" cols="30" rows="10" required></textarea>
         </div>
         <div class="form-group">
             <label for="auteur">Auteur:</label>

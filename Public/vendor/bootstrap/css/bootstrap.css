@@ -1291,7 +1291,7 @@ h6,
   font-size: 12px;
 }
 p {
-  margin: 0 0 10px;
+  margin: 0 0 15px;
 }
 .lead {
   margin-bottom: 20px;
@@ -1808,7 +1808,7 @@ pre code {
   }
   .col-sm-4 {
     width: 33.33333333%;
-    height: 250px;
+    margin-bottom: 30px;
   }
   .col-sm-3 {
     width: 25%;
@@ -2636,7 +2636,7 @@ input[type="search"] {
   }
 }
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 .radio,
 .checkbox {
@@ -3122,8 +3122,10 @@ fieldset[disabled] .btn-default.focus {
 }
 .btn-primary {
   color: #fff;
-  background-color: #337ab7;
-  border-color: #2e6da4;
+  background-color: #18bc9c;
+  border-color: #18bc9c;
+  margin-bottom: 35px;
+  font-weight: 700;
 }
 .btn-primary:focus,
 .btn-primary.focus {
@@ -6849,4 +6851,23 @@ textarea.comment{
   display: block;
   margin: 0 auto;
   margin-top: 30px;
+}
+
+
+/* PAGE BLOG  */
+/* .article-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+
+} */
+.portfolio-item{
+  /* background-color: white; */
+  border-radius: 20px;
+  transition: 0.4s;
+}
+.portfolio-item:hover{
+  box-shadow: 0 4px 20px 0 rgba(34, 68, 123, 0.3);
+  transform: scale(1.03);
+  cursor: pointer;
 }

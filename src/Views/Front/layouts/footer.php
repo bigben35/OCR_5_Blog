@@ -7,13 +7,10 @@
                      <h3>Me Trouver</h3>
                      <ul class="list-inline">
                          <li>
-                             <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                             <a href="https://github.com/bigben35" class="btn-social btn-outline" target="_blank"><i class="fa fa-fw fa-github"></i></a>
                          </li>
                          <li>
-                             <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
-                         </li>
-                         <li>
-                             <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                             <a href="https://www.linkedin.com/in/josselin-crenn/" class="btn-social btn-outline" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a>
                          </li>
                         
                      </ul>

@@ -4,7 +4,7 @@ namespace Blog\Controllers;
 
 use Exception;
 
-class FrontController 
+class FrontController
 {
     // display page home 
     function home()
@@ -46,12 +46,13 @@ class FrontController
     {
         // display post 
         $postManager = new \Blog\Models\PostManager();
+        
         if($postManager->exist_idPost($idPost)){
         $post = $postManager->displayPost();
 
         // create a comment
         $comments = $postManager->comment();
-
+        
         // display post comments 
         $postComments = $postManager->getComment();
 
@@ -64,6 +65,11 @@ class FrontController
         }
     }
 
+    // display sentComment page 
+    function sentComment()
+    {
+        require 'src/Views/Front/sentComment.php';
+    }
      
     
     // contact form 
@@ -235,9 +241,16 @@ class FrontController
     function dashboardUser($id)
     {
         $postManager = new \Blog\Models\PostManager();
-        $comment = $postManager->commentUser();
+        $userManager = new \Blog\Models\UserManager();
+        if($userManager->existIdUser($id)){
+
+            $comment = $postManager->commentUser();
+            require 'src/Views/Front/dashboardUser.php';
+        } else{
+            require 'src/Views/Front/error/error404.php';
+        }
         
-        require 'src/Views/Front/dashboardUser.php';
+        
     }
 
     // display page update pseudo user 

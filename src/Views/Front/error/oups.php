@@ -1,1 +1,0 @@
-<h1>oups, Nos développeurs sont sur le coup !</h1>

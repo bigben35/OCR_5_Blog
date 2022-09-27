@@ -1,6 +1,9 @@
 <?php
 
 namespace Blog\Models;
+
+use DateTime;
+
 require_once 'src/Models/ClassPost.php';
 
 
@@ -82,8 +85,9 @@ class PostManager extends Manager
         if(isset($_SESSION['id'])){
             $bdd = $this->dbConnect();
             extract($_POST);
-
-            $erreur ="Vous devez entrer un commentaire !";
+            $erreur = [];
+            
+            
 
             if(!empty($commentaire)){
                 $getId = filter_input(INPUT_GET, 'id');
@@ -98,12 +102,15 @@ class PostManager extends Manager
 
                 $req->execute();
 
-                header("Location: post&id=".$id);
+                $valide = "Votre commentaire a bien été envoyé !";
+                header("Location: sentComment");
+                
+                
             }
             else{
-                
-                return $erreur;
+                $erreur[] ="Vous devez entrer un commentaire !";
             }
+            return $erreur;
         }
     }
 
@@ -228,21 +235,24 @@ class PostManager extends Manager
     public function updatePost($id, $titre, $chapo, $contenu)
     {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare("UPDATE article SET titre = :titre, chapo = :chapo, contenu = :contenu WHERE id = :id");
+        $date = new DateTime();
+        $dateModif = $date->format('d/m/Y');
+        // var_dump($date);die;
+        $req = $bdd->prepare("UPDATE article SET titre = :titre, chapo = :chapo, contenu = :contenu, :dateModif = dateModif WHERE id = :id");
 
         $req->bindValue(":titre", $titre, \PDO::PARAM_STR);
         $req->bindValue(":chapo", $chapo, \PDO::PARAM_STR);
         $req->bindValue(":contenu", $contenu, \PDO::PARAM_STR);
-        // $req->bindValue(":dateModif", new \Datetime());
+        $req->bindValue(":dateModif", $dateModif, \PDO::PARAM_STR);
         $req->bindValue(":id", $id, \PDO::PARAM_INT);
 
         $data = [
             ':titre' => $titre,
             ':chapo' => $chapo,
             ':contenu' => $contenu,
-            // ':dateModif' => new \Datetime(),
+            ':dateModif' => $dateModif,
+            // ':dateModif' => $dateModif,
             ':id' => $id
-            // ':dateModif' => $dateModif
         ];
 
         $req->execute($data);

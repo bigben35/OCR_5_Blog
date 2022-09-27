@@ -23,13 +23,12 @@ ob_start();
                 class="btn btn-success btn-lg">Modifier votre pseudo</a>
         </div>
         <div>
-            <h2>Votre Email : <?= $_SESSION['email'] ?></h2>
             <a href="pageUpdateEmail&id=<?= $_SESSION['id'] ?>" class="btn btn-success btn-lg">Modifier
                 votre email</a>
         </div>
 
-        <a class="btn btn-success btn-lg" href="pageUpdatePassword&id=<?= $_SESSION['id'] ?>"
-            >Modifier votre mot de passe</a>
+        <div><a class="btn btn-success btn-lg" href="pageUpdatePassword&id=<?= $_SESSION['id'] ?>"
+            >Modifier votre mot de passe</a></div>
 
         <h2>Vos commentaires :</h2>
         <div>

@@ -9,7 +9,7 @@ ob_start();
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <img class="img-responsive" src="img/profile.png" alt="">
+                <img class="img-responsive" src="Public/img/photo-profil.jpg" alt="image du propriétaire du site web">
                 <div class="intro-text">
                     <span class="name">Josselin Crenn</span>
                     <hr class="star-light">

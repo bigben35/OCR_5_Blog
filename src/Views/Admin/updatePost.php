@@ -36,16 +36,16 @@ ob_start();
         </div>
         <div class="form-group">
             <label for="chapo">Chapô : </label>
-            <input class="form-control" type="text" name="chapo" id="chapo" value="<?= $post->getChapo(); ?>">
+            <textarea class="form-control" name="chapo" id="chapo" cols="30" rows="10"><?= $post->getChapo(); ?></textarea>
         </div>
         <div class="form-group">
             <label for="contenu">Contenu : </label>
-            <textarea name="contenu" id="contenu" cols="60" rows="10"><?= $post->getContenu(); ?></textarea>
+            <textarea class="form-control" name="contenu" id="contenu" cols="60" rows="10"><?= $post->getContenu(); ?></textarea>
         </div>
         
         <!-- <input class="form-control" type="hidden" name="id" value=""> -->
 
-        <button class="valide" type="submit" class="btn-form">Valider</button>
+        <button class="valide btn btn-primary" type="submit">Valider</button>
     </form>
 </div>
 </section>

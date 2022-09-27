@@ -43,7 +43,7 @@ ob_start();
                     :</strong>
             </p>
 
-            <p class="p-comment"><?= rtrim($postComment['commentaire']) ?></p>
+            <p class="p-comment"><?= trim($postComment['commentaire']) ?></p>
         </div>
         <?php
     endif;
@@ -53,17 +53,30 @@ ob_start();
     ?>
 
 
-        <form method="POST" action="post&id=<?= $post['id']; ?>">
-            <?php if(isset($erreur)):
-                if($erreur):
+            <?php if(isset($_SESSION['errors'])):
+                if($_SESSION['errors']):
             ?>
-            <div class="message-erreur"><?= $erreur ?></div>
+            <div class="message-erreur"><?= $_SESSION['errors'] ?></div>
             <?php
                     endif;
                 endif;
+                unset($_SESSION['errors']);
                     ?>
+            <?php
+            if(isset($valide)):
+                ?>
+            <div class="msg-success"><?= $valide; ?></div>
+
+            <?php
+            endif;
+            ?>
+        <form method="POST" action="post&id=<?= $post['id']; ?>">
+                     
+                    
+            
+              
             <textarea class="comment" name="commentaire" placeholder="Votre commentaire" required></textarea>
-            <input class="input-comment btn-comment" type="submit" value="Commenter">
+            <input class="input-comment btn-comment btn btn-success btn-lg" type="submit" value="Commenter">
         </form>
         <?php
     endif;

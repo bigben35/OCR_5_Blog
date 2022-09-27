@@ -13,7 +13,7 @@ ob_start();
                 <hr class="star-primary">
             </div>
         </div>
-        <div class="row">
+        <div class="row article-container">
             <?php foreach ($posts as $post){
                     ?>
 

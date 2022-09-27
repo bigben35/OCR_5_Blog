@@ -129,12 +129,19 @@ class AdminController
 
     
     // display page post by id 
-    public function displayPostById($id)
+    public function displayPostById($id, $idPost)
     {
+        $postManager = new \Blog\Models\PostManager();
+        
+        if($postManager->exist_idPost($idPost)){
         $postId = $this->postManager->getPostById($id);
         $post = new \Blog\Models\Post($postId['id'], $postId['titre'], $postId['chapo'], $postId['contenu'], $postId['auteur'], $postId['dateCreation'], $postId['dateModif']);
 
         require 'src/Views/Admin/pageOnePost.php';
+
+        } else{
+            throw new Exception("Cet article n'existe pas !");
+        }
     }
 
     //  display page createPost 
@@ -173,13 +180,20 @@ class AdminController
 
 
     //  display page update post 
-    public function displayPageUpdatePost($id)
+    public function displayPageUpdatePost($id, $idPost)
     {
+        $postManager = new \Blog\Models\PostManager();
+        
+        if($postManager->exist_idPost($idPost)){
         $updatePost = $this->postManager->getPostById($id);
         $post = new \Blog\Models\Post($updatePost['id'], $updatePost['titre'], $updatePost['chapo'], $updatePost['contenu'], $updatePost['auteur'], $updatePost['dateCreation'], $updatePost['dateModif']);
 
         require 'src/Views/Admin/updatePost.php';
+
+    } else{
+        throw new Exception("L'article n'existe pas !");
     }
+}
 
     // update post 
     public function updatePost($id, $titre, $chapo, $contenu)

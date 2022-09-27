@@ -1,5 +1,9 @@
 <?php
 // Check for empty fields
+$name = filter_input(INPUT_POST, 'name');
+$email = filter_input(INPUT_POST, 'email');
+$phone = filter_input(INPUT_POST, 'phone');
+$message = filter_input(INPUT_POST, 'message');
 if(empty($_POST['name'])  		||
    empty($_POST['email']) 		||
    empty($_POST['phone']) 		||

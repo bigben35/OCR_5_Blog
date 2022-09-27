@@ -14,7 +14,7 @@ ob_start();
             <p>Créé le : <?= $post->getDateCreation(); ?></p>
         </div>
     </div>
-    <div><a href="listPosts" class="text-success">Retour à la liste des articles</a></div>
+    <div><a href="listPosts" class="btn btn-primary">Retour à la liste des articles</a></div>
 </section>
 
 
