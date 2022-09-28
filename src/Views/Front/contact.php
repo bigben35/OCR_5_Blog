@@ -77,7 +77,6 @@
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
-                        <input type="hidden" name="csrf" value="<?= $token; ?>"> 
                         <br>
                         <div id="success"></div>
                         <div class="row">
