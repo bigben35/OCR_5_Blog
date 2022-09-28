@@ -26,17 +26,17 @@ ob_start();
             <div class="form-group">
                 <label for="pseudo">Pseudo</label>
                 <input class="form-control" type="text" id="pseudo" name="pseudo" placeholder="Votre Pseudo"
-                    value="<?php if(isset($_POST['pseudo'])) echo htmlspecialchars($_POST['pseudo'])?>" required>
+                    value="<?php if(isset($pseudo)) echo htmlspecialchars($pseudo)?>" required>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input class="form-control" type="email" id="email" name="email" placeholder="Votre Email"
-                    value="<?php if(isset($_POST['email'])) echo htmlspecialchars($_POST['email'])?>" required>
+                    value="<?php if(isset($email)) echo htmlspecialchars($email)?>" required>
             </div>
             <div class="form-group">
                 <label for="emailconf">Confirmation Email</label>
                 <input class="form-control" type="email" id="emailconf" name="emailconf" placeholder="Votre Email"
-                    value="<?php if(isset($_POST['emailconf'])) echo htmlspecialchars($_POST['emailconf'])?>" required>
+                    value="<?php if(isset($emailconf)) echo htmlspecialchars($emailconf)?>" required>
             </div>
             <div class="form-group">
                 <label for="password">Mot de passe</label>

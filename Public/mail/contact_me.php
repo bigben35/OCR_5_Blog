@@ -10,7 +10,7 @@ if(empty($name)  		||
    empty($message)	||
    !filter_var($email,FILTER_VALIDATE_EMAIL))
    {
-	echo "No arguments Provided!";
+	
 	return false;
    }
 	

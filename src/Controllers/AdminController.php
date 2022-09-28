@@ -168,7 +168,11 @@ class AdminController
         }
     
         if($validation){
-            $createPost = $postManager->createNewPost($_POST['titre'], $_POST['chapo'], $_POST['contenu'], $_POST['auteur']);
+            $titre = filter_input(INPUT_POST, 'titre');
+            $chapo = filter_input(INPUT_POST, 'chapo');
+            $contenu = filter_input(INPUT_POST, 'contenu');
+            $auteur = filter_input(INPUT_POST, 'auteur');
+            $createPost = $postManager->createNewPost($titre, $chapo, $contenu, $auteur);
             header("Location: listPosts");
         } else{
             require 'src/Views/Admin/createPost.php';
@@ -198,12 +202,10 @@ class AdminController
     // update post 
     public function updatePost(int $id, string $titre, string $chapo, string $contenu)
     {
-        // extract($_POST);
         $validation = true;
         $_SESSION['errors'] = [];
         // $valide = [];
         
-        // var_dump($validation, $titre, $chapo, $contenu);
         if(empty($titre) || empty($chapo) || empty($contenu)) {
             $validation = false;
             $_SESSION['errors'][] = "Tous les champs sont requis !";
@@ -217,7 +219,6 @@ class AdminController
         if($validation){
             $updatePost = $this->postManager->updatePost($id, $titre, $chapo, $contenu);
             header("Location: listPosts");
-            echo "fonctionne!";
             
         } else{
             $id = filter_input(INPUT_GET, 'id');
@@ -225,7 +226,6 @@ class AdminController
             // $updatePost = $this->postManager->getPostById($id);
             header("location:".  $_SERVER['HTTP_REFERER']);
            
-            // echo "ne pas fonctionne !";
         }
        
     }

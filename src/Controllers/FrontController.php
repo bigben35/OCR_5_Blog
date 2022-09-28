@@ -149,6 +149,9 @@ class FrontController
         $userManager = new \Blog\Models\UserManager();
         $validation = true;
         $erreur = [];
+        $pseudo = filter_input(INPUT_POST, 'pseudo');
+        $email = filter_input(INPUT_POST, 'email');
+        $emailconf = filter_input(INPUT_POST, 'emailconf');
 
         if (empty($pseudo) || empty($email) || empty($emailconf) || empty($password) || empty($passwordconf)) {
             $validation = false;
@@ -162,12 +165,12 @@ class FrontController
 
         if($emailconf != $email){
             $validation = false;
-            $erreur[] = "L'email de confirmation n'est pas correcte !";
+            $erreur[] = "L'email de confirmation n'est pas correct !";
         }
     
         if($passwordconf != $password){
             $validation = false;
-            $erreur[] = "Le mot de passe de confirmation n'est pas correcte !";
+            $erreur[] = "Le mot de passe de confirmation n'est pas correct !";
         }
 
         if($userManager->existPseudo($pseudo)){
