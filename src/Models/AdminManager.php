@@ -52,7 +52,7 @@ class AdminManager extends Manager{
      }
 
     //  show an email 
-    public function showOneEmail($id)
+    public function showOneEmail(int $id)
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateCreation, '%d/%m/%Y') 
@@ -62,7 +62,7 @@ class AdminManager extends Manager{
     }
 
      // "isRead" an email 
-     public function sawEmail($id)
+     public function sawEmail(int $id)
      {
          $bdd = $this->dbConnect();
          $req = $bdd->prepare("UPDATE contact SET `estVu` = 1 WHERE id = ?");
@@ -71,7 +71,7 @@ class AdminManager extends Manager{
      }
 
     //  if id email exist 
-    public function exist_idEmail($id)
+    public function exist_idEmail(int $id)
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare("SELECT COUNT(id) FROM contact WHERE id = ?");
@@ -82,7 +82,7 @@ class AdminManager extends Manager{
     }
 
     //  delete an email 
-    public function deleteOneEmail($id)
+    public function deleteOneEmail(int $id)
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare("DELETE FROM contact WHERE id = ?");
@@ -125,7 +125,7 @@ class AdminManager extends Manager{
     }
 
     // validate a comment 
-    public function validateOneComment($id)
+    public function validateOneComment(int $id)
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare("UPDATE commentaire SET `estValide` = 1 WHERE id = ?");
@@ -134,7 +134,7 @@ class AdminManager extends Manager{
     }
 
     // delete a comment 
-    public function deleteOneComment($id)
+    public function deleteOneComment(int $id)
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare("DELETE FROM commentaire WHERE id = ?");

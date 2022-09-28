@@ -38,7 +38,7 @@ class PostManager extends Manager
     }
 
     // display posts per page 
-    public function postsPerPage($firstPost, $perPage)
+    public function postsPerPage(int $firstPost, int $perPage)
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateModif, '%d-%m-%Y') as dateModif FROM article
@@ -67,7 +67,7 @@ class PostManager extends Manager
     }
 
     // exist id_Post 
-    public function exist_idPost($idPost)
+    public function exist_idPost(int $idPost)
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare("SELECT COUNT(id) FROM article WHERE id =?");
@@ -163,7 +163,7 @@ class PostManager extends Manager
 
     private $posts; //tableau d'articles
 
-    public function addPost($post)
+    public function addPost(mixed $post)
     {
         $this->posts[] = $post;
     }
@@ -190,7 +190,7 @@ class PostManager extends Manager
     }
 
     // display post by id 
-    public function getPostById($id)
+    public function getPostById(int $id)
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateModif, '%d-%m-%Y') AS dateModif FROM article WHERE id=?");
@@ -199,7 +199,7 @@ class PostManager extends Manager
     }
 
     // create a new post 
-    public function createNewPost($titre, $chapo, $contenu, $auteur)
+    public function createNewPost(string $titre, string $chapo, string $contenu, string $auteur)
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare("INSERT INTO article(titre, chapo, contenu, auteur) VALUES(:titre, :chapo, :contenu, :auteur)");
@@ -219,7 +219,7 @@ class PostManager extends Manager
     }
 
     // function to knom if title is already use 
-    public function existTitle($titre)
+    public function existTitle(string $titre)
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare("SELECT COUNT(id) FROM article WHERE titre = ?");
@@ -232,7 +232,7 @@ class PostManager extends Manager
 
 
     // update a post 
-    public function updatePost($id, $titre, $chapo, $contenu)
+    public function updatePost(int $id, string $titre, string $chapo, string $contenu)
     {
         $bdd = $this->dbConnect();
         $date = new DateTime();
@@ -261,7 +261,7 @@ class PostManager extends Manager
     }
 
     // function to delete post 
-    public function deleteOnePost($id)
+    public function deleteOnePost(int $id)
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare("DELETE FROM article WHERE id = ?");

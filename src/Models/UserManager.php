@@ -19,7 +19,7 @@ class UserManager extends Manager{
 
 
     //====================PAGE CREER COMPTE ====================
-    public function createUser($pseudo, $email, $password)
+    public function createUser(string $pseudo, string $email, string $password)
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare('INSERT INTO utilisateur (pseudo, email, password, dateCreation) VALUES (:pseudo, :email, :password, :dateCreation)');
@@ -37,7 +37,7 @@ class UserManager extends Manager{
 
     // ===============PAGE DASHBOARD USER ===================
      // function to know if id user exist
-     public function existIdUser($id)
+     public function existIdUser(int $id)
      {
          $bdd = $this->dbConnect();
          $req = $bdd->prepare("SELECT COUNT(id) FROM utilisateur WHERE id=? ");
@@ -48,7 +48,7 @@ class UserManager extends Manager{
      }
 
     // function to know if pseudo is already use 
-    public function existPseudo($pseudo)
+    public function existPseudo(string $pseudo)
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare("SELECT COUNT(id) FROM utilisateur WHERE pseudo=? ");
@@ -59,7 +59,7 @@ class UserManager extends Manager{
     }
 
      // function to know if email is already use 
-     public function existEmail($email)
+     public function existEmail(string $email)
      {
          $bdd = $this->dbConnect();
          $req = $bdd->prepare("SELECT COUNT(id) FROM utilisateur WHERE email=? ");
@@ -71,7 +71,7 @@ class UserManager extends Manager{
 
 
     // function to retrieve password in database 
-    public function retrievePassword($email) 
+    public function retrievePassword(string $email) 
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare('SELECT * FROM utilisateur WHERE email = :email');
@@ -81,7 +81,7 @@ class UserManager extends Manager{
     }
 
     // function update pseudo user 
-    public function newPseudoUser($newPseudo, $id)
+    public function newPseudoUser(string $newPseudo, int $id)
     {
         // var_dump('coucou');die;
         $bdd = $this->dbConnect();
@@ -94,7 +94,7 @@ class UserManager extends Manager{
 
 
     // function update email user 
-    public function newEmailUser($newEmail, $id)
+    public function newEmailUser(string $newEmail, int $id)
     {
         // var_dump('coucou');die;
         $bdd = $this->dbConnect();
@@ -107,7 +107,7 @@ class UserManager extends Manager{
 
        
        // retrieve password 
-    public function updatePasswordUser($id)
+    public function updatePasswordUser(int $id)
     {
         $bdd =  $this->dbConnect();
         $req = $bdd->prepare("SELECT id, password FROM utilisateur WHERE id =?");
@@ -117,7 +117,7 @@ class UserManager extends Manager{
     }
 
      // function update password user 
-     public function newPasswordUser($updateNewPassword, $id)
+     public function newPasswordUser(string $updateNewPassword, int $id)
      {
          // var_dump('coucou');die;
          $bdd = $this->dbConnect();
