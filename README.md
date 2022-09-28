@@ -2,6 +2,8 @@
 
 # OCR_5_Blog
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8c0140a3dda84ab3ab658664a75841fd)](https://app.codacy.com/gh/bigben35/OCR_5_Blog?utm_source=github.com&utm_medium=referral&utm_content=bigben35/OCR_5_Blog&utm_campaign=Badge_Grade_Settings)
+
 Projet 5 DA PHP/Symfony. Réalisation d'un Blog en utilisant les langages HTML5, CSS3, PHP, SQL et JavaScript.
 
 # Installation :
