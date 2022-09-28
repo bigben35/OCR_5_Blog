@@ -26,7 +26,7 @@ class Manager
                 return self::$pdo;
 
             } catch (Exception $e) {
-                die('Erreur : '.$e->getMessage());
+                 throw new Exception ($e->getMessage());
             }
           }
     }

@@ -4,20 +4,20 @@ $name = filter_input(INPUT_POST, 'name');
 $email = filter_input(INPUT_POST, 'email');
 $phone = filter_input(INPUT_POST, 'phone');
 $message = filter_input(INPUT_POST, 'message');
-if(empty($_POST['name'])  		||
-   empty($_POST['email']) 		||
-   empty($_POST['phone']) 		||
-   empty($_POST['message'])	||
-   !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL))
+if(empty($name)  		||
+   empty($email) 		||
+   empty($phone) 		||
+   empty($message)	||
+   !filter_var($email,FILTER_VALIDATE_EMAIL))
    {
 	echo "No arguments Provided!";
 	return false;
    }
 	
-$name = strip_tags(htmlspecialchars($_POST['name']));
-$email_address = strip_tags(htmlspecialchars($_POST['email']));
-$phone = strip_tags(htmlspecialchars($_POST['phone']));
-$message = strip_tags(htmlspecialchars($_POST['message']));
+$name1 = strip_tags(htmlspecialchars($name));
+$email_address1 = strip_tags(htmlspecialchars($email));
+$phone1 = strip_tags(htmlspecialchars($phone));
+$message1 = strip_tags(htmlspecialchars($message));
 	
 // Create the email and send the message
 $to = 'josselincrenn@gmail.com'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
