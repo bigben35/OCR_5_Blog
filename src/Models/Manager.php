@@ -23,11 +23,9 @@ class Manager
                     $_ENV['DB_PASSWORD']
                 );
                 self::$pdo->setAttribute(\PDO::ATTR_ERRMODE,\PDO::ERRMODE_EXCEPTION);
-                // echo 'Connexion réussie';
                 return self::$pdo;
 
             } catch (Exception $e) {
-                // echo 'connexion foutue';
                 die('Erreur : '.$e->getMessage());
             }
           }

@@ -21,7 +21,7 @@ class FrontController
     }
 
     // display page blog 
-    function blog($currentPage)
+    function blog(int $currentPage)
     {
         // count number post 
         $postManager = new \Blog\Models\PostManager();
@@ -42,7 +42,7 @@ class FrontController
 
 
     // display page post 
-    function post($idPost)
+    function post(int $idPost)
     {
         // display post 
         $postManager = new \Blog\Models\PostManager();
@@ -73,7 +73,7 @@ class FrontController
      
     
     // contact form 
-    function contactPost($nom, $prenom, $email, $objet, $message)
+    function contactPost(string $nom, string $prenom, string $email, string $objet, string $message)
     {
         $contactManager = new \Blog\Models\ContactModel();
         extract($_POST); //vérifie chaque clé afin de contrôler si elle a un nom de variable valide. Elle vérifie également les collisions avec des variables existantes dans la table des symboles. Utile pour $email et $confirmEmail.
@@ -145,7 +145,7 @@ class FrontController
     }
 
     // create an user 
-    function createUser($pseudo, $email, $password)
+    function createUser(string $pseudo, string $email, string $password)
     {
         extract($_POST);
         $userManager = new \Blog\Models\UserManager();
@@ -203,7 +203,7 @@ class FrontController
 
 
     // login to dashboard after password comparison 
-    function connectUser($email, $password)
+    function connectUser(string $email, string $password)
     // retrieve password 
     {
         $userManager = new \Blog\Models\UserManager();
@@ -238,7 +238,7 @@ class FrontController
     }
 
     // display dashboard user page 
-    function dashboardUser($id)
+    function dashboardUser(int $id)
     {
         $postManager = new \Blog\Models\PostManager();
         $userManager = new \Blog\Models\UserManager();
@@ -254,13 +254,13 @@ class FrontController
     }
 
     // display page update pseudo user 
-    function pageUpdatePseudo($id)
+    function pageUpdatePseudo(int $id)
     {
         require 'src/Views/Front/pageUpdatePseudo.php';
     }
 
     // update for new pseudo 
-    function createNewPseudo($newPseudo, $id)
+    function createNewPseudo(string $newPseudo, int $id)
     {
         extract($_POST); //permet d'utiliser variables déclarées ailleurs
         $validation = true;
@@ -296,14 +296,14 @@ class FrontController
 
 
     // display page update pseudo user 
-    function pageUpdateEmail($id)
+    function pageUpdateEmail(int $id)
     {
         require 'src/Views/Front/pageUpdateEmail.php';
     }
 
 
     // update for new email 
-    function createNewEmail($newEmail, $id)
+    function createNewEmail(string $newEmail, int $id)
     {
         extract($_POST); //permet d'utiliser variables déclarées ailleurs
         $validation = true;
@@ -338,13 +338,13 @@ class FrontController
     }
 
     // go to page update password 
-    function pageUpdatePassword($id)
+    function pageUpdatePassword(int $id)
     {
         require 'src/Views/Front/pageUpdatePassword.php';
     }
 
     // update for new paswword 
-    function createNewPassword($oldPassword, $newPassword, $id)
+    function createNewPassword(string $oldPassword, string $newPassword, int $id)
     {
         extract($_POST); //permet d'utiliser variables déclarées ailleurs
         $validation = true;

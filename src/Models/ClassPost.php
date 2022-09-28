@@ -11,9 +11,9 @@ class Post extends Manager
     private string $contenu;
     private string $auteur;
     private string $dateCreation;
-    private $dateModif;
+    private string $dateModif;
 
-    public function __construct(int $id, string $titre, string $chapo, string $contenu, string $auteur, string $dateCreation, $dateModif)
+    public function __construct(int $id, string $titre, string $chapo, string $contenu, string $auteur, string $dateCreation, string $dateModif)
     {
         $this->id = $id;
         $this->titre = $titre;
@@ -29,7 +29,7 @@ class Post extends Manager
         return $this->id;
     }
 
-    public function setId($id)
+    public function setId(int $id)
     {
         $this->id = $id;
     }
@@ -39,7 +39,7 @@ class Post extends Manager
         return $this->titre;
     }
 
-    public function setTitre($titre)
+    public function setTitre(string $titre)
     {
         $this->titre = $titre;
     }
@@ -49,7 +49,7 @@ class Post extends Manager
         return $this->chapo;
     
     }
-    public function setChapo($chapo)
+    public function setChapo(string $chapo)
     {
         $this->chapo = $chapo;
     }
@@ -59,7 +59,7 @@ class Post extends Manager
         return $this->contenu;
     }
 
-    public function setContenu($contenu)
+    public function setContenu(string $contenu)
     {
         $this->contenu = $contenu;
     }
@@ -69,7 +69,7 @@ class Post extends Manager
         return $this->auteur;
     }
 
-    public function setAuteur($auteur)
+    public function setAuteur(string $auteur)
     {
         $this->auteur = $auteur;
     }
@@ -79,7 +79,7 @@ class Post extends Manager
         return $this->dateCreation;
     }
 
-    public function setDateCreation($dateCreation)
+    public function setDateCreation(string $dateCreation)
     {
         $this->dateCreation = $dateCreation;
     }
@@ -89,7 +89,7 @@ class Post extends Manager
         return $this->dateModif;
     }
 
-    public function setDateModif($dateModif)
+    public function setDateModif(string $dateModif)
     {
         $this->dateModif = $dateModif;
     }

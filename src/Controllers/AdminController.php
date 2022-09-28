@@ -41,7 +41,7 @@ class AdminController
         }
     
         // show an email 
-    public function showEmail($id, $isRead)
+    public function showEmail(int $id, int $isRead)
     {
         $email = new \Blog\Models\AdminManager();
         if($email->exist_idEmail($id)){
@@ -57,7 +57,7 @@ class AdminController
     }
 
     // delete an email 
-    public function deleteEmail($id)
+    public function deleteEmail(int $id)
     {
         $email = new \Blog\Models\AdminManager();
         $deleteEmail = $email->deleteOneEmail($id);
@@ -87,7 +87,7 @@ class AdminController
      }
 
     //  validate comment 
-     public function validateComment($id, $isValide)
+     public function validateComment(int $id, bool $isValide)
      {
         $comment = new \Blog\Models\AdminManager();
         if($isValide == 0){
@@ -99,7 +99,7 @@ class AdminController
      }
 
     //  delete comment 
-    public function deleteComment($id)
+    public function deleteComment(int $id)
     {
         $comment = new \Blog\Models\AdminManager();
         $deleteComment = $comment->deleteOneComment($id);
@@ -129,7 +129,7 @@ class AdminController
 
     
     // display page post by id 
-    public function displayPostById($id, $idPost)
+    public function displayPostById(int $id, int $idPost)
     {
         $postManager = new \Blog\Models\PostManager();
         
@@ -180,7 +180,7 @@ class AdminController
 
 
     //  display page update post 
-    public function displayPageUpdatePost($id, $idPost)
+    public function displayPageUpdatePost(int $id, int $idPost)
     {
         $postManager = new \Blog\Models\PostManager();
         
@@ -196,7 +196,7 @@ class AdminController
 }
 
     // update post 
-    public function updatePost($id, $titre, $chapo, $contenu)
+    public function updatePost(int $id, string $titre, string $chapo, string $contenu)
     {
         // extract($_POST);
         $validation = true;
@@ -230,7 +230,7 @@ class AdminController
        
     }
     //  delete a post 
-    public function deletePost($id)
+    public function deletePost(int $id)
     {
         $deletePost = $this->postManager->getPostById($id);
         $this->postManager->deleteOnePost($id);
