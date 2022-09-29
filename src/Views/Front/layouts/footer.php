@@ -7,19 +7,17 @@
                      <h3>Me Trouver</h3>
                      <ul class="list-inline">
                          <li>
-                             <a href="https://github.com/bigben35" class="btn-social btn-outline" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                             <a href="https://github.com/bigben35" class="btn-social btn-outline" target="_blank"><i
+                                     class="fa fa-fw fa-github"></i></a>
                          </li>
                          <li>
-                             <a href="https://www.linkedin.com/in/josselin-crenn/" class="btn-social btn-outline" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a>
+                             <a href="https://www.linkedin.com/in/josselin-crenn/" class="btn-social btn-outline"
+                                 target="_blank"><i class="fa fa-fw fa-linkedin"></i></a>
                          </li>
-                        
+
                      </ul>
                  </div>
-                 <!-- <div class="footer-col col-md-6">
-                     <h3>About Freelancer</h3>
-                     <p>Freelance is a free to use, open source Bootstrap theme created by <a
-                             href="http://startbootstrap.com">Start Bootstrap</a>.</p>
-                 </div> -->
+
              </div>
          </div>
      </div>

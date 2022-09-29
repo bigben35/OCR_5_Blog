@@ -17,7 +17,10 @@ class PostManager extends Manager
      public function getLastPosts()
      {
          $bdd = $this->dbConnect();
-         $req = $bdd->prepare("SELECT id, titre, chapo, DATE_FORMAT(dateModif, '%d-%m-%Y %H:%i:%s') as dateModif FROM article ORDER BY id DESC LIMIT 3");
+         $req = $bdd->prepare("SELECT id, titre, chapo, DATE_FORMAT(dateModif, '%d-%m-%Y %H:%i:%s') as dateModif 
+         FROM article 
+         ORDER BY id 
+         DESC LIMIT 3");
          $req->execute();
          return $req->fetchAll();
      }
@@ -102,7 +105,6 @@ class PostManager extends Manager
 
                 $req->execute();
 
-                // $valide = "Votre commentaire a bien été envoyé !";
                 header("Location: sentComment");
                 
                 
@@ -218,7 +220,7 @@ class PostManager extends Manager
         $req->execute($data);
     }
 
-    // function to knom if title is already use 
+    // function to know if title is already use 
     public function existTitle(string $titre)
     {
         $bdd = $this->dbConnect();
@@ -237,21 +239,18 @@ class PostManager extends Manager
         $bdd = $this->dbConnect();
         $date = new DateTime();
         $dateModif = $date->format('d/m/Y');
-        // var_dump($date);die;
+        
         $req = $bdd->prepare("UPDATE article SET titre = :titre, chapo = :chapo, contenu = :contenu, dateModif = NOW() WHERE id = :id");
 
         $req->bindValue(":titre", $titre, \PDO::PARAM_STR);
         $req->bindValue(":chapo", $chapo, \PDO::PARAM_STR);
         $req->bindValue(":contenu", $contenu, \PDO::PARAM_STR);
-        // $req->bindValue(":dateModif", $dateModif, \PDO::PARAM_STR);
         $req->bindValue(":id", $id, \PDO::PARAM_INT);
 
         $data = [
             ':titre' => $titre,
             ':chapo' => $chapo,
             ':contenu' => $contenu,
-            // ':dateModif' => $dateModif,
-            // ':dateModif' => $dateModif,
             ':id' => $id
         ];
 

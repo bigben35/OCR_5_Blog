@@ -6,16 +6,8 @@ namespace Blog\Models;
 class UserManager extends Manager{
 
     // ===================PAGE HOME =========================
-    // last posts (3) 
-    public function getLastPosts()
-    {
-        $bdd = $this->dbConnect();
-        $req = $bdd->prepare("SELECT id, titre, chapo, DATE_FORMAT(dateModif, '%d-%m-%Y %H:%i:%s') as dateModif FROM article ORDER BY id DESC LIMIT 3");
-        $req->execute();
-        return $req->fetchAll();
-    }
-
-
+    // last posts (3) -> see PostManager
+    
 
 
     //====================PAGE CREER COMPTE ====================
@@ -31,7 +23,6 @@ class UserManager extends Manager{
         ]);
         return $req;
     }
-
 
 
 
@@ -96,7 +87,6 @@ class UserManager extends Manager{
     // function update email user 
     public function newEmailUser(string $newEmail, int $id)
     {
-        // var_dump('coucou');die;
         $bdd = $this->dbConnect();
         $req = $bdd->prepare("UPDATE utilisateur SET email = ? WHERE id = ?");
         $req->execute(array($newEmail, $id));
@@ -119,7 +109,6 @@ class UserManager extends Manager{
      // function update password user 
      public function newPasswordUser(string $updateNewPassword, int $id)
      {
-         // var_dump('coucou');die;
          $bdd = $this->dbConnect();
          $req = $bdd->prepare("UPDATE utilisateur SET password = ? WHERE id = ?");
          $req->execute(array($updateNewPassword, $id));

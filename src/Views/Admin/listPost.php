@@ -17,13 +17,13 @@ ob_start();
                 </tr>
             </thead>
             <?php for($i=0; $i < count($posts); $i++) :?>
-                <tr>
+            <tr>
                 <td><a title="afficher l'article"
                         href="onePost&id=<?= $posts[$i]->getId(); ?>"><?= $posts[$i]->getTitre(); ?></a>
                 </td>
                 <td class="display-creation"><?= $posts[$i]->getDateModif(); ?></td>
-                <td class="action-list-admin"><a
-                        href="pageUpdatePost&id=<?= $posts[$i]->getId(); ?>" class="btn-action-admin">Modifier</a>
+                <td class="action-list-admin"><a href="pageUpdatePost&id=<?= $posts[$i]->getId(); ?>"
+                        class="btn-action-admin">Modifier</a>
 
                     <a href="deletePost&id=<?= $posts[$i]->getId(); ?>"
                         class="delete btn-action-admin-red">Supprimer</a>
@@ -31,7 +31,7 @@ ob_start();
             </tr>
             <?php endfor; ?>
         </table>
-        <a href="#" class="btn-form">Ajouter</a>
+        <a href="createPost" class="btn btn-primary">Ajouter</a>
     </div>
 </section>
 

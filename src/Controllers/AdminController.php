@@ -31,7 +31,7 @@ class AdminController
 
 
     // ==============EMAIL =================
-
+    // display list email 
     public function displayListEmail()
         {
             $adminManager = new \Blog\Models\AdminManager();
@@ -121,9 +121,6 @@ class AdminController
      {
         $posts = $this->postManager->getPosts();
 
-        //  $adminManager = new \Blog\Models\AdminManager();
-        //  $listPost = $adminManager->listPost();
-
          require 'src/Views/Admin/listPost.php';
      }
 
@@ -182,7 +179,6 @@ class AdminController
      }
 
 
-
     //  display page update post 
     public function displayPageUpdatePost(int $id, int $idPost)
     {
@@ -204,13 +200,12 @@ class AdminController
     {
         $validation = true;
         $_SESSION['errors'] = [];
-        // $valide = [];
         
         if(empty($titre) || empty($chapo) || empty($contenu)) {
             $validation = false;
             $_SESSION['errors'][] = "Tous les champs sont requis !";
         }
-        // var_dump($validation);die;
+        
         if($this->postManager->existTitle($titre)){
             $validation = false;
             $_SESSION['errors'][] = "Ce titre est déjà utilisé !";
@@ -223,7 +218,6 @@ class AdminController
         } else{
             $id = filter_input(INPUT_GET, 'id');
             
-            // $updatePost = $this->postManager->getPostById($id);
             header("location:".  $_SERVER['HTTP_REFERER']);
            
         }
@@ -238,6 +232,5 @@ class AdminController
         header("Location: listPosts");
 
     }
-
-        
+    
     }

@@ -11,11 +11,11 @@ ob_start();
 
         <form action="connectUser" method="POST" class="container-form">
 
-      <!-- bloc confirmation || erreur  -->
-      <?php if (isset($erreur)): 
+            <!-- bloc confirmation || erreur  -->
+            <?php if (isset($erreur)): 
         if ($erreur) : ?>
-                <div class="msg-error"><?= $erreur ?></div>
-                <?php 
+            <div class="msg-error"><?= $erreur ?></div>
+            <?php 
         endif;
           endif;
     ?>
@@ -26,7 +26,8 @@ ob_start();
             </div>
             <div class="form-group">
                 <label for="password">Mot de passe</label>
-                <input class="form-control" type="password" id="password" name="password" placeholder="Votre mot de passe" required>
+                <input class="form-control" type="password" id="password" name="password"
+                    placeholder="Votre mot de passe" required>
             </div>
             <button type="submit" class="btn btn-primary">Connexion</button>
         </form>

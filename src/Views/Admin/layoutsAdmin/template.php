@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="./Public/js/confirm.js" defer></script>
-         <!-- Bootstrap Core CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./Public/js/confirm.js" defer></script>
+    <!-- Bootstrap Core CSS -->
     <link href="Public/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="Public/css/styleAdmin.css">
     <title><?= $title ?></title>
@@ -70,13 +70,12 @@
                     </div>
                 </div>
                 <div class="nav-bloc">
-                    <a href="index.php"><i
-                            class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                    <a href="index.php"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                 </div>
                 <div class="nav-bloc n-5">
                     <a href="deconnexion"><i class="fa-solid fa-lock"></i></a>
                 </div>
-                
+
             </div>
         </nav>
 

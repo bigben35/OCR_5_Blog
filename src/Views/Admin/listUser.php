@@ -28,11 +28,9 @@ ob_start();
                         <p><?= htmlspecialchars($listUser['dateCreation']) ?></p>
                     </td>
 
-                    <td class="action-list-admin"><a href="#"
-                            class="btn-action-admin">Voir</a>
+                    <td class="action-list-admin"><a href="#" class="btn-action-admin">Voir</a>
 
-                        <a href="#"
-                            class="btn-action-admin-red">Bannir</a>
+                        <a href="#" class="btn-action-admin-red">Bannir</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>

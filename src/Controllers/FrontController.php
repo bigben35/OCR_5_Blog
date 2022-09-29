@@ -9,7 +9,6 @@ class FrontController
     // display page home 
     function home()
     {
-
         // last posts 
         $homeManager = new \Blog\Models\PostManager();
         $lastPosts = $homeManager->getLastPosts();
@@ -111,23 +110,13 @@ class FrontController
 
     
     $sendMessage = $contactManager->requestWithContactForm($nom, $prenom, $email, $objet, $message);
-    
-    
-    // $nom = filter_input(INPUT_POST, 'nom');
-    // $prenom = filter_input(INPUT_POST, 'nom');
-    // $email = filter_input(INPUT_POST, 'email');
-    // unset($nom);
-    // unset($prenom);
-    // unset($email);                 // vide/détruit ce qui est en mémoire
-    // require 'src/Views/Front/home.php';
-    // return $valide;
+
     header("Location: sentMail");
     
     } else{
         require 'src/Views/Front/home.php';
         return $erreur;
     }
-
     }
 
     // display sentMail page 
@@ -267,7 +256,6 @@ class FrontController
         $validation = true;
         $erreur = []; "Tous les champs sont requis !";
         $validation = "Votre pseudo a bien été modifié !";
-        // $oldPseudo = $_SESSION['pseudo'];
 
         if( empty($newPseudo) || empty($pseudoConfirm)){
             $validation = false;
@@ -282,7 +270,7 @@ class FrontController
         if($newPseudo && $newPseudo === $pseudoConfirm){
             $userManager = new \Blog\Models\UserManager();
             $getNewPseudo = $userManager->newPseudoUser($newPseudo, $id);
-            // var_dump($getNewPseudo);die;
+
             // true/false dans$getNewPseudo
             //refaire un if/else pour que l'user sache si ça s'est bien passé ou pas 
             $_SESSION['pseudo'] = $newPseudo;
@@ -310,7 +298,6 @@ class FrontController
         $validation = true;
         $erreur = []; "Tous les champs sont requis !";
         $validation = "Votre email a bien été modifié !";
-        // $oldPseudo = $_SESSION['pseudo'];
 
         if( empty($newEmail) || empty($emailConfirm)){
             $validation = false;
@@ -325,7 +312,7 @@ class FrontController
         if($newEmail && $newEmail === $emailConfirm){
             $userManager = new \Blog\Models\UserManager();
             $getNewEmail = $userManager->newEmailUser($newEmail, $id);
-            // var_dump($getNewEmail);die;
+        
             // true/false dans$getNewEmail
             //refaire un if/else pour que l'user sache si ça s'est bien passé ou pas 
             $_SESSION['email'] = $newEmail;
@@ -351,7 +338,7 @@ class FrontController
         $validation = true;
         $erreur = []; "Tous les champs sont requis !";
         $validation = "Votre Mot de passe a bien été modifié !";
-        // $oldPseudo = $_SESSION['pseudo'];
+       
 
         if(empty($oldPassword) || empty($newPassword) || empty($passwordConfirm)){
             $validation = false;
@@ -378,7 +365,7 @@ class FrontController
             if($isPasswordOk && $newPassword === $passwordConfirm){
                 $updateNewPassword = password_hash($newPassword, PASSWORD_DEFAULT);
                 $getNewPassword = $userManager->newPasswordUser($updateNewPassword, $id);
-                // var_dump($getNewPassword);die;
+                
                 $_SESSION['password'] = $updateNewPassword;
                 require 'src/Views/Front/dashboardUser.php';
                 return $validation;

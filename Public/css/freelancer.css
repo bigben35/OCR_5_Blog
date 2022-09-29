@@ -535,8 +535,10 @@ fieldset[disabled] .btn-success.active {
 
 /* --------PAGE CONFIRM  SENT MAIL & SENT COMMENT -------  */
 #section-confirm-msg{
-  height: 60vh;
-  margin: 10px;
+  min-height: 75vh;
+  display: flex;
+  background-color: rgb(243, 243, 234);
+  align-items: center;
 }
 #section-confirm-msg h1{
   font-size: 3rem;

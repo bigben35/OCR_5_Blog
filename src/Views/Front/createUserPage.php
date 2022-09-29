@@ -11,13 +11,13 @@ ob_start();
 
         <form action="storeUser" method="POST" class="container-form">
 
-        <!-- bloc confirmation || erreur  -->
-        <?php if (isset($erreur)): 
+            <!-- bloc confirmation || erreur  -->
+            <?php if (isset($erreur)): 
                     if ($erreur) :
                         foreach($erreur as $e):
              ?>
-                <p class="msg-error"><?= $e ?></p>
-                <?php 
+            <p class="msg-error"><?= $e ?></p>
+            <?php 
             endforeach;
             endif;
         endif;
@@ -48,12 +48,14 @@ ob_start();
             </div>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="autorisation">
-                <p class="form-check-label" for="autorisation">En m'inscrivant, j'accepte les conditions et la politique de confidentialité du site Web Code</p>
+                <p class="form-check-label" for="autorisation">En m'inscrivant, j'accepte les conditions et la politique
+                    de confidentialité du site Web Code</p>
             </div>
             <button type="submit" class="btn btn-primary">Créer un compte</button>
         </form>
         <p>Vous avez un compte ?</p>
-        <div class="lien-connexion"><a href="connexion" class="createUser">Ici pour vous connecter à votre compte</a></div>
+        <div class="lien-connexion"><a href="connexion" class="createUser">Ici pour vous connecter à votre compte</a>
+        </div>
         <div class="lien-connexion"><a href="home" class="retourAccueil">Retour à l'accueil</a></div>
     </div>
 </section>

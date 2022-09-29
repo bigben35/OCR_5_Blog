@@ -155,15 +155,7 @@ class AdminManager extends Manager{
 
      // ==============ABOUT POSTS==========================
 
-     // see list posts
-    //  public function listPost()
-    //  {
-    //      $bdd = $this->dbConnect();
-    //      $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateCreation, '%d/%m/%Y') AS dateCreation FROM article ORDER BY id DESC");
-    //      $req->execute();
- 
-    //      return $req;
-    //  }
+    //  see class PostManager 
  
      // count number comment 
      public function countPost()

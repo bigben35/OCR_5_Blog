@@ -53,28 +53,28 @@ ob_start();
     ?>
 
 
-            <?php if(isset($_SESSION['errors'])):
+        <?php if(isset($_SESSION['errors'])):
                 if($_SESSION['errors']):
             ?>
-            <div class="message-erreur"><?= $_SESSION['errors'] ?></div>
-            <?php
+        <div class="message-erreur"><?= $_SESSION['errors'] ?></div>
+        <?php
                     endif;
                 endif;
                 unset($_SESSION['errors']);
                     ?>
-            <?php
+        <?php
             if(isset($valide)):
                 ?>
-            <div class="msg-success"><?= $valide; ?></div>
+        <div class="msg-success"><?= $valide; ?></div>
 
-            <?php
+        <?php
             endif;
             ?>
         <form method="POST" action="post&id=<?= $post['id']; ?>">
-                     
-                    
-            
-              
+
+
+
+
             <textarea class="comment" name="commentaire" placeholder="Votre commentaire" required></textarea>
             <input class="input-comment btn-comment btn btn-success btn-lg" type="submit" value="Commenter">
         </form>
