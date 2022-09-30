@@ -41,7 +41,7 @@ class AdminController
         }
     
         // show an email 
-    public function showEmail(int $id, int $isRead)
+    public function showEmail(int $id, $isRead)
     {
         $email = new \Blog\Models\AdminManager();
         if($email->exist_idEmail($id)){
@@ -87,7 +87,7 @@ class AdminController
      }
 
     //  validate comment 
-     public function validateComment(int $id, bool $isValide)
+     public function validateComment(int $id, $isValide)
      {
         $comment = new \Blog\Models\AdminManager();
         if($isValide == 0){
@@ -99,7 +99,7 @@ class AdminController
      }
 
     //  delete comment 
-    public function deleteComment(int $id)
+    public function deleteComment($id)
     {
         $comment = new \Blog\Models\AdminManager();
         $deleteComment = $comment->deleteOneComment($id);

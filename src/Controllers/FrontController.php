@@ -228,19 +228,9 @@ class FrontController
     }
 
     // display dashboard user page 
-    function dashboardUser(int $id)
+    function dashboardUser()
     {
-        $postManager = new \Blog\Models\PostManager();
-        $userManager = new \Blog\Models\UserManager();
-        if($userManager->existIdUser($id)){
-
-            $comment = $postManager->commentUser();
             require 'src/Views/Front/dashboardUser.php';
-        } else{
-            require 'src/Views/Front/error/error404.php';
-        }
-        
-        
     }
 
     // display page update pseudo user 

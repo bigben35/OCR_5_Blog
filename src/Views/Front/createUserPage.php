@@ -47,11 +47,11 @@ ob_start();
                 <input class="form-control" type="password" id="passwordconf" name="passwordconf" required>
             </div>
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="autorisation">
+                <input type="checkbox" class="form-check-input" id="autorisation" required>
                 <p class="form-check-label" for="autorisation">En m'inscrivant, j'accepte les conditions et la politique
                     de confidentialité du site Web Code</p>
             </div>
-            <button type="submit" class="btn btn-primary">Créer un compte</button>
+            <button type="submit" class="btn btn-primary createUserAccount">Créer un compte</button>
         </form>
         <p>Vous avez un compte ?</p>
         <div class="lien-connexion"><a href="connexion" class="createUser">Ici pour vous connecter à votre compte</a>
@@ -59,6 +59,8 @@ ob_start();
         <div class="lien-connexion"><a href="home" class="retourAccueil">Retour à l'accueil</a></div>
     </div>
 </section>
+
+<script src="Public/js/createUser.js" defer></script>
 
 <?php $content = ob_get_clean(); ?>
 <?php require 'layouts/template.php';

@@ -130,6 +130,7 @@ header .intro-text .skills {
   text-transform: uppercase;
   font-weight: 700;
   border: none;
+  max-width: 100vw;
 }
 .navbar-custom a:focus {
   outline: none;
@@ -683,11 +684,40 @@ a{
 }
 
 
+/* BTN CREATE ACCOUNT  */
+
+.createUserAccount:hover{
+  
+  background-color: grey;
+}
+.activeBtn{
+  background-color: var(--mainColor);
+  border: var(--mainColor);
+}
+.activeBtn:hover{
+  background-color: var(--mainColor);
+}
+
+/* DASHBOARD USER  */
+#dashboardUser{
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  max-width: 750px;
+    margin: 0 auto;
+}
+
 
 /* MEDIA QUERIES  */
+
 @media screen and (max-width: 992px){
   /* PAGE HOME POST  */
   .post-container {
     grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  }
+}
+@media screen and (max-width: 500px) {
+  .post-container{
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
   }
 }

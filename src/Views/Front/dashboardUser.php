@@ -5,7 +5,7 @@ ob_start();
 ?>
 
 <section id="dashboardUser">
-    <div class="container text-center">
+    <div class="container text-justify">
         <?php if (isset($validation)):
                 if($validation): 
                     
@@ -30,16 +30,6 @@ ob_start();
         <div><a class="btn btn-success btn-lg" href="pageUpdatePassword&id=<?= $_SESSION['id'] ?>">Modifier votre mot de
                 passe</a></div>
 
-        <h2>Vos commentaires :</h2>
-        <div>
-            <?php  foreach($comment as $c): ?>
-            <div>
-                <p class="date-com">Posté par <?= $_SESSION['pseudo'] ?> le <time
-                        datetime="<?=$c['dateCreation'] ?>"><?= $c['dateCreation']; ?></time> :</p>
-                <p class="comment-user"><?= $c['commentaire'] ?></p>
-            </div>
-            <?php endforeach; ?>
-        </div>
     </div>
 </section>
 

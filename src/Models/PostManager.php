@@ -148,17 +148,6 @@ class PostManager extends Manager
         return $nbComment;
     }
 
-    // display comments by user 
-    public function commentUser()
-    {
-        $bdd = $this->dbConnect();
-        $req = $bdd->prepare("SELECT *, DATE_FORMAT(commentaire.dateCreation, '%d-%m-%Y %H:%i:%s') as dateCreation FROM commentaire WHERE utilisateur_id = ?");
-        $req->execute([$_SESSION['id']]);
-
-        $commentUser = $req->fetchAll();
-        return $commentUser;
-    }
-
 
 
     // =====================ADMIN==============================================

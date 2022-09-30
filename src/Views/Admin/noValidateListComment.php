@@ -6,7 +6,7 @@ ob_start();
 ?>
 
 <section class="section-article-admin">
-    <h1>liste des commentaires :</h1>
+    <h1>liste des commentaires à valider :</h1>
     <div class="centrer-tableau">
         <table class="page-list-admin">
             <thead>

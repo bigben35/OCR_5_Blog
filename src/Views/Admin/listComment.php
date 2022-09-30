@@ -36,7 +36,7 @@ ob_start();
                     <div class="btn-comment">
                         <td><a href="#" class="btn-action-admin">Voir</a></td>
                         <td>
-                            <a href="deleteComment" class="btn-action-admin-red">Supprimer</a>
+                            <a href="deleteComment&id=<?= $comment['id']; ?>" class="delete btn-action-admin-red">Supprimer</a>
                         </td>
                     </div>
                 </tr>

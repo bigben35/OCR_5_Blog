@@ -27,16 +27,6 @@ class UserManager extends Manager{
 
 
     // ===============PAGE DASHBOARD USER ===================
-     // function to know if id user exist
-     public function existIdUser(int $id)
-     {
-         $bdd = $this->dbConnect();
-         $req = $bdd->prepare("SELECT COUNT(id) FROM utilisateur WHERE id=? ");
- 
-         $req->execute([$id]);
-         $result = $req->fetch()[0];
-         return $result;
-     }
 
     // function to know if pseudo is already use 
     public function existPseudo(string $pseudo)

@@ -102,6 +102,7 @@ class AdminManager extends Manager{
          ON commentaire.utilisateur_id = utilisateur.id
          INNER JOIN article
          ON commentaire.article_id = article.id
+         WHERE commentaire.estValide = 1
          ORDER BY id DESC");
          $req->execute();
  
@@ -134,7 +135,7 @@ class AdminManager extends Manager{
     }
 
     // delete a comment 
-    public function deleteOneComment(int $id)
+    public function deleteOneComment($id)
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare("DELETE FROM commentaire WHERE id = ?");
