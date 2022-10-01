@@ -6830,16 +6830,28 @@ form{
   margin: 0;
 }
 
+
+
+/* PAGE POST  */
+.text-post-content{
+  font-size: 2rem;
+  font-weight: bold;
+}
+.comment-form{
+  max-width: 100%;
+}
 textarea.comment{
   width: 100%;
   height: 150px;
   margin: 0 auto;
+  padding-left: 5px;
 }
 .input-comment{
   display: block;
-  margin: 0 auto;
   margin-top: 30px;
 }
+
+
 
 
 /* PAGE BLOG  */

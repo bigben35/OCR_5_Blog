@@ -13,14 +13,14 @@ ob_start();
             <div class="paragraphe-post">
                 <p><strong>Auteur : </strong><?= $post['auteur']; ?></p>
                 <p><strong>Article modifié le : </strong><?= $post['dateModif']; ?></p>
-                <h4><strong>Châpo : </strong><?= $post['chapo']; ?></h4>
-                <p><strong>Contenu : </strong><?= $post['contenu']; ?></p>
+                <p><span class="text-post-content">Châpo : </span><?= $post['chapo']; ?></p>
+                <p><span class="text-post-content">Contenu : </span><?= $post['contenu']; ?></p>
             </div>
         </article>
-        <div><a href="blog" class="btn-form">Retour au blog</a></div>
+
 
     </section>
-    <section id="section-comment">
+    <section id="section-comment" class="text-justify">
         <div>
             <?php
         if($numberComment > 1) : ?>
@@ -70,11 +70,7 @@ ob_start();
         <?php
             endif;
             ?>
-        <form method="POST" action="post&id=<?= $post['id']; ?>">
-
-
-
-
+        <form method="POST" action="post&id=<?= $post['id']; ?>" class="comment-form">
             <textarea class="comment" name="commentaire" placeholder="Votre commentaire" required></textarea>
             <input class="input-comment btn-comment btn btn-success btn-lg" type="submit" value="Commenter">
         </form>
@@ -82,6 +78,7 @@ ob_start();
     endif;
     ?>
     </section>
+    <div><a href="blog" class="btn btn-success btn-lg">Retour au blog</a></div>
 </div>
 
 
