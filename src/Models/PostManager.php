@@ -169,7 +169,7 @@ class PostManager extends Manager
     public function loadingPosts()
     {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateModif, '%d-%m-%Y') AS dateModif FROM article ORDER BY dateModif DESC");
+        $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateModif, '%d-%m-%Y') AS dateModif FROM article ORDER BY id DESC");
         $req->execute();
         $allPosts = $req->fetchAll(\PDO::FETCH_ASSOC);
         $req->closeCursor();
