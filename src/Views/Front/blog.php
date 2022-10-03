@@ -20,7 +20,7 @@ ob_start();
 
             <article class="post-card">
                 <div class="content-post">
-                    <p class="date-post"> Posté le <time><?= $post['dateModif']; ?></time></p>
+                    <p class="date-post"> Modifié le <?= $post['dateModif']; ?></p>
                     <h3 class="title-post"><?= $post['titre']; ?></h3>
                     <p class="chapo"><?= $post['chapo']; ?></p>
                 </div>

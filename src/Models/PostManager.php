@@ -45,7 +45,7 @@ class PostManager extends Manager
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare("SELECT *, DATE_FORMAT(dateModif, '%d-%m-%Y') as dateModif FROM article
-        ORDER BY dateModif
+        ORDER BY id
         DESC LIMIT :firstPost, :perPage");
         $req->bindValue(':firstPost', $firstPost, \PDO::PARAM_INT);
         $req->bindValue(':perPage', $perPage, \PDO::PARAM_INT);
