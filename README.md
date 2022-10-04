@@ -9,6 +9,8 @@ composer : https://getcomposer.org/download/
 
 Téléchargez et exécutez Composer-Setup.exe
 
+Faire un composer install
+
 Faire un composer init dans votre terminal.
 
 Dans votre terminal de commande, écrire composer pour savoir si le gestionnaire de dépendances a bien été installé.
@@ -16,6 +18,16 @@ Dans votre terminal de commande, écrire composer pour savoir si le gestionnaire
 # Variables d'environnement:
 Possible avec Dotenv: faire un composer require vlucas/phpdotenv
 Créer un fichier .env à la racine du projet en prenant .env.example comme modèle pour vous connecter à votre base de donnée
+
+Editer ensuite le fichier .env avec les valeurs de connexion à la base de données
+
+DB_HOST=your_host
+DB_PORT=your_port
+DB_USERNAME=username
+DB_PASSWORD=password
+DB_NAME=dbname
+
+APP_ENV=development
 
 # Gestion des erreurs avec Whoops:
 faire un composer require filp/whoops

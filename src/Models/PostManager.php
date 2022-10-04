@@ -154,7 +154,7 @@ class PostManager extends Manager
 
     private $posts; //tableau d'articles
 
-    public function addPost(mixed $post)
+    public function addPost($post)
     {
         $this->posts[] = $post;
     }
