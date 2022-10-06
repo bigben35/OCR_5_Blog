@@ -44,5 +44,11 @@ J'ai utilisé XAMPP pour mon serveur local et phpMyAdmin pour la gestion de la b
 Utilisation de php 8 (Version php 8.0.12 de mon côté)
 importer le blog-ocr-version-finale.sql dans votre base de données
 
+# Démarrage du projet
+Depuis un terminal, vous pouvez lancer la commande suivante :
+
+php -S localhost:8080 -t .
+Qui va démarrer votre projet grâce au serveur intégré de PHP.
+
 Pour vous connecter en tant qu'Admin : mail:jojo@gmail.com et password: azerty ou modifier le role (par 1) dans la base de données
 
