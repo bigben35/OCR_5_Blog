@@ -45,10 +45,7 @@ Utilisation de php 8 (Version php 8.0.12 de mon côté)
 importer le blog-ocr-version-finale.sql dans votre base de données
 
 # Démarrage du projet
-Depuis un terminal, vous pouvez lancer la commande suivante :
-
-php -S localhost:8080 -t .
-Qui va démarrer votre projet grâce au serveur intégré de PHP.
+Je suis sur XAMPP donc serveur Apache. J'ai un fichier .htaccess pour la réécriture d'URL. Vous pouvez lancer le projet sur votre localhost: **http://localhost/nom-du-dossier/home**. Vous pouvez égalemnt le retrouver hébergé ici: **https://www.josselin-crenn.fr/webcode/**
 
 Pour vous connecter en tant qu'Admin : mail:jojo@gmail.com et password: azerty ou modifier le role (par 1) dans la base de données
 
