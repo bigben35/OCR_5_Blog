@@ -2,24 +2,25 @@
 
 # OCR_5_Blog
 
-Projet 5 DA PHP/Symfony. Réalisation d'un Blog en utilisant les langages HTML5, CSS3, PHP, SQL et JavaScript.
+Project 5 DA PHP/Symfony. This project involves creating a Blog using HTML5, CSS3, PHP, SQL, and JavaScript.
 
 # Installation :
 composer : https://getcomposer.org/download/
 
-Téléchargez et exécutez Composer-Setup.exe
+Download and run Composer-Setup.exe.
 
-Faire un composer install
+Run composer install.
 
-Faire un composer init dans votre terminal.
+Run composer init in your terminal.
 
-Dans votre terminal de commande, écrire composer pour savoir si le gestionnaire de dépendances a bien été installé.
+In your command terminal, type composer to verify if the dependency manager has been installed successfully.
 
-# Variables d'environnement:
-Possible avec Dotenv: faire un composer require vlucas/phpdotenv
-Créer un fichier .env à la racine du projet en prenant .env.example comme modèle pour vous connecter à votre base de donnée
+# Environment Variables:
+This can be achieved using Dotenv: run composer require vlucas/phpdotenv.
 
-Editer ensuite le fichier .env avec les valeurs de connexion à la base de données
+Create a .env file at the project's root, using .env.example as a template to connect to your database.
+
+Edit the .env file with the connection values for your database:
 
 DB_HOST=your_host
 DB_PORT=your_port
@@ -29,23 +30,23 @@ DB_NAME=dbname
 
 APP_ENV=development
 
-# Gestion des erreurs avec Whoops:
-faire un composer require filp/whoops
+# Error Handling with Whoops:
+Run composer require filp/whoops.
 
-Faire un composer update pour actualiser l'installation du nouveau package.
+Run composer update to update the installation with the new package.
 
 
-# Installation du projet:
-Faire un git clone https://github.com/bigben35/OCR_5_Blog.git
-dans votre IDE (ex: VSCode).
+# Project Installation:
+Clone the project using git clone https://github.com/bigben35/OCR_5_Blog.git in your IDE (e.g., VSCode).
 
-J'ai utilisé XAMPP pour mon serveur local et phpMyAdmin pour la gestion de la base de données.
+I used XAMPP for my local server and phpMyAdmin for database management.
 
-Utilisation de php 8 (Version php 8.0.12 de mon côté)
-importer le blog-ocr-version-finale.sql dans votre base de données
+I used PHP 8 (Version php 8.0.12 on my side).
 
-# Démarrage du projet
-Je suis sur XAMPP donc serveur Apache. J'ai un fichier .htaccess pour la réécriture d'URL. Vous pouvez lancer le projet sur votre localhost: **http://localhost/nom-du-dossier/home**. Vous pouvez également le retrouver hébergé ici: **https://www.josselin-crenn.fr/webcode/**
+Import the blog-ocr-version-finale.sql into your database.
 
-Pour vous connecter en tant qu'Admin : mail:jojo@gmail.com et password: azerty ou modifier le role (par 1) dans la base de données
+# Starting the Project:
+I'm using XAMPP with an Apache server. I have an .htaccess file for URL rewriting. You can run the project on your localhost: **http://localhost/folder-name/home**. You can also find it hosted here: **https://www.josselin-crenn.fr/webcode/**
+
+To log in as an admin, use the following credentials: email: **jojo@gmail.com** and password: **azerty**, or modify the role (set to 1) in the database as needed.
 
